@@ -20,19 +20,30 @@ const SearchResults = (props) => {
             console.log("Retrieved data:", json)
             setResults(json)
         })
-    }, []) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
 
-    // function handleSubmit() {
-    //     console("handleSubmit was called")
-    // }
-    const handleChange = (event) => {
+    // 
+    const handleSelect = (event) => {
         // console.log("perPage:", perPage)
         // console.log("change:", event.target.value, event.target.name)
         perPage = event.target.value
-        // console.log("perPage:", perPage)
-        // handleSubmit()
-        // console.log("URL:", url)
         setFormState({...formState, [event.target.name]: event.target.value})
+        window.location.assign(`/breweries/per_page=${perPage}&page=1`)
+    }
+
+    const handlePrevPageClick = (event) => {
+        // console.log("prev page click WAS:", page)
+        if(page > 1) {
+            page--
+        }
+        console.log("prev page click IS NOW:", page)
+        window.location.assign(`/breweries/per_page=${perPage}&page=${page}`)
+    }
+
+    const handleNextPageClick = (event) => {
+        // console.log("next page click WAS:", page)
+        page++
+        console.log("next page click IS NOW:", page)
         window.location.assign(`/breweries/per_page=${perPage}&page=${page}`)
     }
 
@@ -43,22 +54,25 @@ const SearchResults = (props) => {
         return (
             <>
                 <h4>vvv START OF SEARCH RESULTS PAGE vvv</h4>
-                {/* <p>
-                    Page: {page}
-                </p> */}
-                {/* <p>
-                    <Link to={nextPage}>Next Page</Link>
-                </p> */}
-                <form>
-                    <label htmlFor="results-per-page">Results per page:</label>
-                    <select name="results-per-page" id="results-per-page" value={formState} onChange={handleChange}>
-                        <option value={1}>1</option>
-                        <option value={5}>5</option>
-                        <option value={10}>10</option>
-                        <option value={20}>20</option>
-                        <option value={50}>50</option>
-                    </select>
-                </form>
+
+                {/* Search Controls */}
+                <div className="search-controls">
+                    <p>Page number: {page}</p>
+                    <form>
+                        <label htmlFor="results-per-page">Results per page:</label>
+                        <select name="results-per-page" id="results-per-page" value={formState} onChange={handleSelect}>
+                            <option value={1}>1</option>
+                            <option value={5}>5</option>
+                            <option value={10}>10</option>
+                            <option value={20}>20</option>
+                            <option value={50}>50</option>
+                        </select>
+                    </form>
+                    {Number(page)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                    <button onClick={handleNextPageClick}>Next Page</button>
+                </div>
+
+                {/* Search Results */}
                 <h2>Search results:</h2>
                 <ul>
                     {results.map((brewery, idx) => {
@@ -81,18 +95,8 @@ const SearchResults = (props) => {
                             </Link>
                         )
                     })}
-                    {/* <li>Brewery Name</li>
-                    <ul>
-                        <li>Phone number:</li>
-                        <li>Address</li>
-                        <li>Address:</li>
-                        <ul>
-                            <li>123 Fake street</li>
-                            <li>Brooklyn, NY 11221</li>
-                        </ul>
-                    </ul> */}
                 </ul>
-                <h4>^^^ START OF SEARCH RESULTS PAGE ^^^</h4>
+                <h4>^^^ END OF SEARCH RESULTS PAGE ^^^</h4>
             </>
         )
     }
