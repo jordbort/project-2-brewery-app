@@ -14,7 +14,7 @@ const Brewery = (props) => {
         })
     }, [])
 
-    const { name, street, city, state, postal_code, country, longitude, latitude, phone, website_url, updated_at } = brewery
+    const { name, street, city, state, postal_code, country, phone, website_url, updated_at } = brewery
 
     if (!brewery) {
         <p>Loading brewery info...</p>
