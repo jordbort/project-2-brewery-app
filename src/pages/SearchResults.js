@@ -1,20 +1,27 @@
 // import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-// import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
-    // const {page} = useParams()
+    const {page, perPage} = useParams()
+    const allParams = useParams()
     const [results, setResults] = useState(null)
+    // const [formState, setFormState] = useState()
+    // console.log(formState)
     useEffect(() => {
-        const url = `https://api.openbrewerydb.org/breweries?per_page=50`
+        const url = `https://api.openbrewerydb.org/breweries?per_page=${perPage}&page=${page}`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
-            // console.log(json)
-            // console.log(url)
+            console.log("Current URL:", url)
+            console.log("Checking params:", allParams)
+            console.log("Retrieved data:", json)
             setResults(json)
         })
-    }, [])
+    }) // , [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    // const handleChange = (event) => {
+    //     console.log("change:", event.target.value, event.target.name)
+    // }
     if(!results) {
         return <p>Loading search results...</p>
     }
@@ -24,9 +31,20 @@ const SearchResults = (props) => {
                 {/* <p>
                     Page: {page}
                 </p> */}
-                <p>
-                    {/* <Link to={nextPage}>Next Page</Link> */}
-                </p>
+                {/* <p>
+                    <Link to={nextPage}>Next Page</Link>
+                </p> */}
+                <form>
+                    <label>
+                    <select>
+                        <option value={1}>1</option>
+                        <option value={5}>5</option>
+                        <option value={10}>10</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                    </select>
+                    </label>
+                </form>
                 <h2>Search results:</h2>
                 <ul>
                     {results.map((brewery, idx) => {
