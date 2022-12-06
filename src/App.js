@@ -1,8 +1,8 @@
 import './App.css';
 
 // React tools
-// import React, { useState, useEffect } from "react"
-import { Routes, Route } from "react-router-dom" 
+import React, { useState, useEffect } from "react"
+import { Route, Routes } from "react-router-dom" 
 
 // Pages
 import Home from './pages/Home';
@@ -24,7 +24,7 @@ function App() {
         <Route path='/' element={ <Home /> } />
         <Route path='/about' element={ <About /> } />
         <Route path='/brewery' element={ <Brewery /> } />
-        <Route path='/search-results' element={ <SearchResults /> } />
+        <Route path='/breweries' element={ <SearchResults /> } />
       </Routes>
     </div>
   );
