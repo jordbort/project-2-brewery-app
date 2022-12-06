@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
     let {page, perPage} = useParams()
-    const allParams = useParams()
+    // const allParams = useParams()
     const [results, setResults] = useState(null)
     const [formState, setFormState] = useState(perPage)
     console.log(formState)
@@ -16,11 +16,11 @@ const SearchResults = (props) => {
         .then((response) => response.json())
         .then((json) => {
             // console.log("Current URL:", url)
-            console.log("Checking params:", allParams)
+            // console.log("Checking params:", allParams)
             console.log("Retrieved data:", json)
             setResults(json)
         })
-    }) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [page, perPage]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
 
     // 
     const handleSelect = (event) => {
