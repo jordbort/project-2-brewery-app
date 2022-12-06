@@ -14,7 +14,8 @@ const About = (props) => {
         <h4>Made possible thanks to the following APIs:</h4>
         <ul>
             <li><a href="https://www.openbrewerydb.org" target="_blank" rel="noreferrer">Open Brewery DB</a></li>
-            <li><a href="https://www.openbrewerydb.org" target="_blank" rel="noreferrer">Some Maps API</a></li>
+            <li><a href="https://leafletjs.com" target="_blank" rel="noreferrer">LeafletJS</a></li>
+            <li><a href="https://react-leaflet.js.org" target="_blank" rel="noreferrer">React Leaflet</a></li>
         </ul>
         <h3>Please search responsibly.</h3>
         <h3>Cheers!</h3>
