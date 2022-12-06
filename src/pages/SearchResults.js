@@ -19,6 +19,30 @@ const SearchResults = (props) => {
         return (
             <>
                 <h2>Search results:</h2>
+                <ul>
+                    {results.map((brewery, idx) => {
+                        return (
+                            <>
+                                <li>Name: {brewery.name}</li>
+                                <li>Address:</li>
+                                <ul>
+                                    <li>{brewery.address_2}</li>
+                                    <li>{brewery.address_3}</li>
+                                </ul>
+                            </>
+                        )
+                    })}
+                    {/* <li>Brewery Name</li>
+                    <ul>
+                        <li>Phone number:</li>
+                        <li>Address</li>
+                        <li>Address:</li>
+                        <ul>
+                            <li>123 Fake street</li>
+                            <li>Brooklyn, NY 11221</li>
+                        </ul>
+                    </ul> */}
+                </ul>
             </>
         )
     }
