@@ -3,25 +3,39 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
-    const {page, perPage} = useParams()
+    let {page, perPage} = useParams()
     const allParams = useParams()
     const [results, setResults] = useState(null)
-    // const [formState, setFormState] = useState()
-    // console.log(formState)
+    const [formState, setFormState] = useState(perPage)
+    console.log(formState)
+
+    // API call and response
     useEffect(() => {
         const url = `https://api.openbrewerydb.org/breweries?per_page=${perPage}&page=${page}`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
-            console.log("Current URL:", url)
+            // console.log("Current URL:", url)
             console.log("Checking params:", allParams)
-            console.log("Retrieved data:", json)
+            // console.log("Retrieved data:", json)
             setResults(json)
         })
-    }) // , [] <= this might need to be added back in, if you're getting into an infinite loop!!
-    // const handleChange = (event) => {
-    //     console.log("change:", event.target.value, event.target.name)
+    }) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+
+    // function handleSubmit() {
+    //     console("handleSubmit was called")
     // }
+    const handleChange = (event) => {
+        // console.log("perPage:", perPage)
+        // console.log("change:", event.target.value, event.target.name)
+        perPage = event.target.value
+        // console.log("perPage:", perPage)
+        // handleSubmit()
+        // console.log("URL:", url)
+        setFormState({...formState, [event.target.name]: event.target.value})
+        window.location.assign(`../breweries/per_page=${perPage}&page=${page}`)
+    }
+
     if(!results) {
         return <p>Loading search results...</p>
     }
@@ -35,15 +49,14 @@ const SearchResults = (props) => {
                     <Link to={nextPage}>Next Page</Link>
                 </p> */}
                 <form>
-                    <label>
-                    <select>
+                    <label htmlFor="resultsPerPage">Results per page:</label>
+                    <select name="resultsPerPage" id="resultsPerPage" value={formState} onChange={handleChange}>
                         <option value={1}>1</option>
                         <option value={5}>5</option>
                         <option value={10}>10</option>
                         <option value={20}>20</option>
                         <option value={50}>50</option>
                     </select>
-                    </label>
                 </form>
                 <h2>Search results:</h2>
                 <ul>
