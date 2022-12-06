@@ -3,7 +3,6 @@
 ### Mon Dec 5
 - create dummy search results page
 - create dummy brewery page
-- setup general styling
 
 ### Tues Dec 6
 - fetching API data
