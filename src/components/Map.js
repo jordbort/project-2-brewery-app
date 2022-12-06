@@ -1,17 +1,22 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import "leaflet/dist/leaflet.css"
+
 const Map = (props) => {
+    console.log(props)
+    const { name, latitude, longitude } = props
+    let mapPosition = [Number(latitude), Number(longitude)]
     return (
         <div className="map-container">
             <h2>Map here</h2>
-            <iframe
-                width="600"
-                height="450"
-                style="border:0"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-                    &q=Space+Needle,Seattle+WA">
-                </iframe>
+            <MapContainer center={mapPosition} zoom={13} scrollWheelZoom={false} style={{height: "50vh"}}>
+                <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                <Marker position={mapPosition}>
+                    <Popup>
+                        {name} <br/>
+                    </Popup>
+                </Marker>
+            </MapContainer>
+            
         </div>
     )
 }
