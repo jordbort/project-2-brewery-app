@@ -15,9 +15,13 @@ const SearchResults = (props) => {
     if(!results) {
         return <p>Loading search results...</p>
     }
-    return (
-        <h2>Search results:</h2>
-    )
+    else {
+        return (
+            <>
+                <h2>Search results:</h2>
+            </>
+        )
+    }
 }
 
 export default SearchResults
