@@ -1,18 +1,21 @@
 .App {
   text-align: center;
 }
+.nav-bar{
+  /* background-image:radial-gradient(at bottom,#ffd54f 52%, white 71%,  black 72%); */
+  /* background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white); */
+  /* border-top:20px solid white; */
+}
 .nav {
-  background:white;
-  background-image:radial-gradient(at bottom,#ffd54f 52%, white 71%,  black 10%);
   display:flex;
   justify-content: space-evenly;
+  background-image:radial-gradient(at bottom,#ffd54f 1%, white 71%,  black 72%);
   align-items: center;
   height:10vh;
   padding:20px;
   position:relative;
-  border-top:10px solid black;
-  /* border-left:10px solid black; */
-  /* border-right:10px solid black; */
+  /* border-bottom:white solid 20px; */
+  /* background-color:white; */
 }
 .nav > a {
   text-decoration: none;
@@ -46,6 +49,9 @@ body {
 .about-container > ul > li {
   list-style-type: none;
 }
+.map-container{
+padding:10px;
+}
 /* Corey TO DO */
 
 /* still to do */
@@ -67,7 +73,7 @@ body {
   text-align:center;
 }
 
-.search-result-box{
+.all-search-results-box{
   border-radius:10px;
   padding:5px;
 }

@@ -1,41 +1,56 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router"
 import Map from "../components/Map"
 
 const Brewery = (props) => {
-    const [brewery, setBrewery] = useState([])
-    // const [rand, setRand] = useState([])
+    const [ brewery, setBrewery ] = useState([])
+    const [ randomBrewery, setRandomBreweryState ] = useState()
+    const [ randomNumber, setRandomNumber ] = useState()    
     const selectedBrewery = useParams()
-    console.log(`Params`,selectedBrewery)
 
-    const urlForFetch = 'https://api.openbrewerydb.org/breweries/'+selectedBrewery.brewery
+    const randNum = () => {
+        return Math.floor(Math.random()*8163)
+    }
+    const handleRandomFetch = useCallback(async () => {
+        const newNum = randNum()
+        setRandomNumber(newNum)
+        const randURL = `https://api.openbrewerydb.org/breweries/?page=${newNum}&per_page=1`
+        // console.log('randURL is', randURL)
+        fetch (randURL)
+        .then ((res) => res.json())
+        .then ((data) => setRandomBreweryState(data))
+        .catch((err) => console.log(err))
+        // console.log('randomBrewery is', randomBrewery)
+    },[])
 
-    useEffect (() => {
-        if (selectedBrewery.brewery !== 'random') {
-            console.log(selectedBrewery.brewery)
-            fetch (urlForFetch)
+    const handleNormalFetch = useCallback(async () => {
+        const urlForFetch = 'https://api.openbrewerydb.org/breweries/'+selectedBrewery.brewery
+        fetch (urlForFetch)
             .then ((res) => res.json())
             .then ((json) => { 
-                setBrewery(json)})
-                console.log(`Normal Brewery's data`,brewery)   
-        } else {
-            fetch (urlForFetch)
-            .then ((res) => res.json())
-            .then ((json) => { 
-                setBrewery(json[0])
-                console.log(`Random brewery's data`,brewery)
-            }
-            )
+                setBrewery(json)})  
+    },[selectedBrewery.brewery])
+
+    const handleClick = () => {
+        handleRandomFetch()
+        // console.log (`randomNumber is ${number}`)
+        // console.log(brewery)
+        setBrewery(randomBrewery[0])
         }
-    }, [selectedBrewery.brewery, brewery, urlForFetch])
-
-    // },[])
+        useEffect (() => {
+            if (selectedBrewery.brewery !== 'random') {
+                handleNormalFetch() 
+        } else if (selectedBrewery.brewery === "random") {
+            handleRandomFetch()
+        }
+    }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery]) 
+    
+    // using this console log to clear error message
+    // not sure how else to use randomNumber in code otherwise
+    console.log(`random number is`, randomNumber)
 
     const { name, street, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
-    
-    // const { nameR, streetR, cityR, stateR, postal_codeR, latitudeR, longitudeR, countryR, phoneR, website_urlR, updated_atR } = rand
-    
-    // if (!brewery && !rand) {
+
     if (!brewery) {
         <p>Loading brewery info...</p>
     }
@@ -44,6 +59,7 @@ const Brewery = (props) => {
         return (
             <div>
                 <h2>Brewery details:</h2>
+                <button onClick={handleClick}>Random Brewery</button>
             <div className="brewery-container">
             <div>
             <h1>{name}</h1>
@@ -52,33 +68,15 @@ const Brewery = (props) => {
             <h3>{country}</h3>
             {phone ? <h3>{phone}</h3> : null}
             {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
-            <h4>last updated on: {updated_at}</h4>
+            { updated_at ? <h4>last updated on: <br/>{Date({updated_at})}</h4> : null}
             </div>
             {latitude ? <div className="map-container">
                 <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
-            </div> : null}
+            </div> : <div className="map-container"></div>}
             </div>
             </div>
         )    
     }
-    // if (rand) {
-    //     return (
-    //         <div className="brewery-container">
-    //         <h2>Brewery details:</h2>
-    //         <h1>{nameR}</h1>
-    //         <h3>{streetR}</h3>
-    //         <h3>{cityR}, {stateR} {postal_codeR}</h3>
-    //         <h3>{countryR}</h3>
-    //         {phone ? <h3>{phone}</h3> : null}
-    //         {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
-    //         <h4>last updated on: {updated_at}</h4>
-    //         {latitude ? <div className="map-container">
-    //             <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
-    //         </div> : null}
-    //         {console.log(rand)}
-    //         </div>
-    //     )
-    // }
 }
 
 export default Brewery
