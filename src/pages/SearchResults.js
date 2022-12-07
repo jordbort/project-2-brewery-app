@@ -6,7 +6,7 @@ const SearchResults = (props) => {
     const navigate = useNavigate()
     let {pageNumber, perPage} = useParams()
     const [results, setResults] = useState(null)
-    const [formState, setFormState] = useState(perPage)
+    const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
 
     // API call and response
     useEffect(() => {
@@ -16,37 +16,33 @@ const SearchResults = (props) => {
         .then((json) => {
             // console.log("Current URL:", url)
             console.log("Retrieved data:", json)
+            console.log("resultsPerPageState:", resultsPerPageState)
             setResults(json)
+            setResultsPerPageState(perPage)
         })
-    }, [pageNumber, perPage, navigate]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [pageNumber, perPage, navigate, resultsPerPageState]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
 
     // Dropdown selection menu function
-    const handleSelect = async (event) => {
-        if(results) {
-            perPage = event.target.value
-            setFormState({...formState, [event.target.name]: event.target.value})
-            navigate(`/breweries/per_page=${perPage}&page=1`)
-        }
+    const handleSelect = (event) => {
+        perPage = event.target.value
+        setResultsPerPageState({...resultsPerPageState, [event.target.name]: event.target.value})
+        navigate(`/breweries/per_page=${perPage}&page=1`)
     }
 
     // Prev page click (available except for page 1)
-    const handlePrevPageClick = async (event) => {
-        if(results) {
-            let newPageNumber = Number(pageNumber)
-            if(pageNumber > 1) {
-                newPageNumber--
-                navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
-            }
+    const handlePrevPageClick = (event) => {
+        let newPageNumber = Number(pageNumber)
+        if(pageNumber > 1) {
+            newPageNumber--
+            navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
         }
     }
 
     // Next page click ()
-    const handleNextPageClick = async (event) => {
-        if(results) {
-            let newPageNumber = Number(pageNumber)
-            newPageNumber++
-            navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
-        }
+    const handleNextPageClick = (event) => {
+        let newPageNumber = Number(pageNumber)
+        newPageNumber++
+        navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
     }
 
     if(!results) {
@@ -59,31 +55,50 @@ const SearchResults = (props) => {
 
                 {/* Search Controls */}
                 <div className="search-controls">
-                    <div>
+
                         {/* okay nevermind, don't actually do radio buttons */}
-                        <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} />
-                        <label htmlFor="by-name" name="sort-by">Brewery name</label>
-                        <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} />
-                        <label htmlFor="by-type" name="sort-by">Brewery type</label>
-                        <input type="radio" id="by-city" name="sort-by" value="city" onChange={null} />
-                        <label htmlFor="by-city" name="sort-by">City</label>
-                        <input type="radio" id="by-state" name="sort-by" value="state" onChange={null} />
-                        <label htmlFor="by-state" name="sort-by">State</label>
-                        <input type="radio" id="by-postal" name="sort-by" value="postal-code" onChange={null} />
-                        <label htmlFor="by-postal-code" name="sort-by">Postal code</label>
-                    </div>
-                    <p></p>
+                    {/* <div> */}
+                        {/* <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} /> */}
+                        {/* <label htmlFor="by-name" name="sort-by">Brewery name</label> */}
+                        {/* <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} /> */}
+                        {/* <label htmlFor="by-type" name="sort-by">Brewery type</label> */}
+                        {/* <input type="radio" id="by-city" name="sort-by" value="city" onChange={null} /> */}
+                        {/* <label htmlFor="by-city" name="sort-by">City</label> */}
+                        {/* <input type="radio" id="by-state" name="sort-by" value="state" onChange={null} /> */}
+                        {/* <label htmlFor="by-state" name="sort-by">State</label> */}
+                        {/* <input type="radio" id="by-postal" name="sort-by" value="postal-code" onChange={null} /> */}
+                        {/* <label htmlFor="by-postal-code" name="sort-by">Postal code</label> */}
+                    {/* </div> */}
+
+
+                    <form>
+                        <label htmlFor="sort-method">Sort results by:</label>
+                        <select name="sort-method" id="sort-method" onChange={handleSelect}>
+                            <option value="by_name">Name</option>
+                            <option value="by_type">Type</option>
+                            <option value="by_dist">Distance</option>
+                            <option value="by_city">City</option>
+                            <option value="by_state">State</option>
+                            <option value="by_postal">Post code</option>
+                        </select>
+                    </form>
+
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
-                        <select name="results-per-page" id="results-per-page" value={formState} onChange={handleSelect}>
+                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handleSelect}>
                             <option value={1}>1</option>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                             <option value={50}>50</option>
                         </select>
+
+                        <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} />
+                        <label htmlFor="by-name" name="sort-by">Brewery name</label>
+                        <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} />
+                        <label htmlFor="by-type" name="sort-by">Brewery type</label>
+
                     </form>
-                    <p></p>
                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                     <button onClick={handleNextPageClick}>Next Page</button>
                     <p>Page number: {pageNumber}</p>
@@ -107,7 +122,6 @@ const SearchResults = (props) => {
                                             {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
                                             {brewery.website ? <li>Website: {brewery.website}</li> : null}
                                         </ul>
-                                        <p></p>
                                     </div>
                                 </Link>
                             )

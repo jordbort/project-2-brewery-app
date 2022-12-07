@@ -12,14 +12,14 @@ import SearchResults from './pages/SearchResults';
 
 // Components
 import Nav from './components/Nav';
-import Search from './components/Search';
+// import Search from './components/Search';
 
 function App() {
   return (
     <div>
       <Nav />
-      <h1>Project 2: Brewery App!</h1>
-      <Search />
+      <h1>Brewery Buddy 🍻</h1>
+      {/* <Search /> */}
       <Routes>
         <Route path='/' element={ <Home /> } />
         <Route path='/about' element={ <About /> } />
