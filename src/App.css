@@ -3,23 +3,28 @@
 }
 .nav {
   background:white;
+  background-image:radial-gradient(at bottom,#ffd54f 52%, white 71%,  black 10%);
   display:flex;
   justify-content: space-evenly;
   align-items: center;
   height:10vh;
   padding:20px;
   position:relative;
+  border-top:10px solid black;
+  /* border-left:10px solid black; */
+  /* border-right:10px solid black; */
 }
 .nav > a {
   text-decoration: none;
 }
 
 body {
-  background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 77%,white);
+  background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white);
 }
 
 .brewery-container {
   display:flex;
+  justify-content: space-evenly;
   margin:20px;
 }
 

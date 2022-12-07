@@ -4,10 +4,11 @@ import Map from "../components/Map"
 
 const Brewery = (props) => {
     const [brewery, setBrewery] = useState([])
-    const [rand, setRand] = useState([])
+    // const [rand, setRand] = useState([])
     const selectedBrewery = useParams()
+    console.log(`Params`,selectedBrewery)
 
-    const urlForFetch = `https://api.openbrewerydb.org/breweries/${selectedBrewery.brewery}`
+    const urlForFetch = 'https://api.openbrewerydb.org/breweries/'+selectedBrewery.brewery
 
     useEffect (() => {
         if (selectedBrewery.brewery !== 'random') {
@@ -16,16 +17,17 @@ const Brewery = (props) => {
             .then ((res) => res.json())
             .then ((json) => { 
                 setBrewery(json)})
-            console.log(selectedBrewery.brewery)   
+                console.log(`Normal Brewery's data`,brewery)   
         } else {
-                fetch (urlForFetch)
-                .then ((res) => res.json())
-                .then ((json) => { 
+            fetch (urlForFetch)
+            .then ((res) => res.json())
+            .then ((json) => { 
                 setBrewery(json[0])
-                    }
-                    )
+                console.log(`Random brewery's data`,brewery)
+            }
+            )
         }
-    }, [selectedBrewery.brewery])
+    }, [selectedBrewery.brewery, brewery, urlForFetch])
 
     // },[])
 
@@ -33,7 +35,8 @@ const Brewery = (props) => {
     
     // const { nameR, streetR, cityR, stateR, postal_codeR, latitudeR, longitudeR, countryR, phoneR, website_urlR, updated_atR } = rand
     
-    if (!brewery && !rand) {
+    // if (!brewery && !rand) {
+    if (!brewery) {
         <p>Loading brewery info...</p>
     }
 
