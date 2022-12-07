@@ -4,49 +4,67 @@ import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
     const navigate = useNavigate()
-    let {pageNumber, perPage} = useParams()
+    let {pageNumber, perPage, sortMethod, sortDirection} = useParams()
     const [results, setResults] = useState(null)
-    const [formState, setFormState] = useState(perPage)
+    const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
+    const [sortMethodState, setSortMethodState] = useState(sortMethod)
+    const [sortDirectionState, setSortDirectionState] = useState(sortDirection)
 
     // API call and response
     useEffect(() => {
-        const url = `https://api.openbrewerydb.org/breweries?per_page=${perPage}&page=${pageNumber}`
+        const url = `https://api.openbrewerydb.org/breweries?sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
             // console.log("Current URL:", url)
             console.log("Retrieved data:", json)
+            console.log("resultsPerPageState:", resultsPerPageState)
+            console.log("sortMethodState:", sortMethodState)
+            console.log("sortDirectionState:", sortDirectionState)
             setResults(json)
+            setResultsPerPageState(perPage)
+            setSortMethodState(sortMethod)
+            setSortDirectionState(sortDirection)
         })
-    }, [pageNumber, perPage, navigate]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
 
-    // Dropdown selection menu function
-    const handleSelect = async (event) => {
-        if(results) {
-            perPage = event.target.value
-            setFormState({...formState, [event.target.name]: event.target.value})
-            navigate(`/breweries/per_page=${perPage}&page=1`)
-        }
+    // Results per page dropdown selection menu function
+    const handlePerPageSelect = (event) => {
+        perPage = event.target.value
+        setResultsPerPageState({...resultsPerPageState, [event.target.name]: event.target.value})
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Sort method dropdown selection menu function
+    const handleSortMethodSelect = (event) => {
+        console.log("handleSortMethodSelect:", event.target.value)
+        sortMethod = event.target.value
+        setSortMethodState({...sortMethod, [event.target.name]: event.target.value})
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Sort direction radio button click function
+    const handleSortDirectionClick = (event) => {
+        console.log("handleSortDirectionClick:", event.target.value)
+        sortDirection = event.target.value
+        setSortDirectionState({...sortDirection, [event.target.name]: event.target.value})
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Prev page click (available except for page 1)
-    const handlePrevPageClick = async (event) => {
-        if(results) {
-            let newPageNumber = Number(pageNumber)
-            if(pageNumber > 1) {
-                newPageNumber--
-                navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
-            }
+    const handlePrevPageClick = (event) => {
+        let newPageNumber = Number(pageNumber)
+        if(pageNumber > 1) {
+            newPageNumber--
+            navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
         }
     }
 
     // Next page click ()
-    const handleNextPageClick = async (event) => {
-        if(results) {
-            let newPageNumber = Number(pageNumber)
-            newPageNumber++
-            navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
-        }
+    const handleNextPageClick = (event) => {
+        let newPageNumber = Number(pageNumber)
+        newPageNumber++
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
 
     if(!results) {
@@ -59,23 +77,23 @@ const SearchResults = (props) => {
 
                 {/* Search Controls */}
                 <div className="search-controls">
-                    <div>
-                        {/* okay nevermind, don't actually do radio buttons */}
-                        <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} />
-                        <label htmlFor="by-name" name="sort-by">Brewery name</label>
-                        <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} />
-                        <label htmlFor="by-type" name="sort-by">Brewery type</label>
-                        <input type="radio" id="by-city" name="sort-by" value="city" onChange={null} />
-                        <label htmlFor="by-city" name="sort-by">City</label>
-                        <input type="radio" id="by-state" name="sort-by" value="state" onChange={null} />
-                        <label htmlFor="by-state" name="sort-by">State</label>
-                        <input type="radio" id="by-postal" name="sort-by" value="postal-code" onChange={null} />
-                        <label htmlFor="by-postal-code" name="sort-by">Postal code</label>
-                    </div>
-                    <p></p>
+                    <form>
+                        <label htmlFor="sort-method">Sort results by:</label>
+                        <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
+                            <option value="name">Brewery name</option>
+                            <option value="type">Brewery type</option>
+                            <option value="dist">Distance</option>
+                            <option value="city">City</option>
+                            <option value="state">State</option>
+                            <option value="postal">Postal code</option>
+                        </select>
+                        <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
+                        <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
+                    </form>
+
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
-                        <select name="results-per-page" id="results-per-page" value={formState} onChange={handleSelect}>
+                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
                             <option value={1}>1</option>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
@@ -83,15 +101,14 @@ const SearchResults = (props) => {
                             <option value={50}>50</option>
                         </select>
                     </form>
-                    <p></p>
                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                     <button onClick={handleNextPageClick}>Next Page</button>
+                    <h2>Search results:</h2>
                     <p>Page number: {pageNumber}</p>
                 </div>
 
                 {/* Search Results */}
                 <div className="all-search-results-box">
-                    <h2>Search results:</h2>
                     <ol>
                         {results.map((brewery, idx) => {
                             return (
@@ -107,7 +124,6 @@ const SearchResults = (props) => {
                                             {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
                                             {brewery.website ? <li>Website: {brewery.website}</li> : null}
                                         </ul>
-                                        <p></p>
                                     </div>
                                 </Link>
                             )
