@@ -4,45 +4,74 @@ import Map from "../components/Map"
 
 const Brewery = (props) => {
     const [brewery, setBrewery] = useState([])
+    const [rand, setRand] = useState([])
     const selectedBrewery = useParams()
+
+    const urlForFetch = `https://api.openbrewerydb.org/breweries/${selectedBrewery.brewery}`
 
     useEffect (() => {
         if (selectedBrewery.brewery !== 'random') {
-            fetch (`https://api.openbrewerydb.org/breweries/${selectedBrewery.brewery}`)
+            console.log(selectedBrewery.brewery)
+            fetch (urlForFetch)
             .then ((res) => res.json())
             .then ((json) => { 
                 setBrewery(json)})
+            console.log(selectedBrewery.brewery)   
         } else {
-            fetch (`https://api.openbrewerydb.org/breweries/random`)
-            .then ((res) => res.json())
-            .then ((json) => { 
+                fetch (urlForFetch)
+                .then ((res) => res.json())
+                .then ((json) => { 
                 setBrewery(json[0])
-                }
-                )
+                    }
+                    )
         }
-    }, [])
+    }, [selectedBrewery.brewery])
+
+    // },[])
 
     const { name, street, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
-
-    if (!brewery) {
+    
+    // const { nameR, streetR, cityR, stateR, postal_codeR, latitudeR, longitudeR, countryR, phoneR, website_urlR, updated_atR } = rand
+    
+    if (!brewery && !rand) {
         <p>Loading brewery info...</p>
     }
 
-    return (
-        <div className="brewery-container">
-        <h2>Brewery details:</h2>
-        <h1>{name}</h1>
-        <h3>{street}</h3>
-        <h3>{city}, {state} {postal_code}</h3>
-        <h3>{country}</h3>
-        {phone ? <h3>{phone}</h3> : null}
-        {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
-        <h4>last updated on: {updated_at}</h4>
-        {latitude ? <div className="map-container">
-            <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
-        </div> : null}
-        </div>
-    )
+    if (brewery) {
+        return (
+            <div className="brewery-container">
+            <h2>Brewery details:</h2>
+            <h1>{name}</h1>
+            <h3>{street}</h3>
+            <h3>{city}, {state} {postal_code}</h3>
+            <h3>{country}</h3>
+            {phone ? <h3>{phone}</h3> : null}
+            {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
+            <h4>last updated on: {updated_at}</h4>
+            {latitude ? <div className="map-container">
+                <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
+            </div> : null}
+            </div>
+        )    
+    }
+    // if (rand) {
+    //     return (
+    //         <div className="brewery-container">
+    //         <h2>Brewery details:</h2>
+    //         <h1>{nameR}</h1>
+    //         <h3>{streetR}</h3>
+    //         <h3>{cityR}, {stateR} {postal_codeR}</h3>
+    //         <h3>{countryR}</h3>
+    //         {phone ? <h3>{phone}</h3> : null}
+    //         {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
+    //         <h4>last updated on: {updated_at}</h4>
+    //         {latitude ? <div className="map-container">
+    //             <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
+    //         </div> : null}
+    //         {console.log(rand)}
+    //         </div>
+    //     )
+    // }
 }
 
 export default Brewery

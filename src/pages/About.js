@@ -1,5 +1,3 @@
-// import { Link } from "react-router-dom"
-
 const About = (props) => {
     return (
         <nav className="about-container">

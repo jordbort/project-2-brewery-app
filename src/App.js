@@ -17,8 +17,8 @@ import Search from './components/Search';
 function App() {
   return (
     <div>
-      <h1>Project 2: Brewery App!</h1>
       <Nav />
+      <h1>Project 2: Brewery App!</h1>
       <Search />
       <Routes>
         <Route path='/' element={ <Home /> } />
