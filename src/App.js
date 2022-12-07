@@ -24,7 +24,7 @@ function App() {
         <Route path='/' element={ <Home /> } />
         <Route path='/about' element={ <About /> } />
         <Route path='/brewery/:brewery' element={ <Brewery /> } />
-        <Route path='/breweries/per_page=:perPage&page=:page' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
+        <Route path='/breweries/per_page=:perPage&page=:pageNumber' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
       </Routes>
     </div>
   );
