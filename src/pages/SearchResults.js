@@ -26,7 +26,7 @@ const SearchResults = (props) => {
             setSortMethodState(sortMethod)
             setSortDirectionState(sortDirection)
         })
-    }, [pageNumber, perPage, navigate, resultsPerPageState])
+    }, [pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
 
     // Results per page dropdown selection menu function
     const handlePerPageSelect = (event) => {
