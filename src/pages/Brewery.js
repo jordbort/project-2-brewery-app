@@ -39,8 +39,10 @@ const Brewery = (props) => {
 
     if (brewery) {
         return (
+            <div>
+                <h2>Brewery details:</h2>
             <div className="brewery-container">
-            <h2>Brewery details:</h2>
+            <div>
             <h1>{name}</h1>
             <h3>{street}</h3>
             <h3>{city}, {state} {postal_code}</h3>
@@ -48,9 +50,11 @@ const Brewery = (props) => {
             {phone ? <h3>{phone}</h3> : null}
             {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
             <h4>last updated on: {updated_at}</h4>
+            </div>
             {latitude ? <div className="map-container">
                 <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
             </div> : null}
+            </div>
             </div>
         )    
     }

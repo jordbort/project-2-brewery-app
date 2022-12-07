@@ -7,19 +7,20 @@
   justify-content: space-evenly;
   align-items: center;
   height:10vh;
+  padding:20px;
+  position:relative;
 }
 .nav > a {
   text-decoration: none;
 }
 
 body {
-  background: #ffd54f;
-  border-left:10px solid white;
-  border-right:10px solid white;
+  background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 77%,white);
 }
 
-.map-container {
+.brewery-container {
   display:flex;
+  margin:20px;
 }
 
 .about-container {
@@ -37,6 +38,78 @@ body {
   margin:10;
   padding:0;
 }
-.about-container > ul> li {
+.about-container > ul > li {
   list-style-type: none;
+}
+/* Corey TO DO */
+
+/* still to do */
+    /* styling for Brewery results page */
+    /* linear-gradient for background */
+    /* USE A TOKEN on random brewery display */
+
+    /* DONE  */
+    /* style for type of brewery and apply to search results divs */
+
+/* Jordan's TO DOs */
+  /* managing search bar sort features */
+  /* radio buttons */
+  /* results per page */
+  /* prev page + next page */
+
+
+.search-controls {
+  text-align:center;
+}
+
+.search-result-box{
+  border-radius:10px;
+  padding:5px;
+}
+.search-result-box > ol > li {
+  list-style: none;
+}
+
+.micro {
+  background-color:aqua;
+  border-radius:10px;
+  padding:5px;
+}
+.micro > ul > li {
+  list-style: none;
+}
+.nano {
+  background-color:orange;
+  border-radius:10px;
+  padding:5px;
+}
+.regional {
+  background-color:orangered;
+  border-radius:10px;
+  padding:5px;
+}
+.brewpub {
+  background-color:violet;
+  border-radius:10px;
+  padding:5px;
+}
+.contract {
+  background-color:greenyellow;
+  border-radius:10px;
+  padding:5px;
+}
+.proprietor {
+  background-color:lightseagreen;
+  border-radius:10px;
+  padding:5px;
+
+}
+.planning {
+  background-color:violet;
+  border-radius:10px;
+  padding:5px;
+
+}
+.large .bar .closed {
+background-color:red;
 }
