@@ -96,7 +96,7 @@ const SearchResults = (props) => {
                         {results.map((brewery, idx) => {
                             return (
                                 <Link to={'/brewery/' + brewery.id} key={idx}>
-                                    <div className="search-result-box"> {/* may also use {brewery.brewery_type} here? */}
+                                    <div className={"search-result-box " + brewery.brewery_type}>
                                     <li>{brewery.name ? brewery.name : null}</li>
                                         <ul>
                                             {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
