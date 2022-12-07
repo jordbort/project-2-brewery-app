@@ -1,17 +1,12 @@
-import { Link } from "react-router-dom"
-// import { redirect } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
+    const navigate = useNavigate()
     let {pageNumber, perPage} = useParams()
     const [results, setResults] = useState(null)
     const [formState, setFormState] = useState(perPage)
-    // const [radioState, serRadioState] = useState()
-    // const [searchState, setSearchState] = useState({
-    //     results: null,
-    //     formState: perPage,
-    // })
 
     // API call and response
     useEffect(() => {
@@ -20,51 +15,42 @@ const SearchResults = (props) => {
         .then((response) => response.json())
         .then((json) => {
             // console.log("Current URL:", url)
-            // console.log("Checking params:", allParams)
             console.log("Retrieved data:", json)
-            console.log("pageNumber?", pageNumber)
             setResults(json)
         })
-    }, [pageNumber, perPage]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [pageNumber, perPage, navigate]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
 
     // Dropdown selection menu function
     const handleSelect = async (event) => {
         if(results) {
             perPage = event.target.value
             setFormState({...formState, [event.target.name]: event.target.value})
-            window.location.assign(`/breweries/per_page=${perPage}&page=1`)
-            // return redirect(`/breweries/per_page=${perPage}&page=1`)
+            navigate(`/breweries/per_page=${perPage}&page=1`)
         }
     }
 
+    // Prev page click (available except for page 1)
     const handlePrevPageClick = async (event) => {
         if(results) {
-            console.log("pageNumber?", pageNumber)
             let newPageNumber = Number(pageNumber)
-            console.log("(before) new page number:", newPageNumber)
             if(pageNumber > 1) {
                 newPageNumber--
-                console.log("(after) new page number:", newPageNumber)
-                // return redirect(`/breweries/per_page=${perPage}&page=${pageNumber}`)
+                navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
             }
-            // window.location.assign(`/breweries/per_page=${perPage}&page=${pageNumber}`)
         }
     }
 
+    // Next page click ()
     const handleNextPageClick = async (event) => {
         if(results) {
-        console.log("pageNumber?", pageNumber)
-        let newPageNumber = Number(pageNumber)
-        console.log("(before) new page number:", newPageNumber)
-        newPageNumber++
-        console.log("(after) new page number:", newPageNumber)
-        // window.location.assign(`/breweries/per_page=${perPage}&page=${pageNumber}`)
-        // return redirect(`/breweries/per_page=${perPage}&page=${pageNumber}`)
+            let newPageNumber = Number(pageNumber)
+            newPageNumber++
+            navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
         }
     }
 
     if(!results) {
-        return <p>Loading search results...</p>
+        return <h1>Loading search results...</h1>
     }
     else {
         return (
