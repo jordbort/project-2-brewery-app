@@ -4,29 +4,51 @@ import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
     const navigate = useNavigate()
-    let {pageNumber, perPage} = useParams()
+    let {pageNumber, perPage, sortMethod, sortDirection} = useParams()
     const [results, setResults] = useState(null)
     const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
+    const [sortMethodState, setSortMethodState] = useState(sortMethod)
+    const [sortDirectionState, setSortDirectionState] = useState(sortDirection)
 
     // API call and response
     useEffect(() => {
-        const url = `https://api.openbrewerydb.org/breweries?per_page=${perPage}&page=${pageNumber}`
+        const url = `https://api.openbrewerydb.org/breweries?sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
             // console.log("Current URL:", url)
             console.log("Retrieved data:", json)
             console.log("resultsPerPageState:", resultsPerPageState)
+            console.log("sortMethodState:", sortMethodState)
+            console.log("sortDirectionState:", sortDirectionState)
             setResults(json)
             setResultsPerPageState(perPage)
+            setSortMethodState(sortMethod)
+            setSortDirectionState(sortDirection)
         })
-    }, [pageNumber, perPage, navigate, resultsPerPageState]) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [pageNumber, perPage, navigate, resultsPerPageState])
 
-    // Dropdown selection menu function
-    const handleSelect = (event) => {
+    // Results per page dropdown selection menu function
+    const handlePerPageSelect = (event) => {
         perPage = event.target.value
         setResultsPerPageState({...resultsPerPageState, [event.target.name]: event.target.value})
-        navigate(`/breweries/per_page=${perPage}&page=1`)
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Sort method dropdown selection menu function
+    const handleSortMethodSelect = (event) => {
+        console.log("handleSortMethodSelect:", event.target.value)
+        sortMethod = event.target.value
+        setSortMethodState({...sortMethod, [event.target.name]: event.target.value})
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Sort direction radio button click function
+    const handleSortDirectionClick = (event) => {
+        console.log("handleSortDirectionClick:", event.target.value)
+        sortDirection = event.target.value
+        setSortDirectionState({...sortDirection, [event.target.name]: event.target.value})
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Prev page click (available except for page 1)
@@ -34,7 +56,7 @@ const SearchResults = (props) => {
         let newPageNumber = Number(pageNumber)
         if(pageNumber > 1) {
             newPageNumber--
-            navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
+            navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
         }
     }
 
@@ -42,7 +64,7 @@ const SearchResults = (props) => {
     const handleNextPageClick = (event) => {
         let newPageNumber = Number(pageNumber)
         newPageNumber++
-        navigate(`/breweries/per_page=${perPage}&page=${newPageNumber}`)
+        navigate(`/breweries/sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
 
     if(!results) {
@@ -55,58 +77,38 @@ const SearchResults = (props) => {
 
                 {/* Search Controls */}
                 <div className="search-controls">
-
-                        {/* okay nevermind, don't actually do radio buttons */}
-                    {/* <div> */}
-                        {/* <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} /> */}
-                        {/* <label htmlFor="by-name" name="sort-by">Brewery name</label> */}
-                        {/* <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} /> */}
-                        {/* <label htmlFor="by-type" name="sort-by">Brewery type</label> */}
-                        {/* <input type="radio" id="by-city" name="sort-by" value="city" onChange={null} /> */}
-                        {/* <label htmlFor="by-city" name="sort-by">City</label> */}
-                        {/* <input type="radio" id="by-state" name="sort-by" value="state" onChange={null} /> */}
-                        {/* <label htmlFor="by-state" name="sort-by">State</label> */}
-                        {/* <input type="radio" id="by-postal" name="sort-by" value="postal-code" onChange={null} /> */}
-                        {/* <label htmlFor="by-postal-code" name="sort-by">Postal code</label> */}
-                    {/* </div> */}
-
-
                     <form>
                         <label htmlFor="sort-method">Sort results by:</label>
-                        <select name="sort-method" id="sort-method" onChange={handleSelect}>
-                            <option value="by_name">Name</option>
-                            <option value="by_type">Type</option>
-                            <option value="by_dist">Distance</option>
-                            <option value="by_city">City</option>
-                            <option value="by_state">State</option>
-                            <option value="by_postal">Post code</option>
+                        <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
+                            <option value="name">Brewery name</option>
+                            <option value="type">Brewery type</option>
+                            <option value="dist">Distance</option>
+                            <option value="city">City</option>
+                            <option value="state">State</option>
+                            <option value="postal">Postal code</option>
                         </select>
+                        <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
+                        <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
                     </form>
 
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
-                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handleSelect}>
+                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
                             <option value={1}>1</option>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                             <option value={50}>50</option>
                         </select>
-
-                        <input type="radio" id="by-name" name="sort-by" value="name" onChange={null} />
-                        <label htmlFor="by-name" name="sort-by">Brewery name</label>
-                        <input type="radio" id="by-type" name="sort-by" value="type" onChange={null} />
-                        <label htmlFor="by-type" name="sort-by">Brewery type</label>
-
                     </form>
                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                     <button onClick={handleNextPageClick}>Next Page</button>
+                    <h2>Search results:</h2>
                     <p>Page number: {pageNumber}</p>
                 </div>
 
                 {/* Search Results */}
                 <div className="all-search-results-box">
-                    <h2>Search results:</h2>
                     <ol>
                         {results.map((brewery, idx) => {
                             return (
