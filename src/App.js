@@ -5,27 +5,29 @@ import './App.css';
 import { Route, Routes } from "react-router-dom" 
 
 // Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Brewery from './pages/Brewery';
-import SearchResults from './pages/SearchResults';
+import Home from './pages/Home'
+import About from './pages/About'
+import Brewery from './pages/Brewery'
+import SearchResults from './pages/SearchResults'
 
 // Components
-import Nav from './components/Nav';
-import Search from './components/Search';
+import Nav from './components/Nav'
 
 function App() {
   return (
     <div>
-      <h1>Project 2: Brewery App!</h1>
-      <Nav />
-      <Search />
-      <Routes>
-        <Route path='/' element={ <Home /> } />
-        <Route path='/about' element={ <About /> } />
-        <Route path='/brewery/:brewery' element={ <Brewery /> } />
-        <Route path='/breweries/per_page=:perPage&page=:page' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
-      </Routes>
+        <Nav />
+    <div className="App-container">
+      <div className="App">
+        <h1>Brewery Buddy 🍻</h1>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          <Route path='/about' element={ <About /> } />
+          <Route path='/brewery/:brewery' element={ <Brewery /> } />
+          <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
+        </Routes>
+      </div>
+      </div>
     </div>
   );
 }

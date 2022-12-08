@@ -1,102 +1,150 @@
-import { Link } from "react-router-dom"
+import Search from "../components/Search"
+import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const SearchResults = (props) => {
-    let {page, perPage} = useParams()
-    const allParams = useParams()
+    const navigate = useNavigate()
+    let {userQueryBy, userQuery, pageNumber, perPage, sortMethod, sortDirection} = useParams()
     const [results, setResults] = useState(null)
-    const [formState, setFormState] = useState(perPage)
-    console.log(formState)
+    const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
+    const [sortMethodState, setSortMethodState] = useState(sortMethod)
+    const [sortDirectionState, setSortDirectionState] = useState(sortDirection)
 
     // API call and response
     useEffect(() => {
-        const url = `https://api.openbrewerydb.org/breweries?per_page=${perPage}&page=${page}`
+        const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
+        // const url = `https://api.openbrewerydb.org/breweries?by_city=north&sort=country:asc&per_page=10&page=1`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
             // console.log("Current URL:", url)
-            console.log("Checking params:", allParams)
             console.log("Retrieved data:", json)
             setResults(json)
+            setResultsPerPageState(perPage)
+            setSortMethodState(sortMethod)
+            setSortDirectionState(sortDirection)
         })
-    }) //, [] <= this might need to be added back in, if you're getting into an infinite loop!!
+    }, [userQueryBy, userQuery, pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
 
-    // 
-    const handleSelect = (event) => {
-        // console.log("perPage:", perPage)
-        // console.log("change:", event.target.value, event.target.name)
+    // Results per page dropdown selection menu function
+    const handlePerPageSelect = (event) => {
         perPage = event.target.value
-        setFormState({...formState, [event.target.name]: event.target.value})
-        window.location.assign(`/breweries/per_page=${perPage}&page=1`)
+        setResultsPerPageState({...resultsPerPageState, [event.target.name]: event.target.value})
+        navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
+    // Sort method dropdown selection menu function
+    const handleSortMethodSelect = (event) => {
+        console.log("handleSortMethodSelect:", event.target.value)
+        sortMethod = event.target.value
+        setSortMethodState({...sortMethod, [event.target.name]: event.target.value})
+        navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Sort direction radio button click function
+    const handleSortDirectionClick = (event) => {
+        console.log("handleSortDirectionClick:", event.target.value)
+        sortDirection = event.target.value
+        setSortDirectionState({...sortDirection, [event.target.name]: event.target.value})
+        navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
+    }
+
+    // Prev page click (available except for page 1)
     const handlePrevPageClick = (event) => {
-        // console.log("prev page click WAS:", page)
-        if(page > 1) {
-            page--
+        let newPageNumber = Number(pageNumber)
+        if(pageNumber > 1) {
+            newPageNumber--
+            navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
         }
-        console.log("prev page click IS NOW:", page)
-        window.location.assign(`/breweries/per_page=${perPage}&page=${page}`)
     }
 
+    // Next page click ()
     const handleNextPageClick = (event) => {
-        // console.log("next page click WAS:", page)
-        page++
-        console.log("next page click IS NOW:", page)
-        window.location.assign(`/breweries/per_page=${perPage}&page=${page}`)
+        let newPageNumber = Number(pageNumber)
+        newPageNumber++
+        navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
 
     if(!results) {
-        return <p>Loading search results...</p>
+        return (
+            <>
+                <h4>* ⬇ START OF SEARCH RESULTS PAGE ⬇ *</h4>
+                <Search/>
+                <h1>Loading search results...</h1>
+            </>
+        )
     }
     else {
         return (
             <>
-                <h4>vvv START OF SEARCH RESULTS PAGE vvv</h4>
+                <h4>* ⬇ START OF SEARCH RESULTS PAGE ⬇ *</h4>
+                <Search/>
 
                 {/* Search Controls */}
                 <div className="search-controls">
-                    <p>Page number: {page}</p>
+                    <h2>Search results:</h2>
+                    <form>
+                        <label htmlFor="sort-method">Sort results by:</label>
+                        <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
+                            <option value="name">Brewery name</option>
+                            <option value="type">Brewery type</option>
+                            <option value="dist">Distance</option>
+                            <option value="city">City</option>
+                            <option value="state">State</option>
+                            <option value="postal">Postal code</option>
+                        </select>
+                    </form>
+                    {sortMethod !== "dist" ? (
+                        <form>
+                            <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
+                            <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
+                        </form>
+                    ) : null}
+
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
-                        <select name="results-per-page" id="results-per-page" value={formState} onChange={handleSelect}>
-                            <option value={1}>1</option>
+                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
                             <option value={50}>50</option>
                         </select>
                     </form>
-                    {Number(page)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                    <button onClick={handleNextPageClick}>Next Page</button>
+                    {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
+                    <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p>
+                    <p>Page number: {pageNumber}</p>
                 </div>
 
                 {/* Search Results */}
-                <h2>Search results:</h2>
-                <ul>
-                    {results.map((brewery, idx) => {
-                        return (
-                            <Link to={'/brewery/' + brewery.id} key={idx}>
-                                <div className={brewery.brewery_type}>
-                                    <li>Name: {brewery.name}</li>
-                                    {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
-                                    {brewery.website ? <li>Website: {brewery.website}</li> : null}
-                                    <li>Address:</li>
-                                    <ul>
-                                        {brewery.street && !"Unnamed Street" ? <li>{brewery.street}</li> : null}
-                                        {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
-                                        {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                        <li>{brewery.city}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code}</li>
-                                        {brewery.country && !"United States" ? <li>{brewery.country}</li> : null}
-                                    </ul>
-                                    <p></p>
-                                </div>
-                            </Link>
-                        )
-                    })}
-                </ul>
-                <h4>^^^ END OF SEARCH RESULTS PAGE ^^^</h4>
+                <div className="all-search-results-box">
+                    <ol>
+                        {results.map((brewery, idx) => {
+                            return (
+                                <Link to={'/brewery/' + brewery.id} key={idx}>
+                                    <div className={"search-result-box " + brewery.brewery_type}>
+                                    <li>{brewery.name ? `${brewery.name} ` : null}<span>{brewery.longitude && brewery.latitude ? "(Map available)" : "(No map available)"}</span></li>
+                                        <ul>
+                                        {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
+                                            {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
+                                            {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
+                                            {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
+                                            {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
+                                            {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null}
+                                            {brewery.phone && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : null}
+                                            {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
+                                        </ul>
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </ol>
+                </div>
+                    {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} {/* For development/debugging */}
+                    <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> {/* For development/debugging */}
+                <h4>* ⬆ END OF SEARCH RESULTS PAGE ⬆ *</h4>
             </>
         )
     }
