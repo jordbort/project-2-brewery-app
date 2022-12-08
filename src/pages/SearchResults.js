@@ -69,6 +69,7 @@ const SearchResults = (props) => {
     if(!results) {
         return (
             <>
+                <h4>* ⬇ START OF SEARCH RESULTS PAGE ⬇ *</h4>
                 <Search/>
                 <h1>Loading search results...</h1>
             </>
@@ -77,11 +78,12 @@ const SearchResults = (props) => {
     else {
         return (
             <>
-                <Search/>
                 <h4>* ⬇ START OF SEARCH RESULTS PAGE ⬇ *</h4>
+                <Search/>
 
                 {/* Search Controls */}
                 <div className="search-controls">
+                    <h2>Search results:</h2>
                     <form>
                         <label htmlFor="sort-method">Sort results by:</label>
                         <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
@@ -92,9 +94,13 @@ const SearchResults = (props) => {
                             <option value="state">State</option>
                             <option value="postal">Postal code</option>
                         </select>
-                        <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
-                        <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
                     </form>
+                    {sortMethod !== "dist" ? (
+                        <form>
+                            <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
+                            <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
+                        </form>
+                    ) : null}
 
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
@@ -107,8 +113,8 @@ const SearchResults = (props) => {
                     </form>
                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                     {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
-                    <h2>Search results:</h2>
-                    <p>Page number: {pageNumber}</p><p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p>
+                    <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p>
+                    <p>Page number: {pageNumber}</p>
                 </div>
 
                 {/* Search Results */}
@@ -118,13 +124,13 @@ const SearchResults = (props) => {
                             return (
                                 <Link to={'/brewery/' + brewery.id} key={idx}>
                                     <div className={"search-result-box " + brewery.brewery_type}>
-                                    <li>{brewery.name ? brewery.name : null}</li>
+                                    <li>{brewery.name ? `${brewery.name} ` : null}<span>{brewery.longitude && brewery.latitude ? "(Map available)" : "(No map available)"}</span></li>
                                         <ul>
                                             {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                             {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                             {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                            <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li>
-                                            <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li>
+                                            {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
+                                            {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
                                             {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null}
                                             {brewery.phone && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : null}
                                             {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
