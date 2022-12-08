@@ -130,7 +130,7 @@ const SearchResults = (props) => {
                                             {brewery.country && brewery.country !== "United States" ? <li>{brewery.county_province}, {brewery.country}</li> : null}
                                             {/* {brewery.county_province ? brewery.county_province : null} */}
                                             {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
-                                            {brewery.website ? <li>Website: {brewery.website}</li> : null}
+                                            {brewery.website_url ? <li>{brewery.website_url}</li> : null}
                                         </ul>
                                     </div>
                                 </Link>
