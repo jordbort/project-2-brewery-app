@@ -13,7 +13,6 @@ const SearchResults = (props) => {
 
     // API call and response
     useEffect(() => {
-        // const url = `https://api.openbrewerydb.org/breweries?sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         // const url = `https://api.openbrewerydb.org/breweries?by_city=north&sort=country:asc&per_page=10&page=1`
         fetch(url)
@@ -103,7 +102,6 @@ const SearchResults = (props) => {
                     <form>
                         <label htmlFor="results-per-page">Results per page:</label>
                         <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
-                            <option value={1}>1</option>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
@@ -111,9 +109,9 @@ const SearchResults = (props) => {
                         </select>
                     </form>
                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                    <button onClick={handleNextPageClick}>Next Page</button>
+                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
                     <h2>Search results:</h2>
-                    <p>Page number: {pageNumber}</p>
+                    <p>Page number: {pageNumber}</p><p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p>
                 </div>
 
                 {/* Search Results */}
@@ -140,9 +138,9 @@ const SearchResults = (props) => {
                         })}
                     </ol>
                 </div>
-                    {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                    <button onClick={handleNextPageClick}>Next Page</button> {/* For development/debugging */}
-                    <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}</span> {/* For development/debugging */}
+                    {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} {/* For development/debugging */}
+                    <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> {/* For development/debugging */}
                 <h4>* ⬆ END OF SEARCH RESULTS PAGE ⬆ *</h4>
             </>
         )
