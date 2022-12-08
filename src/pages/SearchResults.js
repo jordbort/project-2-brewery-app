@@ -20,9 +20,6 @@ const SearchResults = (props) => {
         .then((json) => {
             // console.log("Current URL:", url)
             console.log("Retrieved data:", json)
-            console.log("resultsPerPageState:", resultsPerPageState)
-            console.log("sortMethodState:", sortMethodState)
-            console.log("sortDirectionState:", sortDirectionState)
             setResults(json)
             setResultsPerPageState(perPage)
             setSortMethodState(sortMethod)
@@ -127,10 +124,10 @@ const SearchResults = (props) => {
                                             {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                             {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
                                             <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li>
-                                            {brewery.country && brewery.country !== "United States" ? <li>{brewery.county_province}, {brewery.country}</li> : null}
-                                            {/* {brewery.county_province ? brewery.county_province : null} */}
-                                            {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
-                                            {brewery.website_url ? <li>{brewery.website_url}</li> : null}
+                                            <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li>
+                                            {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null}
+                                            {brewery.phone && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : null}
+                                            {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
                                         </ul>
                                     </div>
                                 </Link>
