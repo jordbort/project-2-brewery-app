@@ -64,7 +64,7 @@ const Brewery = (props) => {
             <div>
             <h1>{name}</h1>
             <h3>{street}</h3>
-            <h3>{city}, {state} {postal_code}</h3>
+            { brewery ? <h3>{city}, {state} {postal_code}</h3> : null}
             <h3>{country}</h3>
             {phone ? <h3>{phone}</h3> : null}
             {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}

@@ -126,7 +126,7 @@ const SearchResults = (props) => {
                                     <div className={"search-result-box " + brewery.brewery_type}>
                                     <li>{brewery.name ? `${brewery.name} ` : null}<span>{brewery.longitude && brewery.latitude ? "(Map available)" : "(No map available)"}</span></li>
                                         <ul>
-                                            {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
+                                        {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                             {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                             {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
                                             {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}

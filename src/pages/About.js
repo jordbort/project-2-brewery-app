@@ -17,6 +17,10 @@ const About = (props) => {
         </ul>
         <h3>Please search responsibly.</h3>
         <h3>Cheers!</h3>
+        <div className="inner-bubbles inner-bubble-1"></div>
+        <div className="inner-bubbles inner-bubble-2"></div>
+        <div className="inner-bubbles inner-bubble-3"></div>
+        <div className="inner-bubbles inner-bubble-4"></div>
         </nav>
     )
 }

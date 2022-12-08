@@ -16,14 +16,18 @@ import Nav from './components/Nav'
 function App() {
   return (
     <div>
-      <Nav />
-      <h1>Brewery Buddy 🍻</h1>
-      <Routes>
-        <Route path='/' element={ <Home /> } />
-        <Route path='/about' element={ <About /> } />
-        <Route path='/brewery/:brewery' element={ <Brewery /> } />
-        <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
-      </Routes>
+        <Nav />
+    <div className="App-container">
+      <div className="App">
+        <h1>Brewery Buddy 🍻</h1>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          <Route path='/about' element={ <About /> } />
+          <Route path='/brewery/:brewery' element={ <Brewery /> } />
+          <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={ <SearchResults /> } /> {/* per_page=:perPage&page=:page */}
+        </Routes>
+      </div>
+      </div>
     </div>
   );
 }
