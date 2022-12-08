@@ -11,10 +11,10 @@ const Nav = (props) => {
                     <p>About</p>
                 </Link>
                 <Link to="/breweries/sort=name:asc&per_page=20&page=1">
-                    <p>Breweries search results (this will be replaced with real search)</p>
+                    <p>Breweries search results</p>
                 </Link>
                 <Link to="/brewery/random">
-                    <p>I'm feeling drunky (random brewery link)</p>
+                    <p>I'm feeling drunky</p>
                 </Link>
             </div>
         </div>

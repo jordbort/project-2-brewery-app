@@ -119,7 +119,7 @@ const SearchResults = (props) => {
                                             {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                             {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                             {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                            <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li>
+                                            {brewery.city ? <li> {brewery.city}, {brewery.state} {brewery.postal_code} </li> : null}
                                             {brewery.country && brewery.country !== "United States" ? <li>{brewery.country}</li> : null}
                                             {brewery.phone ? <li>Phone: {brewery.phone}</li> : null}
                                             {brewery.website ? <li>Website: {brewery.website}</li> : null}
