@@ -1,8 +1,6 @@
 // Styling
 import './App.css'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 // Components
 import Nav from './components/Nav'
 
@@ -20,7 +18,9 @@ function App() {
             <Nav />
             <div className="App-container">
                 <div className="App">
+                    <div className="header-div">
                     <h1>🍻 Brewery Buddy 🍻</h1>
+                    </div>
                     <Routes>
                         <Route path='*' element={ <Home /> } />
                         <Route path='/about' element={ <About /> } />
