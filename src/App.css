@@ -60,6 +60,32 @@
   padding:10px;
 }
 /* Corey TO DO */
+  /* bubbles animation */
+  /* sitewide fonts */
+
+  /* today */
+    /* 2 site fonts */
+      /* results page styling */
+        /* center */
+        /* change opacity of brewpub color on hover */
+        /* show/hide map icon if map exists */
+        /* if !map, make the icon filter:grayscale 100% */
+      /* force longer yellow box length on these pages: */
+        /* home -- needs to take up whole VH */
+        /* results */
+        /* brewery.js -- needs to take up whole VH */
+      /* search results */
+        /* change ascending/descending into ABC->123 */
+        /* add Postal Code as a search method */
+        /* remove Postal Code as a sort method */
+        /* add random button alongside (prev page + next page) */
+      /* map.js */
+        /* map does not recenter when clicking random brewery multiple times */
+        /* create empty container to hold space for when no map coords exist */
+  
+      
+        /* phone number formatting */
+        /* date formatting */
 
 /* still to do */
     /* styling for Brewery results page */
@@ -69,14 +95,6 @@
     /* bubbles keyframes animation */
     
     /* DONE  */
-    
-
-/* Jordan's TO DOs */
-  /*  */
-  
-  
-  
-
 
 .search-controls {
   /* text-align:center; */
@@ -86,14 +104,19 @@
   flex-direction: column;
   align-content: center;
 }
-.all-search-results-box{
+.all-search-results-box {
   /* border:2px solid red; */
 }
 .search-result-box {
-  width:40%;
+  width:60%;
   padding:10px;
   border-radius:10px;
   margin:10px;
+  background-color: #f9e08e;
+}
+.search-result-box:hover {
+  width:90%;
+  transition:100ms linear;
 }
 .search-result-box > ul > li {
   list-style: none;
@@ -102,25 +125,25 @@
   font-size:30px;
 }
 .micro {
-  background-color:aqua;
+  /* background-color:aqua; */
 }
 .nano {
-  background-color:orange;
+  /* background-color:orange; */
 }
 .regional {
-  background-color:orangered;
+  /* background-color:orangered; */
 }
 .brewpub {
-  background-color:violet;
+  /* background-color:#f9e08e; */
 }
 .contract {
-  background-color:greenyellow;
+  /* background-color:greenyellow; */
 }
 .proprietor {
-  background-color:lightseagreen;
+  /* background-color:lightseagreen; */
 }
 .planning {
-  background-color:violet;
+  /* background-color:violet; */
 }
 .large .bar .closed {
   background-color:red;
@@ -163,7 +186,7 @@
     bottom:0;
   }
   100% {
-    bottom:90%;
+    bottom:100%;
   }
 }
 

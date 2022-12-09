@@ -1,5 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchResults = (props) => {
     const navigate = useNavigate()
@@ -122,7 +125,9 @@ const SearchResults = (props) => {
                                 return (
                                     <Link to={'/brewery/' + brewery.id} key={idx}>
                                         <div className={"search-result-box " + brewery.brewery_type}>
-                                        <li>{brewery.name ? `${brewery.name} ` : null}<span>{brewery.longitude && brewery.latitude ? "(Map available)" : "(No map available)"}</span></li>
+                                        <li>{brewery.name ? `${brewery.name} ` : null}<span>{brewery.longitude && brewery.latitude ?  <div>
+                      <FontAwesomeIcon icon="fa-solid fa-map-location-dot" />
+                    </div> : "(No map available)"}</span></li>
                                             <ul>
                                             {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                                 {brewery.address_2 ? <li>{brewery.address_2}</li> : null}

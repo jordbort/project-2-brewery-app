@@ -20,7 +20,6 @@ const Brewery = (props) => {
         .then ((res) => res.json())
         .then ((data) => setRandomBreweryState(data))
         .catch((err) => console.log(err))
-        console.log('randomBrewery is', randomBrewery)
     },[])
 
     const handleNormalFetch = useCallback(async () => {
@@ -45,7 +44,7 @@ const Brewery = (props) => {
     
     // using this console log to clear error message
     // not sure how else to use randomNumber in code otherwise
-    console.log(`random number is`, randomNumber)
+    // console.log(`random number is`, randomNumber)
 
     const { name, street, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
@@ -66,7 +65,7 @@ const Brewery = (props) => {
                     <p>{ country }</p>
                     { phone ? <p>{phone}</p> : null }
                     { website_url ? <p><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></p> : null}
-                    { updated_at ? <h4>last updated on: <br/>{Date({updated_at})}</h4> : null}
+                    { updated_at ? <h4>last updated on: <br/>{updated_at}</h4> : null}
                     </div>
                     { latitude ? <div className="map-container">
                         <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
