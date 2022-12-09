@@ -31,9 +31,9 @@ const Home = (props) => {
     
     return (
         <>
-            <h3>*⬇ START OF HOME PAGE ⬇*</h3>
+            {/* <h3>*⬇ START OF HOME PAGE ⬇*</h3> */}
             <div className="home">
-                <h2>This is the Home page!</h2>
+                {/* <h2>This is the Home page!</h2> */}
                 <Routes>
                     <Route path="/" element={
                         <>
@@ -49,7 +49,13 @@ const Home = (props) => {
                     }/>
                 </Routes>
             </div>
-            <h3>*⬆ END OF HOME PAGE ⬆*</h3>
+                <div className="inner-bubbles inner-bubble-1"></div>
+                <div className="inner-bubbles inner-bubble-2"></div>
+                <div className="inner-bubbles inner-bubble-3"></div>
+                <div className="inner-bubbles inner-bubble-4"></div>
+                <div className="inner-bubbles inner-bubble-5"></div>
+                <div className="inner-bubbles inner-bubble-6"></div>
+            {/* <h3>*⬆ END OF HOME PAGE ⬆*</h3> */}
         </>
     )
 }

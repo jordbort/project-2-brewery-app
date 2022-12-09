@@ -60,12 +60,12 @@ const Brewery = (props) => {
                 <button onClick={handleClick}>Random Brewery</button>
             <div className="brewery-container">
                 <div>
-                    <h1>{ name }</h1>
-                    <h3>{ street }</h3>
-                    { city ? <h3>{city}, {state} {postal_code}</h3> : null }
-                    <h3>{ country }</h3>
-                    { phone ? <h3>{phone}</h3> : null }
-                    { website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
+                    <h3>{ name }</h3>
+                    <p>{ street }</p>
+                    { city ? <p>{city}, {state} {postal_code}</p> : null }
+                    <p>{ country }</p>
+                    { phone ? <p>{phone}</p> : null }
+                    { website_url ? <p><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></p> : null}
                     { updated_at ? <h4>last updated on: <br/>{Date({updated_at})}</h4> : null}
                     </div>
                     { latitude ? <div className="map-container">

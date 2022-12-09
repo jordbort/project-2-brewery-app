@@ -59,16 +59,15 @@ const Map = (props) => {
 
     return (
         <div className="map">
-            <MapContainer center={mapPosition} zoom={14} scrollWheelZoom={false} style={{height: "350px", width:"350px"}}>
+            <MapContainer center={mapPosition} zoom={14} scrollWheelZoom={false} style={{height: "300px", width:"300px"}}>
                 <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                 <Marker openOn={'map'} position={mapPosition}>
                     <Popup openOn={'map'}>
-
                         {name} <br/> {city}, {state} {postal_code}
                     </Popup>
                 </Marker>
             </MapContainer>
-            <button>Re-center Map</button>
+            {/* <button>Re-center Map</button> */}
         </div>
     )
 }

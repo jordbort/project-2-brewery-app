@@ -3,19 +3,16 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  height:100%;
 }
 .App {
   background-image:linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
   display:flex;
   flex-flow:column;
-  /* margin:0px 0px 0px 60px; */
   width:80%;
+  min-height:80%;
   border:9px solid white;
-}
-.nav-bar{
-  /* background-image:radial-gradient(at bottom,#ffd54f 52%, white 71%,  black 72%); */
-  /* background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white); */
-  /* border-top:20px solid white; */
+  
 }
 .nav {
   display:flex;
@@ -25,8 +22,7 @@
   height:10vh;
   padding:20px;
   position:relative;
-  /* border-bottom:white solid 20px; */
-  /* background-color:white; */
+
 }
 .nav p{
   color:black;
@@ -37,12 +33,6 @@
 .nav > a {
   text-decoration: none;
 }
-body {
-  /* background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white); */
-  /* background:black; */
-  /* border:5px solid red; */
-}
-
 .brewery-container {
   display:flex;
   justify-content: space-evenly;
@@ -159,12 +149,22 @@ body {
   left:53%;
   animation:inner-bubble-up 1.5s linear forwards 0.7s infinite;
 }
+.inner-bubble-5 {
+  left:13%;
+  animation:inner-bubble-up 1.5s linear forwards 1.8s infinite;
+}
+.inner-bubble-6 {
+  left:75%;
+  animation:inner-bubble-up 1.5s linear forwards 3.9s infinite;
+}
 
 @keyframes inner-bubble-up {
-  from 0% {
+  0% {
     bottom:0;
   }
-  to 100% {
+  100% {
     bottom:90%;
   }
 }
+
+/* map screen 900 x 650 */
