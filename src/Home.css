@@ -1,0 +1,46 @@
+.all-search-results-container {
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  .all-search-results-box {
+    /* border:2px solid red; */
+  }
+  .search-result-box {
+    width:60%;
+    padding:10px;
+    border-radius:10px;
+    margin:10px;
+    background-color: #f9e08e;
+  }
+  .search-result-box:hover {
+    width:90%;
+    transition:100ms linear;
+  }
+  .search-result-box > ul > li {
+    list-style: none;
+  }
+  .micro {
+    /* background-color:aqua; */
+  }
+  .nano {
+    /* background-color:orange; */
+  }
+  .regional {
+    /* background-color:orangered; */
+  }
+  .brewpub {
+    /* background-color:#f9e08e; */
+  }
+  .contract {
+    /* background-color:greenyellow; */
+  }
+  .proprietor {
+    /* background-color:lightseagreen; */
+  }
+  .planning {
+    /* background-color:violet; */
+  }
+  .large .bar .closed {
+    background-color:red;
+  }

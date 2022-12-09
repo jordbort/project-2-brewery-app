@@ -27,6 +27,12 @@ function App() {
                         <Route path='/about' element={ <About /> } />
                         <Route path='/brewery/:brewery' element={ <Brewery /> } />
                     </Routes>
+                    <div className="inner-bubbles inner-bubble-1"></div>
+                    <div className="inner-bubbles inner-bubble-2"></div>
+                    <div className="inner-bubbles inner-bubble-3"></div>
+                    <div className="inner-bubbles inner-bubble-4"></div>
+                    <div className="inner-bubbles inner-bubble-5"></div>
+                    <div className="inner-bubbles inner-bubble-6"></div>
                 </div>
             </div>
         </div>

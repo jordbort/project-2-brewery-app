@@ -12,7 +12,6 @@
   width:80%;
   min-height:80%;
   border:9px solid white;
-  
 }
 .nav {
   display:flex;
@@ -22,7 +21,6 @@
   height:10vh;
   padding:20px;
   position:relative;
-
 }
 .nav p{
   color:black;
@@ -32,121 +30,6 @@
 }
 .nav > a {
   text-decoration: none;
-}
-.brewery-container {
-  display:flex;
-  justify-content: space-evenly;
-  margin:20px;
-}
-
-.about-container {
-  text-align:center;
-  padding:10px;
-  border:2px solid black;
-  border-radius: 10px;
-  width:65%;
-  position:relative;
-  left:17%;
-/* border:2px solid red; */
-}
-.about-container > ul {
-  margin:10;
-  padding:0;
-}
-.about-container > ul > li {
-  list-style-type: none;
-}
-.map-container{
-  padding:10px;
-}
-/* Corey TO DO */
-  /* bubbles animation */
-  /* sitewide fonts */
-
-  /* today */
-    /* 2 site fonts */
-      /* results page styling */
-        /* center */
-        /* change opacity of brewpub color on hover */
-        /* show/hide map icon if map exists */
-        /* if !map, make the icon filter:grayscale 100% */
-      /* force longer yellow box length on these pages: */
-        /* home -- needs to take up whole VH */
-        /* results */
-        /* brewery.js -- needs to take up whole VH */
-      /* search results */
-        /* change ascending/descending into ABC->123 */
-        /* add Postal Code as a search method */
-        /* remove Postal Code as a sort method */
-        /* add random button alongside (prev page + next page) */
-      /* map.js */
-        /* map does not recenter when clicking random brewery multiple times */
-        /* create empty container to hold space for when no map coords exist */
-  
-      
-        /* phone number formatting */
-        /* date formatting */
-
-/* still to do */
-    /* styling for Brewery results page */
-      /* need to add a div w/ className "all-search-results-container" */
-      /* map component re-center pointer or re-render map component */
-    /* map styling -> re-size for smaller size window */
-    /* bubbles keyframes animation */
-    
-    /* DONE  */
-
-.search-controls {
-  /* text-align:center; */
-}
-.all-search-results-container {
-  display:flex;
-  flex-direction: column;
-  align-content: center;
-}
-.all-search-results-box {
-  /* border:2px solid red; */
-}
-.search-result-box {
-  width:60%;
-  padding:10px;
-  border-radius:10px;
-  margin:10px;
-  background-color: #f9e08e;
-}
-.search-result-box:hover {
-  width:90%;
-  transition:100ms linear;
-}
-.search-result-box > ul > li {
-  list-style: none;
-}
-.brewery-name{
-  font-size:30px;
-}
-.micro {
-  /* background-color:aqua; */
-}
-.nano {
-  /* background-color:orange; */
-}
-.regional {
-  /* background-color:orangered; */
-}
-.brewpub {
-  /* background-color:#f9e08e; */
-}
-.contract {
-  /* background-color:greenyellow; */
-}
-.proprietor {
-  /* background-color:lightseagreen; */
-}
-.planning {
-  /* background-color:violet; */
-}
-.large .bar .closed {
-  background-color:red;
 }
 .inner-bubbles {
   position:relative;
@@ -180,7 +63,6 @@
   left:75%;
   animation:inner-bubble-up 1.5s linear forwards 3.9s infinite;
 }
-
 @keyframes inner-bubble-up {
   0% {
     bottom:0;
@@ -189,5 +71,34 @@
     bottom:100%;
   }
 }
+/* Corey TO DO */
+  /* bubbles animation */
+  /* 2 sitewide fonts */
 
-/* map screen 900 x 650 */
+/* Jordan TO DO */
+  /* results page styling */
+    /* center */
+    /* change opacity of brewpub color on hover */
+    /* show/hide map icon if map exists */
+    /* if !map, make the icon filter:grayscale 100% */
+  /* force longer yellow box length on these pages: */
+    /* home -- needs to take up whole VH */
+    /* results */
+    /* brewery.js -- needs to take up whole VH */
+  /* search results */
+    /* change ascending/descending into ABC->123 */
+    /* add Postal Code as a search method */
+    /* remove Postal Code as a sort method */
+    /* add random button alongside (prev page + next page) */
+  /* map.js */
+    /* map does not recenter when clicking random brewery multiple times */
+    /* create empty container to hold space for when no map coords exist */
+  /* phone number formatting */
+  /* date formatting */
+
+/* MAYBE still to do? */
+    /* styling for Brewery results page */
+      /* need to add a div w/ className "all-search-results-container" */
+      /* map component re-center pointer or re-render map component */
+    /* map styling -> re-size for smaller size window */
+    /* bubbles keyframes animation */
