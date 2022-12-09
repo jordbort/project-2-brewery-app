@@ -1,0 +1,12 @@
+.brewery-container {
+    display:flex;
+    justify-content: space-evenly;
+    margin:20px;
+  }
+  .map-container{
+    padding:10px;
+  }
+  .brewery-name{
+    font-size:30px;
+  }
+  

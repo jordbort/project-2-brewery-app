@@ -1,0 +1,17 @@
+.about-container {
+    text-align:center;
+    padding:10px;
+    border:2px solid black;
+    border-radius: 10px;
+    width:65%;
+    position:relative;
+    left:17%;
+  /* border:2px solid red; */
+  }
+  .about-container > ul {
+    margin:10;
+    padding:0;
+  }
+  .about-container > ul > li {
+    list-style-type: none;
+  }
