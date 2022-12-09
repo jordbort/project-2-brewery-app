@@ -97,8 +97,8 @@ const SearchResults = (props) => {
                         </form>
                         {sortMethod !== "dist" ? (
                             <form>
-                                <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection==="asc"} onChange={handleSortDirectionClick}/>Ascending</label>
-                                <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection==="desc"} onChange={handleSortDirectionClick}/>Descending</label>
+                                <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick}/>123→ABC</label>
+                                <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
                         ) : null}
 
@@ -119,32 +119,33 @@ const SearchResults = (props) => {
 
                     {/* Search Results */}
                     <div className="all-search-results-box">
-                        {/* {results.length === 0 ? <h3>No results found</h3> : null} */}
-                        <ol>
-                            {results.map((brewery, idx) => {
-                                return (
-                                    <div>
-                                        <Link to={'/brewery/' + brewery.id} key={idx}>outside
-                                            <div className={"search-result-box " + brewery.brewery_type}>inside
-                                            <li>{brewery.name ? `${brewery.name} ` : null}</li>
-                                                <ul>
-                                                {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
-                                                    {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
-                                                    {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                                    {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
-                                                    {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
-                                                    {/* {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null} */}
-                                                    {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
-                                                    {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
-                                                </ul>
-                                                <div className="map-icon">{brewery.longitude && brewery.latitude ?  <FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /> : "(No map available)"}</div>
-                                                <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>inside
-                                            </div>outside
-                                        </Link>
-                                    </div>
-                                )
-                            })}
-                        </ol>
+                        {results.length === 0 ? <h3>No results found</h3> : (
+                            <ol>
+                                {results.map((brewery, idx) => {
+                                    return (
+                                        <div className="search-result-container">
+                                            <Link to={'/brewery/' + brewery.id} key={idx}>{/* outside */}
+                                                <div className={"search-result-info " + brewery.brewery_type}>{/* inside */}
+                                                {brewery.name ? <li>{brewery.name} </li> : null}
+                                                    <ul>
+                                                    {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
+                                                        {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
+                                                        {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
+                                                        {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
+                                                        {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
+                                                        {/* {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null} */}
+                                                        {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
+                                                        {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
+                                                    </ul>
+                                                </div>{/* outside */}
+                                            </Link>
+                                                    <div className="map-icon">{brewery.longitude && brewery.latitude ?  <FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /> : "(No map available)"}</div>
+                                                    <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>{/* inside */}
+                                        </div>
+                                    )
+                                })}
+                            </ol>
+                        )}
                     </div>
                 </div>
                     {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}

@@ -1,49 +1,89 @@
-* {
-  border:2px solid red;
+/* * {
+  border: 1px solid red;
+  display: visible;
+  margin: 0;
+  padding: 0;
+} */
+a {
+  color: black;
+  text-decoration: none;
 }
-.all-search-results-container {
-    display:flex;
-    flex-direction: column;
+/* a:link {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+a:active {
+  color: black;
+  text-decoration: none;
+} */
+.all-search-results-box {
     align-content: center;
-  }
-  .all-search-results-box {
-    display: visible;
-  }
-  .search-result-box {
-    width:60%;
-    padding:10px;
-    border-radius:10px;
-    margin:10px;
-    background-color: #f9e08e;
-  }
-  .search-result-box:hover {
-    width:90%;
-    transition:100ms linear;
-  }
-  .search-result-box > ul > li {
-    list-style: none;
-  }
-  .micro {
-    background-color:aqua;
-  }
-  .nano {
-    background-color:orange;
-  }
-  .regional {
-    background-color:orangered;
-  }
-  .brewpub {
-    background-color:#f9e08e;
-  }
-  .contract {
-    background-color:greenyellow;
-  }
-  .proprietor {
-    background-color:lightseagreen;
-  }
-  .planning {
-    background-color:violet;
-  }
-  .large .bar .closed {
-    background-color:red;
-  }
+}
+.all-search-results-box {
+  display: visible;
+}
+.search-result-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  /* margin: 0; */
+  /* padding: 0; */
+  background-color: #f9e08e;
+}
+.search-result-info {
+  position: absolute;
+  width: 50%;
+  /* padding: 10px 0 10px 0; */
+  border-radius:10px;
+  /* margin: 10px 0 10px 0; */
+  background-color: #f9e08e;
+}
+.search-result-info:hover {
+  width: 100%;
+  transition: 100ms linear;
+}
+.search-result-info > ul > li {
+  list-style: none;
+}
+
+.micro {
+  background-color: aqua;
+  display: visible;
+}
+.nano {
+  background-color: orange;
+  display: visible;
+}
+.regional {
+  background-color: orangered;
+  display: visible;
+}
+.brewpub {
+  background-color: #f9e08e;
+  display: visible;
+}
+.contract {
+  background-color: greenyellow;
+  display: visible;
+}
+.proprietor {
+  background-color: lightseagreen;
+  display: visible;
+}
+.planning {
+  background-color: violet;
+  display: visible;
+}
+.large .bar .closed {
+  background-color: red;
+  display: visible;
+}
