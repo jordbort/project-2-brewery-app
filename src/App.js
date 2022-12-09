@@ -15,7 +15,6 @@ import About from './pages/About'
 import Brewery from './pages/Brewery'
 
 function App() {
-  library.add(faMapLocationDot)
     return (
         <div>
             <Nav />
