@@ -33,3 +33,7 @@ function App() {
 }
 
 export default App;
+// write a function in SearchResults.js called "displayResults(arg1, arg2)"
+// pass it down to Search.js as a prop
+// submit button has onClick = displayResults(searchBy, textBoxData)
+// function body = navigate to React page using the args data

@@ -20,7 +20,7 @@ const Brewery = (props) => {
         .then ((res) => res.json())
         .then ((data) => setRandomBreweryState(data))
         .catch((err) => console.log(err))
-        // console.log('randomBrewery is', randomBrewery)
+        console.log('randomBrewery is', randomBrewery)
     },[])
 
     const handleNormalFetch = useCallback(async () => {
@@ -33,8 +33,6 @@ const Brewery = (props) => {
 
     const handleClick = () => {
         handleRandomFetch()
-        // console.log (`randomNumber is ${number}`)
-        // console.log(brewery)
         setBrewery(randomBrewery[0])
         }
         useEffect (() => {
@@ -61,19 +59,19 @@ const Brewery = (props) => {
                 <h2>Brewery details:</h2>
                 <button onClick={handleClick}>Random Brewery</button>
             <div className="brewery-container">
-            <div>
-            <h1>{name}</h1>
-            <h3>{street}</h3>
-            { brewery ? <h3>{city}, {state} {postal_code}</h3> : null}
-            <h3>{country}</h3>
-            {phone ? <h3>{phone}</h3> : null}
-            {website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
-            { updated_at ? <h4>last updated on: <br/>{Date({updated_at})}</h4> : null}
-            </div>
-            {latitude ? <div className="map-container">
-                <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
-            </div> : <div className="map-container"></div>}
-            </div>
+                <div>
+                    <h1>{ name }</h1>
+                    <h3>{ street }</h3>
+                    { city ? <h3>{city}, {state} {postal_code}</h3> : null }
+                    <h3>{ country }</h3>
+                    { phone ? <h3>{phone}</h3> : null }
+                    { website_url ? <h3><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></h3> : null}
+                    { updated_at ? <h4>last updated on: <br/>{Date({updated_at})}</h4> : null}
+                    </div>
+                    { latitude ? <div className="map-container">
+                        <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
+                    </div> : <div className="map-container"></div>}
+                </div>
             </div>
         )    
     }
