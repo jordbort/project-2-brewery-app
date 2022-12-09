@@ -3,6 +3,7 @@ import '../Brewery.css'
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router"
 import Map from "../components/Map"
+import '../Brewery.css'
 
 const Brewery = (props) => {
     const [ brewery, setBrewery ] = useState([])

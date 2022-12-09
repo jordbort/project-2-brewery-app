@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600&family=Special+Elite&display=swap');
+
+/* Font for all general text on the site */
+  /* font-family: 'IBM Plex Serif', serif; */
+/* Font for the brewery name & brewery-type */
+  /* font-family: 'Special Elite', cursive; */
+
 .App-container {
   background-color:black;
   display:flex;
   flex-direction: column;
   align-items: center;
   height:100%;
+  z-index:2;
 }
 .App {
   background-image:linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
@@ -11,7 +19,12 @@
   flex-flow:column;
   width:80%;
   min-height:80%;
-  border:9px solid white;
+  border:7px solid white;
+  position:relative;
+}
+.header-div {
+  z-index:2;
+  padding:10px;
 }
 .nav {
   display:flex;
@@ -32,7 +45,7 @@
   text-decoration: none;
 }
 .inner-bubbles {
-  position:relative;
+  position:absolute;
   bottom:0;
   height:8px;
   width:8px;
@@ -41,39 +54,46 @@
 }
 .inner-bubble-1 {
   left:50%;
-  animation:inner-bubble-up 1.5s linear forwards infinite;
+  animation: inner-bubble-up 1.5s linear 2.9s forwards infinite;
 }
 .inner-bubble-2 {
   left:45%;
-  animation:inner-bubble-up 1.5s linear forwards 0.2s infinite;
+  animation:inner-bubble-up 2.5s linear 2.7s forwards infinite;
 }
 .inner-bubble-3 {
   left:47%;
-  animation:inner-bubble-up 1.5s linear forwards 0.5s infinite;
+  animation:inner-bubble-up 1.5s linear 2.5s forwards infinite;
 }
 .inner-bubble-4 {
   left:53%;
-  animation:inner-bubble-up 1.5s linear forwards 0.7s infinite;
+  animation:inner-bubble-up 2s linear 2.7s forwards infinite;
 }
 .inner-bubble-5 {
-  left:13%;
-  animation:inner-bubble-up 1.5s linear forwards 1.8s infinite;
+  left:23%;
+  -webkit-animation:inner-bubble-up 1.5s linear 2.8s forwards infinite;
+  animation:inner-bubble-up 1.5s linear 2.8s forwards infinite;
 }
 .inner-bubble-6 {
-  left:75%;
-  animation:inner-bubble-up 1.5s linear forwards 3.9s infinite;
+  left:80%;
+  animation: inner-bubble-up 1.5s linear 3.9s forwards infinite;
 }
 @keyframes inner-bubble-up {
   0% {
-    bottom:0;
+    bottom: 0;
+    opacity: 0.9;
+  }
+  70% {
+    opacity:0.0;
   }
   100% {
-    bottom:100%;
+    bottom: 150%;
+    opacity:0.0;
   }
 }
+
+
 /* Corey TO DO */
-  /* bubbles animation */
-  /* 2 sitewide fonts */
+  
 
 /* Jordan TO DO */
   /* results page styling */
@@ -89,16 +109,12 @@
     /* change ascending/descending into ABC->123 */
     /* add Postal Code as a search method */
     /* remove Postal Code as a sort method */
-    /* add random button alongside (prev page + next page) */
   /* map.js */
     /* map does not recenter when clicking random brewery multiple times */
-    /* create empty container to hold space for when no map coords exist */
   /* phone number formatting */
   /* date formatting */
 
 /* MAYBE still to do? */
     /* styling for Brewery results page */
-      /* need to add a div w/ className "all-search-results-container" */
       /* map component re-center pointer or re-render map component */
     /* map styling -> re-size for smaller size window */
-    /* bubbles keyframes animation */

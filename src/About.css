@@ -6,7 +6,7 @@
     width:65%;
     position:relative;
     left:17%;
-  /* border:2px solid red; */
+    z-index:2;
   }
   .about-container > ul {
     margin:10;

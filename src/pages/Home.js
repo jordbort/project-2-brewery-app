@@ -5,6 +5,7 @@ import { useState } from "react"
 import Search from "../components/Search"
 import Welcome from "../components/Welcome"
 import SearchResults from "../components/SearchResults"
+import "../Home.css"
 
 const Home = (props) => {
     const initialState = {
@@ -50,14 +51,16 @@ const Home = (props) => {
                         </>
                     }/>
                 </Routes>
+                <div className="inner-bubbles inner-bubble-1"></div>
             </div>
                 {/* <div className="inner-bubbles inner-bubble-1"></div>
                 <div className="inner-bubbles inner-bubble-2"></div>
                 <div className="inner-bubbles inner-bubble-3"></div>
                 <div className="inner-bubbles inner-bubble-4"></div>
                 <div className="inner-bubbles inner-bubble-5"></div>
-                <div className="inner-bubbles inner-bubble-6"></div> */}
-            <h3>*⬆ END OF HOME PAGE ⬆*</h3>
+                <div className="inner-bubbles inner-bubble-6"></div>
+            </div>
+            {/* <h3>*⬆ END OF HOME PAGE ⬆*</h3> */}
         </>
     )
 }
