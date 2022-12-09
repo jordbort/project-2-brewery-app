@@ -6,8 +6,9 @@ const About = (props) => {
             <li>Jordan Bortner</li>
             <li>Corey Loftus</li>
         </ul>
-        <h3>for their Software Engineering Intensive, class of 10-31-22</h3>
-        <h3>with General Assembly</h3>
+        <h3>for their Software Engineering Intensive</h3>
+        <h4> class of 10-31-22</h4>
+        <h4>with General Assembly</h4>
         <h3><a href="https://github.com/jordbort/project-2-brewery-app" target="_blank" rel="noreferrer">Check out the Github Repo here</a></h3>
         <h4>Made possible thanks to the following APIs:</h4>
         <ul>
@@ -21,6 +22,8 @@ const About = (props) => {
         <div className="inner-bubbles inner-bubble-2"></div>
         <div className="inner-bubbles inner-bubble-3"></div>
         <div className="inner-bubbles inner-bubble-4"></div>
+        <div className="inner-bubbles inner-bubble-5"></div>
+        <div className="inner-bubbles inner-bubble-6"></div>
         </nav>
     )
 }
