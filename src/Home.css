@@ -1,10 +1,13 @@
+* {
+  border:2px solid red;
+}
 .all-search-results-container {
     display:flex;
     flex-direction: column;
     align-content: center;
   }
   .all-search-results-box {
-    /* border:2px solid red; */
+    display: visible;
   }
   .search-result-box {
     width:60%;
@@ -21,25 +24,25 @@
     list-style: none;
   }
   .micro {
-    /* background-color:aqua; */
+    background-color:aqua;
   }
   .nano {
-    /* background-color:orange; */
+    background-color:orange;
   }
   .regional {
-    /* background-color:orangered; */
+    background-color:orangered;
   }
   .brewpub {
-    /* background-color:#f9e08e; */
+    background-color:#f9e08e;
   }
   .contract {
-    /* background-color:greenyellow; */
+    background-color:greenyellow;
   }
   .proprietor {
-    /* background-color:lightseagreen; */
+    background-color:lightseagreen;
   }
   .planning {
-    /* background-color:violet; */
+    background-color:violet;
   }
   .large .bar .closed {
     background-color:red;

@@ -1,3 +1,5 @@
+import '../About.css'
+
 const About = (props) => {
     return (
         <nav className="about-container">
