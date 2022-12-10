@@ -77,7 +77,7 @@ const SearchResults = (props) => {
         return (
             <>
                 <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4>
-                <div className="all-search-results-container">
+                <div className="all-search-components-container">
                     
                     {/* Search Controls */}
                     <div className="search-controls">
@@ -131,13 +131,11 @@ const SearchResults = (props) => {
                                                         {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
                                                         {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
                                                         {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
-                                                        {/* {brewery.phone && brewery.country !== "United States"? <li>Phone: {brewery.phone}</li> : null} */}
                                                         {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
-                                                        {/* {brewery.website_url ? <li>{brewery.website_url}</li> : null} */}
                                                     </ul>
                                                 </div>{/* outside */}
                                             </Link>
-                                                    <div className="map-icon">{brewery.longitude && brewery.latitude ?  <FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /> : "(No map available)"}</div>
+                                                    {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div>}
                                                     <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>{/* inside */}
                                         </div>
                                     )
@@ -145,11 +143,11 @@ const SearchResults = (props) => {
                             </ol>
                         )}
                     </div>
-                </div>
                     {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                     {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} {/* For development/debugging */}
                     <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> {/* For development/debugging */}
-                <h4>*⬆ END OF SEARCH RESULTS PAGE ⬆*</h4>
+                    <h4>*⬆ END OF SEARCH RESULTS PAGE ⬆*</h4>
+                </div>
             </>
         )
     }

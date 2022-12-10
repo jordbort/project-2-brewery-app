@@ -1,7 +1,7 @@
 const Search = (props) => {
     return (
         <div className="search">
-            <h4>*⬇ START OF SEARCH COMPONENT ⬇*</h4>
+            {/* <h4>*⬇ START OF SEARCH COMPONENT ⬇*</h4> */}
             <h2>Search breweries</h2>
             <form onSubmit={props.submitClick}>
                 <div className="search-radio-buttons">
@@ -17,7 +17,7 @@ const Search = (props) => {
                 />
                 <button type="submit">Submit</button>
             </form>
-            <h4>*⬆ END OF SEARCH COMPONENT ⬆*</h4>
+            {/* <h4>*⬆ END OF SEARCH COMPONENT ⬆*</h4> */}
         </div>
     )
 }

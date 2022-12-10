@@ -1,9 +1,9 @@
-* {
+/* * {
     border: 1px solid red;
     display: visible;
     margin: 0;
     padding: 0;
-}
+} */
 a {
     color: black;
     text-decoration: none;
@@ -24,16 +24,50 @@ a:active {
     color: black;
     text-decoration: none;
 } */
+body {
+    /* background-color: black; */
+    /* background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white); */
+    /* background-repeat: no-repeat; */
+    border: 2px solid purple;
+    /* margin: 0; */
+    /* padding: 0; */
+    /* position: relative; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
 .home {
-    height: 65vh;
+    border: 2px solid blue;
+    height: 100%;
+}
+.search {
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.search-controls {
+    border: 2px solid white;
+    width: 80%;
+}
+.all-search-components-container {
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .all-search-results-box {
-    align-content: center;
+    border: 2px solid pink;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    width: 80%;
 }
 .all-search-results-box {
     display: visible;
 }
 .search-result-container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -44,14 +78,15 @@ a:active {
 }
 .search-result-info {
     position: absolute;
-    width: 50%;
+    left: 0;
+    right: 66%;
     /* padding: 10px 0 10px 0; */
     border-radius: 10px;
     /* margin: 10px 0 10px 0; */
     background-color: #f9e08e;
 }
 .search-result-info:hover {
-    width: 100%;
+    right: 0;
     transition: 100ms linear;
 }
 .search-result-info > ul > li {
@@ -71,7 +106,8 @@ a:active {
     display: visible;
 }
 .brewpub {
-    background-color: #f9e08e;
+    /* background-color: #f9e08e; */
+    background-color: pink;
     display: visible;
 }
 .contract {
@@ -89,4 +125,10 @@ a:active {
 .large .bar .closed {
     background-color: red;
     display: visible;
+}
+.map-icon-black {
+    color: #000000;
+}
+.map-icon-gray {
+    color: #999999;
 }
