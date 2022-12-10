@@ -1,7 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchResults = (props) => {
@@ -123,8 +121,8 @@ const SearchResults = (props) => {
                             <ol>
                                 {results.map((brewery, idx) => {
                                     return (
-                                        <div className="search-result-container">
-                                            <Link to={'/brewery/' + brewery.id} key={idx}>{/* outside */}
+                                        <div className="search-result-container" key={idx}>
+                                            <Link to={'/brewery/' + brewery.id}>{/* outside */}
                                                 <div className={"search-result-info " + brewery.brewery_type}>{/* inside */}
                                                 {brewery.name ? <li>{brewery.name} </li> : null}
                                                     <ul>

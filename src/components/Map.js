@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { useMapEvent } from 'react-leaflet/hooks'
-import { useEffect, useRef } from "react"
+// import { useMapEvent } from 'react-leaflet/hooks'
+import { useEffect } from "react"
+// import { useRef } from "react"
 import "leaflet/dist/leaflet.css"
 
 const Map = (props) => {

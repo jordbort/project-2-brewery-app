@@ -8,7 +8,8 @@ import '../Brewery.css'
 const Brewery = (props) => {
     const [ brewery, setBrewery ] = useState([])
     const [ randomBrewery, setRandomBreweryState ] = useState()
-    const [ randomNumber, setRandomNumber ] = useState()    
+    const [ randomNumber, setRandomNumber ] = useState()
+    console.log(randomNumber)
     const selectedBrewery = useParams()
 
     const randNum = () => {
