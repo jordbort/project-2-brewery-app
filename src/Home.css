@@ -1,92 +1,92 @@
 * {
-  border: 1px solid red;
-  display: visible;
-  margin: 0;
-  padding: 0;
+    border: 1px solid red;
+    display: visible;
+    margin: 0;
+    padding: 0;
 }
 a {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 /* a:link {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 a:visited {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 a:hover {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 a:active {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 } */
 .home {
-    height:65vh;
+    height: 65vh;
 }
 .all-search-results-box {
     align-content: center;
 }
 .all-search-results-box {
-  display: visible;
+    display: visible;
 }
 .search-result-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  border-radius: 10px;
-  /* margin: 0; */
-  /* padding: 0; */
-  background-color: #f9e08e;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 10px;
+    /* margin: 0; */
+    /* padding: 0; */
+    background-color: #f9e08e;
 }
 .search-result-info {
-  position: absolute;
-  width: 50%;
-  /* padding: 10px 0 10px 0; */
-  border-radius:10px;
-  /* margin: 10px 0 10px 0; */
-  background-color: #f9e08e;
+    position: absolute;
+    width: 50%;
+    /* padding: 10px 0 10px 0; */
+    border-radius: 10px;
+    /* margin: 10px 0 10px 0; */
+    background-color: #f9e08e;
 }
 .search-result-info:hover {
-  width: 100%;
-  transition: 100ms linear;
+    width: 100%;
+    transition: 100ms linear;
 }
 .search-result-info > ul > li {
-  list-style: none;
+    list-style: none;
 }
 
 .micro {
-  background-color: aqua;
-  display: visible;
+    background-color: aqua;
+    display: visible;
 }
 .nano {
-  background-color: orange;
-  display: visible;
+    background-color: orange;
+    display: visible;
 }
 .regional {
-  background-color: orangered;
-  display: visible;
+    background-color: orangered;
+    display: visible;
 }
 .brewpub {
-  background-color: #f9e08e;
-  display: visible;
+    background-color: #f9e08e;
+    display: visible;
 }
 .contract {
-  background-color: greenyellow;
-  display: visible;
+    background-color: greenyellow;
+    display: visible;
 }
 .proprietor {
-  background-color: lightseagreen;
-  display: visible;
+    background-color: lightseagreen;
+    display: visible;
 }
 .planning {
-  background-color: violet;
-  display: visible;
+    background-color: violet;
+    display: visible;
 }
 .large .bar .closed {
-  background-color: red;
-  display: visible;
+    background-color: red;
+    display: visible;
 }

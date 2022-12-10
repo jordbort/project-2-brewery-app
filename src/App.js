@@ -1,5 +1,8 @@
 // Styling
 import './App.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // Components
 import Nav from './components/Nav'
