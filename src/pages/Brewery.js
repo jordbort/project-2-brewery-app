@@ -8,7 +8,6 @@ import Map from "../components/Map"
 const Brewery = (props) => {
     const [ brewery, setBrewery ] = useState([])
     const [ randomBrewery, setRandomBreweryState ] = useState()
-    const [ randomNumber, setRandomNumber ] = useState()
     const selectedBrewery = useParams()
 
     const randNum = () => {
@@ -16,11 +15,7 @@ const Brewery = (props) => {
     }
     const handleRandomFetch = useCallback(async () => {
         const newNum = randNum()
-        // console.log(randomNumber)
-        // console.log(newNum)
-        setRandomNumber(newNum)
         const randURL = `https://api.openbrewerydb.org/breweries/?page=${newNum}&per_page=1`
-        // console.log('randURL is', randURL)
         fetch (randURL)
         .then ((res) => res.json())
         .then ((data) => setRandomBreweryState(data))
@@ -45,11 +40,7 @@ const Brewery = (props) => {
         } else if (selectedBrewery.brewery === "random") {
             handleRandomFetch()
         }
-    }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery]) 
-    
-    // using this console log to clear error message
-    // not sure how else to use randomNumber in code otherwise
-    // console.log(`random number is`, randomNumber)
+    }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery])
 
     const { name, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
