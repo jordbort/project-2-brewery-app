@@ -17,12 +17,12 @@ import Brewery from './pages/Brewery'
 function App() {
     library.add(faMapLocationDot, faBeerMugEmpty, faGear)
     return (
-        <>
+        <div className='brewery-buddy'>
             <Nav />
             <div className="App-container">
                 <div className="beer-glass">
                     <div className="header-div">
-                        <h1>Brewery Buddy 🍻</h1>
+                        <h1 className='logo'>Brewery Buddy 🍻</h1>
                     </div>
                     <Routes>
                         <Route path='*' element={ <Home /> } />
@@ -37,7 +37,7 @@ function App() {
                     <div className="inner-bubbles inner-bubble-6"></div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
