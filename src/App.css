@@ -87,89 +87,65 @@ h2, p, form {
     text-decoration: none;
 }
 .inner-bubbles {
-    /* position: relative; */
-    /* bottom: 0; */
-    /* height: 100vh; */
-    /* width: 100%; */
-    /* border-radius: 50%; */
-    /* background: #cf8d2e; */
-    /* border: 1px red solid; */
-    /* z-index: 1; */
+    z-index: 0;
     position: absolute;
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background: #cf8d2e;
+    bottom:0;
+    opacity:0;
 }
 .inner-bubble-1 {
     left: 50%;
-    right: 50%;
-    animation: inner-bubble-up 1.5s linear 2.9s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
 }
 .inner-bubble-2 {
     left: 45%;
-    right: 45%;
-    animation: inner-bubble-up 2.5s linear 2.7s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
 }
 .inner-bubble-3 {
     left: 47%;
-    right: 47%;
-    animation: inner-bubble-up 1.5s linear 2.5s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.5s forwards infinite;
 }
 .inner-bubble-4 {
     left: 53%;
-    right: 53%;
-    animation: inner-bubble-up 2s linear 2.7s forwards infinite;
+    animation: inner-bubble-up 4s linear 2.7s forwards infinite;
 }
 .inner-bubble-5 {
     left: 23%;
-    right: 23%;
-    -webkit-animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
-    animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
+    -webkit-animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
 }
 .inner-bubble-6 {
     left: 80%;
-    right: 80%;
-    animation: inner-bubble-up 1.5s linear 3.9s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 3.9s forwards infinite;
 }
 @keyframes inner-bubble-up {
     0% {
         bottom: 0;
         opacity: 0.9;
     }
-    50% {
-        opacity: 0.2;
-    }
     100% {
-        bottom: 100%;
+        bottom: 110%;
         opacity: 0.0;
     }
 }
 
-
-/* Corey TO DO */
-    
-
-/* Jordan TO DO */
-    /* results page styling */
-        /* center */
-        /* change opacity of brewpub color on hover */
-        /* show/hide map icon if map exists */
+    /* results page styling */        
         /* if !map, make the icon filter: grayscale 100% */
-    /* force longer yellow box length on these pages: */
-        /* home -- needs to take up whole VH */
-        /* results */
-        /* brewery.js -- needs to take up whole VH */
-    /* search results */
-        /* change ascending/descending into ABC->123 */
-        /* add Postal Code as a search method */
-        /* remove Postal Code as a sort method */
-    /* map.js */
-        /* map does not recenter when clicking random brewery multiple times */
-    /* phone number formatting */
-    /* date formatting */
+        
+        /* - results divs animation */
+        /* - red debug border  */
+        /* - filter for map icon */
+        /* - no map empty beer mug -- different solution? */
 
-/* MAYBE still to do? */
+
+
+
+    /* MAYBE still to do? */
+        /* map.js */
+            /* map does not recenter when clicking random brewery multiple times */
         /* styling for Brewery results page */
             /* map component re-center pointer or re-render map component */
         /* map styling -> re-size for smaller size window */
