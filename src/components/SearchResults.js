@@ -99,7 +99,7 @@ const SearchResults = (props) => {
                                 <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
                         ) : null}
-
+                        
                         <form>
                             <label htmlFor="results-per-page">Results per page: </label>
                             <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>

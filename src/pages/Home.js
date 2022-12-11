@@ -8,7 +8,7 @@ import "../Home.css"
 const Home = (props) => {
     const initialState = {
         searchBar: null,
-        searchMethod: null,
+        searchMethod: "by_name",
         searchMethodName: "name"
     }
     const navigate = useNavigate()
