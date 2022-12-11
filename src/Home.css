@@ -193,6 +193,9 @@ input[type=text], button, select {
     transform: rotate(-10deg);
     /* align-self: center; */
 }
+.loading {
+    color: #888888;
+}
 .micro {
     background-color: aqua;
     display: visible;

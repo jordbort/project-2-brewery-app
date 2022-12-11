@@ -69,7 +69,7 @@ const SearchResults = (props) => {
         return (
             <>
                 {/* <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4> */}
-                <h1>Loading search results...</h1>
+                <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
             </>
         )
     }

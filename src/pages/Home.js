@@ -41,7 +41,7 @@ const Home = (props) => {
                 <Routes>
                     <Route path="/" element={
                         <>
-                            {/* <Welcome/> */}
+                            <Welcome/>
                             <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} searchMethod={formState.searchMethodName} />
                         </>
                     }/>

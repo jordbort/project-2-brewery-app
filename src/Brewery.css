@@ -1,15 +1,19 @@
 .brewery-container {
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
-    margin:20px;
-    z-index: 2;
-  }
-  .map-container{
-    padding:10px;
-    height:350px;
-    width:350px;
-  }
-  .brewery-name{
-    font-size:30px;
-  }
-  
+    margin: 20px;
+    /* z-index: 2; */
+}
+.map-container {
+    padding: 10px;
+    height: 350px;
+    width: 350px;
+}
+.empty-mug {
+    transform: rotate(-135deg);
+    color: #AAAAAA;
+}
+.brewery-name {
+    font-family: 'Special Elite', cursive;
+    font-size: 30px;
+}

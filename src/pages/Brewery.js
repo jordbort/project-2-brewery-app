@@ -2,8 +2,8 @@ import '../Brewery.css'
 
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from "../components/Map"
-import '../Brewery.css'
 
 const Brewery = (props) => {
     const [ brewery, setBrewery ] = useState([])
@@ -19,7 +19,7 @@ const Brewery = (props) => {
         const newNum = randNum()
         setRandomNumber(newNum)
         const randURL = `https://api.openbrewerydb.org/breweries/?page=${newNum}&per_page=1`
-        // console.log('randURL is', randURL)
+        console.log('randURL is', randURL)
         fetch (randURL)
         .then ((res) => res.json())
         .then ((data) => setRandomBreweryState(data))
@@ -63,17 +63,17 @@ const Brewery = (props) => {
                 <button onClick={handleClick}>Random Brewery</button>
             <div className="brewery-container">
                 <div>
-                    <h3>{ name }</h3>
-                    <p>{ street }</p>
-                    { city ? <p>{city}, {state} {postal_code}</p> : null }
-                    <p>{ country }</p>
-                    { phone ? <p>{phone}</p> : null }
-                    { website_url ? <p><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></p> : null}
-                    { updated_at ? <h4>last updated on: <br/>{updated_at}</h4> : null}
+                    <h3 className='brewery-name'>{name}</h3>
+                    <p>{street}</p>
+                    {city ? <p>{city}, {state} {postal_code}</p> : null}
+                    <p>{country}</p>
+                    {phone ? <p>{phone}</p> : null}
+                    {website_url ? <p><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></p> : null}
+                    {updated_at ? <p><em>Last updated on: {updated_at[8]+updated_at[9] + `/` + updated_at[5]+updated_at[6] + `/` + updated_at[0]+updated_at[1]+updated_at[2]+updated_at[3]}</em></p> : null}
                     </div>
-                    { latitude ? <div className="map-container">
+                    {latitude ? <div className="map-container">
                         <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code}/>
-                    </div> : <div className="map-container"></div>}
+                    </div> : <div className="map-container"><FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" size="10x" className="empty-mug" /></div>}
                 </div>
             </div>
         )    

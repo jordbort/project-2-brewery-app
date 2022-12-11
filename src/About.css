@@ -1,7 +1,3 @@
-a {
-    color: brown;
-    text-decoration: underline;
-}
 .about-container {
     text-align: center;
     padding: 10px;
@@ -12,10 +8,26 @@ a {
     left: 17%;
     z-index: 2;
 }
-.about-container > ul {
+.about-container ul {
     margin: 10;
     padding: 0;
 }
-.about-container > ul > li {
+.about-container ul li {
     list-style-type: none;
+}
+.about-container a {
+    color: brown;
+    text-decoration: underline;
+}
+.about-container a:link {
+    color: brown;
+    text-decoration: underline;
+}
+.about-container a:visited {
+    color: brown;
+    text-decoration: underline;
+}
+.about-container a:hover {
+    color: brown;
+    text-decoration: underline;
 }
