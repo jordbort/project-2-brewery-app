@@ -36,8 +36,8 @@ const Brewery = (props) => {
     },[selectedBrewery.brewery])
 
     const handleClick = () => {
-        handleRandomFetch()
-        setBrewery(randomBrewery[0])
+            handleRandomFetch()
+            setBrewery(randomBrewery[0])
         }
         useEffect (() => {
             if (selectedBrewery.brewery !== 'random') {
@@ -51,7 +51,7 @@ const Brewery = (props) => {
     // not sure how else to use randomNumber in code otherwise
     // console.log(`random number is`, randomNumber)
 
-    const { name, street, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
+    const { name, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
     if (!brewery) {
         <p>Loading brewery info...</p>
@@ -66,9 +66,11 @@ const Brewery = (props) => {
                     <div className="brewery-container">
                         <div className='brewery-info'>
                             <h3 className='brewery-name'>{name}</h3>
-                            <p>{street}</p>
-                            {city ? <p>{city}, {state} {postal_code}</p> : null}
-                            {country !== "United States" ? <p>{country}</p> : null}
+                            {street && street !== "Unnamed Street" ? <p>{street}</p> : null}
+                            {address_2 ? <p>{address_2}</p> : null}
+                            {address_3 ? <p>{address_3}</p> : null}
+                            {city && postal_code ? <p>{city ? city : null}{state ? `, ${state}` : null} {postal_code ? postal_code : null}</p> : null}
+                            {county_province && country !== "United States" ? <p>{county_province ? `${county_province}, ` : null}{country !== "United States" ? country : null}</p> : null}
                             {phone ? <p>Phone: {phone.length === 10 && country === "United States" ? `(${phone[0]}${phone[1]}${phone[2]}) ${phone[3]}${phone[4]}${phone[5]}-${phone[6]}${phone[7]}${phone[8]}${phone[9]}` : phone}</p> : null}
                             {website_url ? <p><a href={website_url} target="_blank" rel="noreferrer">{website_url}</a></p> : null}
                             {updated_at ? <p><em>Last updated: {updated_at[8]+updated_at[9] + `/` + updated_at[5]+updated_at[6] + `/` + updated_at[0]+updated_at[1]+updated_at[2]+updated_at[3]}</em></p> : null}

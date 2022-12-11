@@ -197,6 +197,19 @@ input[type=text], button, select {
 .loading {
     color: #888888;
 }
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.no-results p {
+    margin: 0;
+    /* padding: 0; */
+}
+.no-results h3 {
+    margin: 20px 0 8px 0;
+    /* padding: 0; */
+}
 /* .micro {
     background-color: aqua;
     display: visible;
