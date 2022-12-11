@@ -2,9 +2,9 @@ const Search = (props) => {
     return (
         <>
             {/* <h4>*⬇ START OF SEARCH COMPONENT ⬇*</h4> */}
+            <h2>Search breweries by {props.searchMethod}</h2>
             <div className="search">
-                <h2>Search breweries by {props.searchMethod}</h2>
-                <form onSubmit={props.submitClick}>
+                <form className="search-form" onSubmit={props.submitClick}>
                     <div className="search-radio-buttons">
                         <label name="searchMethod"><input type="radio" id="name" name="searchMethod" value="by_name" checked={props.searchMethod === "name"} onChange={props.radioClick}/>Brewery name</label>
                         <label name="searchMethod"><input type="radio" id="city" name="searchMethod" value="by_city" checked={props.searchMethod === "city"} onChange={props.radioClick}/>City</label>

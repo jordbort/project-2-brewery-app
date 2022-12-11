@@ -80,10 +80,10 @@ const SearchResults = (props) => {
                 <div className="all-search-components-container">
                     
                     {/* Search Controls */}
-                    <div className="search-controls">
-                        <h2>Search results:</h2>
+                    <h2>Search results:</h2>
+                    <div className="sort-methods">
                         <form>
-                            <label htmlFor="sort-method">Sort results by:</label>
+                            <label htmlFor="sort-method">Sort results by: </label>
                             <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
                                 <option value="name">Brewery name</option>
                                 <option value="type">Brewery type</option>
@@ -101,7 +101,7 @@ const SearchResults = (props) => {
                         ) : null}
 
                         <form>
-                            <label htmlFor="results-per-page">Results per page:</label>
+                            <label htmlFor="results-per-page">Results per page: </label>
                             <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
                                 <option value={5}>5</option>
                                 <option value={10}>10</option>
@@ -109,38 +109,42 @@ const SearchResults = (props) => {
                                 <option value={50}>50</option>
                             </select>
                         </form>
-                        {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                        {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
-                        {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
-                        <p>Page number: {pageNumber}</p>
                     </div>
 
                     {/* Search Results */}
                     <div className="all-search-results-box">
                         {results.length === 0 ? <h3>No results found</h3> : (
-                            <ol>
-                                {results.map((brewery, idx) => {
-                                    return (
-                                        <div className="search-result-container" key={idx}>
-                                            <Link to={'/brewery/' + brewery.id}>{/* outside */}
-                                                <div className={"search-result-info " + brewery.brewery_type}>{/* inside */}
-                                                {brewery.name ? <li>{brewery.name} </li> : null}
-                                                    <ul>
-                                                    {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
-                                                        {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
-                                                        {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                                        {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
-                                                        {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
-                                                        {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
-                                                    </ul>
-                                                </div>{/* outside */}
-                                            </Link>
-                                                    {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div>}
-                                                    <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>{/* inside */}
-                                        </div>
-                                    )
-                                })}
-                            </ol>
+                            <>
+                                {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
+                                <p className="page-number">Page number: {pageNumber}</p>
+                                <div className="page-buttons">
+                                    {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
+                                </div>
+                                <ol>
+                                    {results.map((brewery, idx) => {
+                                        return (
+                                            <div className="search-result-container" key={idx}>
+                                                <Link to={'/brewery/' + brewery.id}>{/* outside */}
+                                                    <div className={"search-result-info " + brewery.brewery_type}>{/* inside */}
+                                                    {brewery.name ? <li>{brewery.name} </li> : null}
+                                                        <ul>
+                                                        {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
+                                                            {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
+                                                            {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
+                                                            {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
+                                                            {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
+                                                            {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
+                                                        </ul>
+                                                    </div>{/* outside */}
+                                                </Link>
+                                                {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="5x" /></div>}
+                                                <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>{/* inside */}
+                                            </div>
+                                        )
+                                    })}
+                                </ol>
+                            </>
                         )}
                     </div>
                     {/* {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>} */}
