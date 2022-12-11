@@ -9,10 +9,16 @@ const Brewery = (props) => {
     const [ brewery, setBrewery ] = useState([])
     const [ randomBrewery, setRandomBreweryState ] = useState()
     const selectedBrewery = useParams()
-
+    
+    // generate a random number based on the total number of breweries in the API, 8163 as of 12/11/22
+        // then push it to the API to return a random page number w/ 1 result per page
+        // this returns a single brewery object
+        // this was a workaround solution due to the API's "get random" feature not working as expected
     const randNum = () => {
         return Math.floor(Math.random()*8163)
     }
+
+    // API call for when "Random Brewery" button is clicked
     const handleRandomFetch = useCallback(async () => {
         const newNum = randNum()
         const randURL = `https://api.openbrewerydb.org/breweries/?page=${newNum}&per_page=1`
@@ -21,7 +27,8 @@ const Brewery = (props) => {
         .then ((data) => setRandomBreweryState(data))
         .catch((err) => console.log(err))
     },[])
-
+    
+    // API call for brewery selected from the Search Results page
     const handleNormalFetch = useCallback(async () => {
         const urlForFetch = 'https://api.openbrewerydb.org/breweries/'+selectedBrewery.brewery
         fetch (urlForFetch)
@@ -30,6 +37,7 @@ const Brewery = (props) => {
                 setBrewery(json)})  
     },[selectedBrewery.brewery])
 
+    // handles button click for "Random Brewery" button
     const handleClick = () => {
             handleRandomFetch()
             setBrewery(randomBrewery[0])
@@ -43,11 +51,12 @@ const Brewery = (props) => {
     }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery])
 
     const { name, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
-
+    
+    // Placeholder while the data from the API loads
     if (!brewery) {
         <p>Loading brewery info...</p>
     }
-
+    
     if (brewery) {
         return (
             <>
