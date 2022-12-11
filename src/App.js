@@ -7,7 +7,7 @@ import Nav from './components/Nav'
 // React tools
 import { Route, Routes } from "react-router-dom"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMapLocationDot, faBeerMugEmpty, faGear } from '@fortawesome/free-solid-svg-icons'
+import { faMapLocationDot, faBeerMugEmpty, faGear, faPhone, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
 // Pages
 import Home from './pages/Home'
@@ -15,7 +15,7 @@ import About from './pages/About'
 import Brewery from './pages/Brewery'
 
 function App() {
-    library.add(faMapLocationDot, faBeerMugEmpty, faGear)
+    library.add(faMapLocationDot, faBeerMugEmpty, faGear, faPhone, faGlobe)
     return (
         <div className='brewery-buddy'>
             <Nav />
