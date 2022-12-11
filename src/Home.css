@@ -1,9 +1,9 @@
-/* * {
+* {
     border: 1px solid red;
     display: visible;
     margin: 0;
     padding: 0;
-} */
+}
 a {
     color: black;
     text-decoration: none;
@@ -20,22 +20,10 @@ a:hover {
     color: black;
     text-decoration: none;
 }
-/* a:active {
+a:active {
     color: black;
     text-decoration: none;
-} */
-/* body {
-    background-color: black;
-    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
-    background-repeat: no-repeat;
-    border: 2px solid purple;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
+}
 .home {
     /* border: 2px solid blue; */
     display: flex;
@@ -46,38 +34,17 @@ a:hover {
 }
 .search {
     position: relative;
-    /* width: 50%; */
-    /* border: 2px solid orange; */
-    display: flex;
     flex-direction: column;
-    /* gap: 4px; */
-    /* justify-content: space-between; */
-    /* width: 50%; */
 }
-/* .search-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 4px;
-    width: 50%;
-} */
 .search-bar {
     margin-right: 8px;
     width: 150px;
 }
 .search-radio-buttons {
-    /* border: 1px black solid; */
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
-    /* width: 45%; */
-    margin: 0 0 8px 0;
 }
-/* input[type=radio] {
-    margin-bottom: 10px;
-} */
 ol {
     padding: 0;
 }
@@ -88,12 +55,7 @@ input[type=text], button, select {
     border-style: solid;
     padding: 4px;
     border-radius: 4px;
-    /* margin-right: 10px; */
 }
-/* form {
-    display: flex;
-    justify-content: space-between;
-} */
 .page-number {
     padding: 0;
     margin: 20px 0 4px 0;
@@ -103,20 +65,11 @@ input[type=text], button, select {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    /* padding: 0; */
-    /* margin-bottom: 10px; */
     width: 40%;
-    /* height: 100vh; */
-    /* margin-bottom: 10px; */
 }
 .page-buttons {
-    /* border: 1px brown solid; */
     display: flex;
-    /* justify-content: center; */
     gap: 80px;
-    /* align-items: center; */
     width: 100%;
 }
 .all-search-components-container {
@@ -129,7 +82,7 @@ input[type=text], button, select {
 .all-search-results-box {
     /* border: 2px solid pink; */
     align-self: center;
-    width: 80%;
+    width: 100%;
     /* width: 100%; */
 }
 .all-search-results-box {
@@ -138,13 +91,20 @@ input[type=text], button, select {
 /* ol, li {
     position: relative;
 } */
+
+
+
+
+/* Contains the WHOLE THING */
 .search-result-container {
     position: relative;
     width: 100%;
     border-radius: 10px;
     margin-bottom: 8px;
-    /* background-color: #f9e08e; */
+    background-color: blue;
 }
+
+/* All the text, map icon, and brewery type */
 .search-result-info {
     /* position: relative; */
     /* border: 1px solid red; */
@@ -152,42 +112,62 @@ input[type=text], button, select {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    background-color: #f9e08e;
+    background-color: pink;
     align-items: center;
     padding: 8px;
+    width: 50%;
     /* display: none; */
     /* margin: 0; */
     /* padding: 0; */
     /* padding: 10px 0 10px 0; */
     /* margin: 10px 0 10px 0; */
 }
-.search-result-background-color {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 50%;
-    /* background-color: #f9e08e; */
-    border: 1px solid red;
-    border-radius: 10px;
-    height: 100%;
-    /* z-index: 0; */
-    /* overflow: hidden; */
-    /* width: 100%; */
-}
-.search-result-background-color:hover {
-    right: 0;
-    transition: 100ms linear;
+.search-result-container:hover .search-result-info {
+    transition: 500ms linear;
+    width: 100%;
 }
 .search-result-info ul li {
     list-style: none;
 }
+
+
+/* Solid color with animation property */
+/* .search-result-background-color {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 50%;
+    background-color: #f9e08e;
+    background-color: black;
+    border: 1px solid red;
+    border-radius: 10px;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    width: 100%;
+} */
+.search-result-container:hover {
+    /* right: 0; */
+    width: 100%;
+    transition: 500ms linear;
+}
+
+/* just the address */
 .brewery-details {
-    width: 50%;
+    width: 100%;
+    background-color: yellow;
     /* align-self: center; */
 }
+.search-result-container:hover .brewery-details {
+    width: 50%;
+}
+
+
+
+
 .brewery-type-text {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     width: 25%;
     font-family: 'Special Elite', cursive;
     font-size: larger;
@@ -210,47 +190,41 @@ input[type=text], button, select {
     margin: 20px 0 8px 0;
     /* padding: 0; */
 }
-/* .micro {
-    background-color: aqua;
-    display: visible;
-}
-.nano {
-    background-color: orange;
-    display: visible;
-}
-.regional {
-    background-color: orangered;
-    display: visible;
-}
-.brewpub {
-    background-color: pink;
-    display: visible;
-}
-.contract {
-    background-color: greenyellow;
-    display: visible;
-}
-.proprietor {
-    background-color: lightseagreen;
-    display: visible;
-}
-.planning {
-    background-color: violet;
-    display: visible;
-} */
 .large .bar .closed {
     background-color: red;
     display: visible;
 }
 .map-icon-black {
     color: #000000;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     width: 25%;
 }
 .map-icon-gray {
     color: #AAAAAA;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     width: 25%;
 }
+.all-icons {
+    display: none;
+    justify-content: space-evenly;
+    /* align-content: center; */
+    width: 50%;
+}
+.brewery-type-text, .map-icon-black, .map-icon-gray {
+    /* display: visible; */
+    background-color: white;
+}
+.search-result-container:hover .all-icons {
+    display: flex;
+    background-color: purple;
+}
+/* .all-icons:hover .map-icon-black {
+    display: flex;
+    background-color: purple;
+}
+.all-icons:hover .map-icon-gray {
+    display: flex;
+    background-color: purple;
+} */

@@ -13,12 +13,9 @@ const SearchResults = (props) => {
     // API call and response
     useEffect(() => {
         const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
-        // const url = `https://api.openbrewerydb.org/breweries?by_city=brooklyn&sort=state:asc&per_page=50&page=1`
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
-            // console.log("Current URL:", url)
-            // console.log("Retrieved data:", json)
             setResults(json)
             setResultsPerPageState(perPage)
             setSortMethodState(sortMethod)
@@ -68,7 +65,6 @@ const SearchResults = (props) => {
     if(!results) {
         return (
             <>
-                {/* <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4> */}
                 <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
             </>
         )
@@ -76,7 +72,6 @@ const SearchResults = (props) => {
     else {
         return (
             <>
-                {/* <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4> */}
                 <div className="all-search-components-container">
                     
                     {/* Search Controls */}
@@ -93,13 +88,10 @@ const SearchResults = (props) => {
                                 <option value="country">Country</option>
                             </select>
                         </form>
-                        {/* {sortMethod !== "dist" ? ( */}
                             <form>
                                 <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick}/>123→ABC</label>
                                 <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
-                        {/* ) : null} */}
-                        
                         <form>
                             <label htmlFor="results-per-page">Results per page: </label>
                             <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
@@ -138,8 +130,10 @@ const SearchResults = (props) => {
                                                                 {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
                                                             </ul>
                                                         </div>
-                                                        {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div>}
-                                                        <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
+                                                        <div className="all-icons">
+                                                            {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div>}
+                                                            <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
+                                                        </div>
                                                     </div>
                                                 </Link>
                                                 <div className="search-result-background-color"></div>
@@ -154,10 +148,6 @@ const SearchResults = (props) => {
                             </>
                         )}
                     </div>
-                    {/* {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>} */}
-                    {/* {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} For development/debugging */}
-                    {/* <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> For development/debugging */}
-                    {/* <h4>*⬆ END OF SEARCH RESULTS PAGE ⬆*</h4> */}
                 </div>
             </>
         )
