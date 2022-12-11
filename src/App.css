@@ -11,26 +11,42 @@ body {
     /* margin: 0; */
     /* padding: 0; */
 }
-
+h2, p, form {
+    margin-left: 20px;
+}
+/* .brewery-buddy {
+    position: relative;
+} */
+.logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 60px;
+    /* padding: 0; */
+    margin-left: 20px;
+}
 .App-container {
     /* background-color: black; */
+    /* position: absolute;
+    left: 0;
+    right: 0; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    z-index: 2;
+    /* height: 100%; */
+    z-index: 0;
 }
 .beer-glass {
+    position: relative;
     background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
     display: flex;
     flex-flow: column;
     width: 80%;
-    margin: 0;
-    padding: 0;
-    min-height: 80vh;
+    /* margin: 0; */
+    /* padding: 0; */
+    min-height: 84vh;
     border: 8px solid white;
-    border-radius: 8px;
-    /* position: relative; */
+    /* border-radius: 8px; */
+    border-top: none;
+    overflow: hidden;
 }
 .header-div {
     /* font-family: 'Special Elite', cursive; */
@@ -39,7 +55,7 @@ body {
     /* padding-top: 120px; */
     /* padding-left: 10px; */
     padding: 0;
-    margin: 140px 0 0 20px;
+    margin-left: 20px;
 }
 .nav {
     /* border: 1px solid red; */
@@ -51,14 +67,15 @@ body {
     padding: 20px;
     position: relative;
 }
-.nav-bar {
+/* .nav-bar {
     position: absolute;
     top: 0;
     bottom: 32px;
     left: 0;
     right: 0;
     text-align: center;
-}
+    z-index: 1;
+} */
 .nav p {
     /* border: 1px solid red; */
     font-size: 16px;
@@ -70,36 +87,49 @@ body {
     text-decoration: none;
 }
 .inner-bubbles {
+    /* position: relative; */
+    /* bottom: 0; */
+    /* height: 100vh; */
+    /* width: 100%; */
+    /* border-radius: 50%; */
+    /* background: #cf8d2e; */
+    /* border: 1px red solid; */
+    /* z-index: 1; */
     position: absolute;
-    bottom: 0;
-    height: 8px;
-    width: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: #cf8d2e;
 }
 .inner-bubble-1 {
     left: 50%;
+    right: 50%;
     animation: inner-bubble-up 1.5s linear 2.9s forwards infinite;
 }
 .inner-bubble-2 {
     left: 45%;
+    right: 45%;
     animation: inner-bubble-up 2.5s linear 2.7s forwards infinite;
 }
 .inner-bubble-3 {
     left: 47%;
+    right: 47%;
     animation: inner-bubble-up 1.5s linear 2.5s forwards infinite;
 }
 .inner-bubble-4 {
     left: 53%;
+    right: 53%;
     animation: inner-bubble-up 2s linear 2.7s forwards infinite;
 }
 .inner-bubble-5 {
     left: 23%;
+    right: 23%;
     -webkit-animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
     animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
 }
 .inner-bubble-6 {
     left: 80%;
+    right: 80%;
     animation: inner-bubble-up 1.5s linear 3.9s forwards infinite;
 }
 @keyframes inner-bubble-up {
@@ -107,11 +137,11 @@ body {
         bottom: 0;
         opacity: 0.9;
     }
-    70% {
-        opacity: 0.0;
+    50% {
+        opacity: 0.2;
     }
     100% {
-        bottom: 150%;
+        bottom: 100%;
         opacity: 0.0;
     }
 }

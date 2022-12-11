@@ -40,7 +40,8 @@ a:hover {
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    margin-left: 20px;
+    /* padding: 20px; */
     /* height: 100%; */
 }
 .search {
@@ -72,7 +73,7 @@ a:hover {
     /* flex-direction: column; */
     /* justify-content: space-between; */
     /* width: 45%; */
-    margin-bottom: 4px;
+    margin: 0 0 8px 0;
 }
 /* input[type=radio] {
     margin-bottom: 10px;
@@ -114,7 +115,7 @@ input[type=text], button, select {
     /* border: 1px brown solid; */
     display: flex;
     /* justify-content: center; */
-    gap: 8px;
+    gap: 80px;
     /* align-items: center; */
     width: 100%;
 }
@@ -169,7 +170,7 @@ input[type=text], button, select {
     border: 1px solid red;
     border-radius: 10px;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     /* overflow: hidden; */
     /* width: 100%; */
 }
@@ -196,7 +197,20 @@ input[type=text], button, select {
 .loading {
     color: #888888;
 }
-.micro {
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.no-results p {
+    margin: 0;
+    /* padding: 0; */
+}
+.no-results h3 {
+    margin: 20px 0 8px 0;
+    /* padding: 0; */
+}
+/* .micro {
     background-color: aqua;
     display: visible;
 }
@@ -209,7 +223,6 @@ input[type=text], button, select {
     display: visible;
 }
 .brewpub {
-    /* background-color: #f9e08e; */
     background-color: pink;
     display: visible;
 }
@@ -224,7 +237,7 @@ input[type=text], button, select {
 .planning {
     background-color: violet;
     display: visible;
-}
+} */
 .large .bar .closed {
     background-color: red;
     display: visible;

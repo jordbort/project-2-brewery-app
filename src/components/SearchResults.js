@@ -87,19 +87,19 @@ const SearchResults = (props) => {
                             <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
                                 <option value="name">Brewery name</option>
                                 <option value="type">Brewery type</option>
-                                <option value="dist">Distance</option>
+                                {/* <option value="dist">Distance</option> */}
                                 <option value="city">City</option>
                                 <option value="state">State</option>
-                                <option value="postal">Postal code</option>
+                                <option value="country">Country</option>
                             </select>
                         </form>
-                        {sortMethod !== "dist" ? (
+                        {/* {sortMethod !== "dist" ? ( */}
                             <form>
                                 <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick}/>123→ABC</label>
                                 <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
-                        ) : null}
-
+                        {/* ) : null} */}
+                        
                         <form>
                             <label htmlFor="results-per-page">Results per page: </label>
                             <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
@@ -113,7 +113,7 @@ const SearchResults = (props) => {
 
                     {/* Search Results */}
                     <div className="all-search-results-box">
-                        {results.length === 0 ? <h3>No results found</h3> : (
+                        {results.length === 0 ? <div className="no-results"><h3>No results found.</h3><p>Please search again!</p></div> : (
                             <>
                                 {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
                                 <p className="page-number">Page: {pageNumber} (items: {results.length})</p>
@@ -130,7 +130,7 @@ const SearchResults = (props) => {
                                                         <div className="brewery-details">
                                                             {brewery.name ? <li>{brewery.name} </li> : null}
                                                             <ul>
-                                                            {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
+                                                                {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                                                 {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                                                 {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
                                                                 {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
