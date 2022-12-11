@@ -87,18 +87,18 @@ const SearchResults = (props) => {
                             <select name="sort-method" id="sort-method" value={sortMethod} onChange={handleSortMethodSelect}>
                                 <option value="name">Brewery name</option>
                                 <option value="type">Brewery type</option>
-                                <option value="dist">Distance</option>
+                                {/* <option value="dist">Distance</option> */}
                                 <option value="city">City</option>
                                 <option value="state">State</option>
-                                <option value="postal">Postal code</option>
+                                <option value="country">Country</option>
                             </select>
                         </form>
-                        {sortMethod !== "dist" ? (
+                        {/* {sortMethod !== "dist" ? ( */}
                             <form>
                                 <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick}/>123→ABC</label>
                                 <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
-                        ) : null}
+                        {/* ) : null} */}
                         
                         <form>
                             <label htmlFor="results-per-page">Results per page: </label>

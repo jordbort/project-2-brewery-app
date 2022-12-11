@@ -18,8 +18,14 @@
 .brewery-info {
     /* border: 1px solid red; */
     width: 50%;
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* justify-content: space-around; */
+    /* align-items: left; */
+}
+.brewery-info p {
+    margin: 0 0 0 16px;
 }
 .map-container {
     /* border: 1px solid red; */
