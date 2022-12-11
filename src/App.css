@@ -1,120 +1,145 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
 
 /* Font for all general text on the site */
-  /* font-family: 'IBM Plex Serif', serif; */
+    /* font-family: 'IBM Plex Serif', serif; */
 /* Font for the brewery name & brewery-type */
-  /* font-family: 'Special Elite', cursive; */
+    /* font-family: 'Special Elite', cursive; */
+body {
+    background-color: #000000;
+    font-family: 'IBM Plex Serif', serif;
+    /* position: relative; */
+    /* margin: 0; */
+    /* padding: 0; */
+}
 
 .App-container {
-  background-color:black;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  height:100%;
-  z-index:2;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    z-index: 2;
 }
-.App {
-  background-image:linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
-  display:flex;
-  flex-flow:column;
-  width:80%;
-  min-height:80%;
-  border:7px solid white;
-  position:relative;
+.beer-glass {
+    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    min-height: 80vh;
+    border: 8px solid white;
+    border-radius: 8px;
+    /* position: relative; */
 }
 .header-div {
-  z-index:2;
-  padding:10px;
+    /* font-family: 'Special Elite', cursive; */
+    position: relative;
+    /* margin-top: 120px; */
+    /* padding-top: 120px; */
+    /* padding-left: 10px; */
+    padding: 0;
+    margin: 140px 0 0 20px;
 }
 .nav {
-  display:flex;
-  justify-content: center;
-  background-image:radial-gradient(at bottom, white 57%,  black 58%);
-  align-items: center;
-  height:10vh;
-  padding:20px;
-  position:relative;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    background-image: radial-gradient(at bottom, white 57%, black 58%);
+    align-items: flex-end;
+    height: 10vh;
+    padding: 20px;
+    position: relative;
 }
-.nav p{
-  color:black;
-  font-size: 14px;
-  font-weight: 800;
-  margin:12px;
+.nav-bar {
+    position: absolute;
+    top: 0;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
-.nav > a {
-  text-decoration: none;
+.nav p {
+    /* border: 1px solid red; */
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px 32px;
+}
+.nav a {
+    color: black;
+    text-decoration: none;
 }
 .inner-bubbles {
-  position:absolute;
-  bottom:0;
-  height:8px;
-  width:8px;
-  border-radius: 50%;
-  background: #cf8d2e;
+    position: absolute;
+    bottom: 0;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: #cf8d2e;
 }
 .inner-bubble-1 {
-  left:50%;
-  animation: inner-bubble-up 1.5s linear 2.9s forwards infinite;
+    left: 50%;
+    animation: inner-bubble-up 1.5s linear 2.9s forwards infinite;
 }
 .inner-bubble-2 {
-  left:45%;
-  animation:inner-bubble-up 2.5s linear 2.7s forwards infinite;
+    left: 45%;
+    animation: inner-bubble-up 2.5s linear 2.7s forwards infinite;
 }
 .inner-bubble-3 {
-  left:47%;
-  animation:inner-bubble-up 1.5s linear 2.5s forwards infinite;
+    left: 47%;
+    animation: inner-bubble-up 1.5s linear 2.5s forwards infinite;
 }
 .inner-bubble-4 {
-  left:53%;
-  animation:inner-bubble-up 2s linear 2.7s forwards infinite;
+    left: 53%;
+    animation: inner-bubble-up 2s linear 2.7s forwards infinite;
 }
 .inner-bubble-5 {
-  left:23%;
-  -webkit-animation:inner-bubble-up 1.5s linear 2.8s forwards infinite;
-  animation:inner-bubble-up 1.5s linear 2.8s forwards infinite;
+    left: 23%;
+    -webkit-animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
+    animation: inner-bubble-up 1.5s linear 2.8s forwards infinite;
 }
 .inner-bubble-6 {
-  left:80%;
-  animation: inner-bubble-up 1.5s linear 3.9s forwards infinite;
+    left: 80%;
+    animation: inner-bubble-up 1.5s linear 3.9s forwards infinite;
 }
 @keyframes inner-bubble-up {
-  0% {
-    bottom: 0;
-    opacity: 0.9;
-  }
-  70% {
-    opacity:0.0;
-  }
-  100% {
-    bottom: 150%;
-    opacity:0.0;
-  }
+    0% {
+        bottom: 0;
+        opacity: 0.9;
+    }
+    70% {
+        opacity: 0.0;
+    }
+    100% {
+        bottom: 150%;
+        opacity: 0.0;
+    }
 }
 
 
 /* Corey TO DO */
-  
+    
 
 /* Jordan TO DO */
-  /* results page styling */
-    /* center */
-    /* change opacity of brewpub color on hover */
-    /* show/hide map icon if map exists */
-    /* if !map, make the icon filter:grayscale 100% */
-  /* force longer yellow box length on these pages: */
-    /* home -- needs to take up whole VH */
-    /* results */
-    /* brewery.js -- needs to take up whole VH */
-  /* search results */
-    /* change ascending/descending into ABC->123 */
-    /* add Postal Code as a search method */
-    /* remove Postal Code as a sort method */
-  /* map.js */
-    /* map does not recenter when clicking random brewery multiple times */
-  /* phone number formatting */
-  /* date formatting */
+    /* results page styling */
+        /* center */
+        /* change opacity of brewpub color on hover */
+        /* show/hide map icon if map exists */
+        /* if !map, make the icon filter: grayscale 100% */
+    /* force longer yellow box length on these pages: */
+        /* home -- needs to take up whole VH */
+        /* results */
+        /* brewery.js -- needs to take up whole VH */
+    /* search results */
+        /* change ascending/descending into ABC->123 */
+        /* add Postal Code as a search method */
+        /* remove Postal Code as a sort method */
+    /* map.js */
+        /* map does not recenter when clicking random brewery multiple times */
+    /* phone number formatting */
+    /* date formatting */
 
 /* MAYBE still to do? */
-    /* styling for Brewery results page */
-      /* map component re-center pointer or re-render map component */
-    /* map styling -> re-size for smaller size window */
+        /* styling for Brewery results page */
+            /* map component re-center pointer or re-render map component */
+        /* map styling -> re-size for smaller size window */
