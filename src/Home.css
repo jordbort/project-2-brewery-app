@@ -40,7 +40,8 @@ a:hover {
     /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    margin-left: 20px;
+    /* padding: 20px; */
     /* height: 100%; */
 }
 .search {
@@ -114,7 +115,7 @@ input[type=text], button, select {
     /* border: 1px brown solid; */
     display: flex;
     /* justify-content: center; */
-    gap: 8px;
+    gap: 80px;
     /* align-items: center; */
     width: 100%;
 }
@@ -196,7 +197,7 @@ input[type=text], button, select {
 .loading {
     color: #888888;
 }
-.micro {
+/* .micro {
     background-color: aqua;
     display: visible;
 }
@@ -209,7 +210,6 @@ input[type=text], button, select {
     display: visible;
 }
 .brewpub {
-    /* background-color: #f9e08e; */
     background-color: pink;
     display: visible;
 }
@@ -224,7 +224,7 @@ input[type=text], button, select {
 .planning {
     background-color: violet;
     display: visible;
-}
+} */
 .large .bar .closed {
     background-color: red;
     display: visible;
