@@ -22,7 +22,7 @@ function App() {
             <div className="App-container">
                 <div className="beer-glass">
                     <div className="header-div">
-                        <h1>🍻 Brewery Buddy 🍻</h1>
+                        <h1>Brewery Buddy 🍻</h1>
                     </div>
                     <Routes>
                         <Route path='*' element={ <Home /> } />

@@ -1,17 +1,21 @@
+a {
+    color: brown;
+    text-decoration: underline;
+}
 .about-container {
-    text-align:center;
-    padding:10px;
-    border:2px solid black;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid black;
     border-radius: 10px;
-    width:65%;
-    position:relative;
-    left:17%;
-    z-index:2;
-  }
-  .about-container > ul {
-    margin:10;
-    padding:0;
-  }
-  .about-container > ul > li {
+    width: 65%;
+    position: relative;
+    left: 17%;
+    z-index: 2;
+}
+.about-container > ul {
+    margin: 10;
+    padding: 0;
+}
+.about-container > ul > li {
     list-style-type: none;
-  }
+}
