@@ -73,7 +73,7 @@ a:hover {
     /* flex-direction: column; */
     /* justify-content: space-between; */
     /* width: 45%; */
-    margin-bottom: 4px;
+    margin: 0 0 8px 0;
 }
 /* input[type=radio] {
     margin-bottom: 10px;

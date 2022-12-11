@@ -113,7 +113,7 @@ const SearchResults = (props) => {
 
                     {/* Search Results */}
                     <div className="all-search-results-box">
-                        {results.length === 0 ? <h3>No results found</h3> : (
+                        {results.length === 0 ? <><h3>No results found.</h3><p>Please search again!</p></> : (
                             <>
                                 {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
                                 <p className="page-number">Page: {pageNumber} (items: {results.length})</p>

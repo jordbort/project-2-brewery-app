@@ -2,7 +2,7 @@ const Search = (props) => {
     return (
         <>
             {/* <h4>*⬇ START OF SEARCH COMPONENT ⬇*</h4> */}
-            <h2>Search breweries by {props.searchMethod}</h2>
+            <h2>Search for breweries by {props.searchMethod}</h2>
             <div className="search">
                 <form className="search-form" onSubmit={props.submitClick}>
                     <div className="search-radio-buttons">
