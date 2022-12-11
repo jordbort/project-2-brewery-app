@@ -68,7 +68,7 @@ const SearchResults = (props) => {
     if(!results) {
         return (
             <>
-                <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4>
+                {/* <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4> */}
                 <h1>Loading search results...</h1>
             </>
         )
@@ -76,7 +76,7 @@ const SearchResults = (props) => {
     else {
         return (
             <>
-                <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4>
+                {/* <h4>*⬇ START OF SEARCH RESULTS PAGE ⬇*</h4> */}
                 <div className="all-search-components-container">
                     
                     {/* Search Controls */}
@@ -111,7 +111,7 @@ const SearchResults = (props) => {
                         </form>
                         {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                         {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
-                        <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p>
+                        {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
                         <p>Page number: {pageNumber}</p>
                     </div>
 
@@ -143,10 +143,10 @@ const SearchResults = (props) => {
                             </ol>
                         )}
                     </div>
-                    {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} {/* For development/debugging */}
-                    <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> {/* For development/debugging */}
-                    <h4>*⬆ END OF SEARCH RESULTS PAGE ⬆*</h4>
+                    {/* {Number(pageNumber) === 1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>} */}
+                    {/* {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>} For development/debugging */}
+                    {/* <span> Page {pageNumber}, sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</span> For development/debugging */}
+                    {/* <h4>*⬆ END OF SEARCH RESULTS PAGE ⬆*</h4> */}
                 </div>
             </>
         )
