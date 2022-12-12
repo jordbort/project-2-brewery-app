@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom"
 
-const Nav = (props) => {
+const Nav = () => {
     return (
         <div className="nav-bar">
             <div className="nav">
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <Link to="/brewery/random">I'm feeling drunky</Link>
+                <p><Link to="/">Home</Link></p>
+                <p><Link to="/about">About</Link></p>
+                <p><Link to="/brewery/random">I'm feeling drunky</Link></p>
             </div>
         </div>
     )

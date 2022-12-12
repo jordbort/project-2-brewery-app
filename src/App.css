@@ -1,169 +1,111 @@
-.App-container {
-  background-color:black;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
+
+/* Element styling */
+body {
+    background-color: #000000;
+    font-family: 'IBM Plex Serif', serif;
 }
-.App {
-  background-image:linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
-  display:flex;
-  flex-flow:column;
-  /* margin:0px 0px 0px 60px; */
-  width:80%;
-  border:9px solid white;
+h2, p, form {
+    margin-left: 20px;
 }
-.nav-bar{
-  /* background-image:radial-gradient(at bottom,#ffd54f 52%, white 71%,  black 72%); */
-  /* background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white); */
-  /* border-top:20px solid white; */
+
+/* Class styling */
+.logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 60px;
+    margin-left: 20px;
+}
+.site-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+.beer-glass {
+    position: relative;
+    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+    min-height: 84vh;
+    border: 8px solid white;
+    border-top: none;
+    overflow: hidden;
+}
+.header-div {
+    position: relative;
+    padding: 0;
+    margin-left: 20px;
 }
 .nav {
-  display:flex;
-  justify-content: center;
-  background-image:radial-gradient(at bottom, white 57%,  black 58%);
-  align-items: center;
-  height:10vh;
-  padding:20px;
-  position:relative;
-  /* border-bottom:white solid 20px; */
-  /* background-color:white; */
+    display: flex;
+    justify-content: center;
+    background-image: radial-gradient(at bottom, white 57%, black 58%);
+    align-items: flex-end;
+    height: 10vh;
+    padding: 20px;
+    position: relative;
 }
-.nav p{
-  color:black;
-  font-size: 14px;
-  font-weight: 800;
-  margin:12px;
+.nav p {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px 32px;
 }
-.nav > a {
-  text-decoration: none;
-}
-body {
-  /* background-image:linear-gradient(to right, white, #ffd54f 13%, #ffd54f 87%,white); */
-  /* background:black; */
-  /* border:5px solid red; */
-}
-
-.brewery-container {
-  display:flex;
-  justify-content: space-evenly;
-  margin:20px;
-}
-
-.about-container {
-  text-align:center;
-  padding:10px;
-  border:2px solid black;
-  border-radius: 10px;
-  width:65%;
-  position:relative;
-  left:17%;
-/* border:2px solid red; */
-}
-.about-container > ul {
-  margin:10;
-  padding:0;
-}
-.about-container > ul > li {
-  list-style-type: none;
-}
-.map-container{
-  padding:10px;
-}
-/* Corey TO DO */
-
-/* still to do */
-    /* styling for Brewery results page */
-      /* need to add a div w/ className "all-search-results-container" */
-    
-    /* DONE  */
-    /* linear-gradient for background */
-    /* USE A TOKEN on random brewery display */
-    /* style for type of brewery and apply to search results divs */
-
-/* Jordan's TO DOs */
-  /* managing search bar sort features */
-  /* radio buttons */
-  /* results per page */
-  /* prev page + next page */
-
-
-.search-controls {
-  /* text-align:center; */
-}
-.all-search-results-container {
-  display:flex;
-  flex-direction: column;
-  align-content: center;
-}
-.all-search-results-box{
-  /* border:2px solid red; */
-}
-.search-result-box {
-  width:40%;
-  padding:10px;
-  border-radius:10px;
-  margin:10px;
-}
-.search-result-box > ul > li {
-  list-style: none;
-}
-.brewery-name{
-  font-size:30px;
-}
-.micro {
-  background-color:aqua;
-}
-.nano {
-  background-color:orange;
-}
-.regional {
-  background-color:orangered;
-}
-.brewpub {
-  background-color:violet;
-}
-.contract {
-  background-color:greenyellow;
-}
-.proprietor {
-  background-color:lightseagreen;
-}
-.planning {
-  background-color:violet;
-}
-.large .bar .closed {
-  background-color:red;
+.nav a {
+    color: black;
+    text-decoration: none;
 }
 .inner-bubbles {
-  position:relative;
-  bottom:0;
-  height:8px;
-  width:8px;
-  border-radius: 50%;
-  background: #cf8d2e;
-}
-.inner-bubble-1 {
-  left:50%;
-  animation:inner-bubble-up 1.5s linear forwards infinite;
-}
-.inner-bubble-2 {
-  left:45%;
-  animation:inner-bubble-up 1.5s linear forwards 0.2s infinite;
-}
-.inner-bubble-3 {
-  left:47%;
-  animation:inner-bubble-up 1.5s linear forwards 0.5s infinite;
-}
-.inner-bubble-4 {
-  left:53%;
-  animation:inner-bubble-up 1.5s linear forwards 0.7s infinite;
+    position: absolute;
+    z-index: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #cf8d2e;
+    bottom:0;
+    opacity:0;
 }
 
+/* Animation classes and keyframes */
+.inner-bubble-1 {
+    left: 50%;
+    animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
+}
+.inner-bubble-2 {
+    left: 45%;
+    animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
+}
+.inner-bubble-3 {
+    left: 47%;
+    animation: inner-bubble-up 4.5s linear 2.5s forwards infinite;
+}
+.inner-bubble-4 {
+    left: 53%;
+    animation: inner-bubble-up 4s linear 2.7s forwards infinite;
+}
+.inner-bubble-5 {
+    left: 23%;
+    -webkit-animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
+}
+.inner-bubble-6 {
+    left: 80%;
+    animation: inner-bubble-up 4.5s linear 3.9s forwards infinite;
+}
 @keyframes inner-bubble-up {
-  from 0% {
-    bottom:0;
-  }
-  to 100% {
-    bottom:90%;
-  }
+    0% {
+        bottom: 0;
+        opacity: 0.9;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0.0;
+    }
+}
+
+/* Media queries */
+@media only screen and (max-width: 650px){
+    .nav p {
+        margin: 5px;
+    }
 }
