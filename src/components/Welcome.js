@@ -1,12 +1,10 @@
-const Welcome = (props) => {
+const Welcome = () => {
     return (
         <>
-            {/* <h4>*⬇ START OF WELCOME COMPONENT ⬇*</h4> */}
             <div className="welcome">
                 <h2>Welcome to Brewery Buddy!</h2>
                 <p>You can use the search bar below to look up a brewery near you. Have fun, and please search responsibly! 🍺</p>
             </div>
-            {/* <h4>*⬆ END OF WELCOME COMPONENT ⬆*</h4> */}
         </>
     )
 }

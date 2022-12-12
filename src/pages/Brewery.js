@@ -5,7 +5,7 @@ import { useParams } from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from "../components/Map"
 
-const Brewery = (props) => {
+const Brewery = () => {
     const [ brewery, setBrewery ] = useState([])
     const [ randomBrewery, setRandomBreweryState ] = useState()
     const selectedBrewery = useParams()
@@ -26,7 +26,7 @@ const Brewery = (props) => {
         .then ((res) => res.json())
         .then ((data) => setRandomBreweryState(data))
         .catch((err) => console.log(err))
-    },[])
+    }, [])
     
     // API call for brewery selected from the Search Results page
     const handleNormalFetch = useCallback(async () => {
@@ -35,7 +35,7 @@ const Brewery = (props) => {
             .then ((res) => res.json())
             .then ((json) => { 
                 setBrewery(json)})  
-    },[selectedBrewery.brewery])
+    }, [selectedBrewery.brewery])
 
     // handles button click for "Random Brewery" button
     const handleClick = () => {
@@ -45,9 +45,10 @@ const Brewery = (props) => {
         useEffect (() => {
             if (selectedBrewery.brewery !== 'random') {
                 handleNormalFetch() 
-        } else if (selectedBrewery.brewery === "random") {
-            handleRandomFetch()
-        }
+            }
+            else {
+                handleRandomFetch()
+            }
     }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery])
 
     const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
