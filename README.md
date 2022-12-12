@@ -18,10 +18,10 @@ What does it do?
         - Brewery Name
         - Brewery City
         - Brewery State
-        - Brewery Zip
+        - Brewery Postal code
         - Brewery Country
     - Presents detailed contact information for brewery upon selection.
-    - Displays a map using API's logitude / latitude data (courtesy of Leaflet and Open Street Map).
+    - Displays a map using API's logitude/latitude data (courtesy of Leaflet and OpenStreetMap).
     - Displays how recently the data has been updated for each brewery.
     - "I'm feeling drunky" - populates info for a random brewery from the database.
 
@@ -29,7 +29,7 @@ What does it do?
 
 
 ### Technologies Used
-HTML/CSS, JavaScript, React.js, JSX, Node.js, Leaflet, React Leaflet, Open Street Map API
+HTML/CSS, JavaScript, React.js, JSX, Node.js, Leaflet.js, React Leaflet, OpenStreetMap API
 
 ### Getting Started / Installation Instructions
 [Check out the live deployment at.](https://dreamy-bienenstitch-fd35ba.netlify.app/)
@@ -47,4 +47,4 @@ Open an GH issue or PR and we'd be happy to chat.
 
 Thanks for checking out our project!
 
--- Jordan + Corey
+-- Corey + Jordan
