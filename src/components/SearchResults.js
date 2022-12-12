@@ -108,8 +108,8 @@ const SearchResults = (props) => {
                                 {/* <p>sorting by {sortMethod} first, {sortDirection === "asc" ? "123→ABC" : "ZYX→321"}, items on the page: {results.length}</p> */}
                                 <p className="page-number">Page: {pageNumber} (items: {results.length})</p>
                                 <div className="page-buttons">
-                                    {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
+                                    {Number(pageNumber)===1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                                    {Number(results.length) < Number(perPage) ? null : <button onClick={handleNextPageClick}>Next Page</button>}
                                 </div>
                                 <ol>
                                     {results.map((brewery, idx) => {
@@ -140,8 +140,8 @@ const SearchResults = (props) => {
                                     })}
                                 </ol>
                                 <div className="page-buttons" id="bottom-buttons">
-                                    {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                                    {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
+                                    {Number(pageNumber)===1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                                    {Number(results.length) < Number(perPage) ? null : <button onClick={handleNextPageClick}>Next Page</button>}
                                 </div>
                             </>
                         )}
