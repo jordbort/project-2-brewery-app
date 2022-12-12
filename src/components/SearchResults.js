@@ -32,7 +32,6 @@ const SearchResults = (props) => {
 
     // Sort method dropdown selection menu function
     const handleSortMethodSelect = (event) => {
-        console.log("handleSortMethodSelect:", event.target.value)
         sortMethod = event.target.value
         setSortMethodState({...sortMethod, [event.target.name]: event.target.value})
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
@@ -40,7 +39,6 @@ const SearchResults = (props) => {
 
     // Sort direction radio button click function
     const handleSortDirectionClick = (event) => {
-        console.log("handleSortDirectionClick:", event.target.value)
         sortDirection = event.target.value
         setSortDirectionState({...sortDirection, [event.target.name]: event.target.value})
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)

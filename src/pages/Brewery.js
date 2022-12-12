@@ -50,7 +50,7 @@ const Brewery = (props) => {
         }
     }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery])
 
-    const { name, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
+    const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
     
     // Placeholder while the data from the API loads
     if (!brewery) {
@@ -66,6 +66,7 @@ const Brewery = (props) => {
                     <div className="brewery-container">
                         <div className='brewery-info'>
                             <h3 className='brewery-name'>{name}</h3>
+                            {brewery_type && brewery_type !== "closed" ? <h4 className='brewery-type'>Brewery type: {brewery_type}</h4> : null}
                             {street && street !== "Unnamed Street" ? <p>{street}</p> : null}
                             {address_2 ? <p>{address_2}</p> : null}
                             {address_3 ? <p>{address_3}</p> : null}
@@ -80,7 +81,7 @@ const Brewery = (props) => {
 
                         {latitude ? 
                             <div className="map-container"><Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code} /></div> : 
-                            <div className="map-container"><p><FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" size="10x" className="empty-mug" /></p></div>}
+                            <div className="map-container no-map"><p><FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" size="10x" className="empty-mug" /></p><p>(No map available)</p></div>}
 
                     </div>
                 </div>
