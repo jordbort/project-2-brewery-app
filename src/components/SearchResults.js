@@ -90,7 +90,7 @@ const SearchResults = (props) => {
                         </form>
                             <form>
                                 <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick}/>123→ABC</label>
-                                <label><input type="radio" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
+                                <label><input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick}/>ZYX→321</label>
                             </form>
                         <form>
                             <label htmlFor="results-per-page">Results per page: </label>
@@ -116,7 +116,7 @@ const SearchResults = (props) => {
                                 <ol>
                                     {results.map((brewery, idx) => {
                                         return (
-                                            <div className="search-result-container" key={idx}>
+                                            <div className={"search-result-container " + brewery.brewery_type} key={idx}>
                                                 <Link to={'/brewery/' + brewery.id}>
                                                     <div className="search-result-info">
                                                         <div className="brewery-details">
@@ -130,18 +130,18 @@ const SearchResults = (props) => {
                                                                 {/* {brewery.phone && brewery.phone.length === 10 && brewery.country === "United States" ? <li>Phone: ({brewery.phone[0]}{brewery.phone[1]}{brewery.phone[2]}) {brewery.phone[3]}{brewery.phone[4]}{brewery.phone[5]}-{brewery.phone[6]}{brewery.phone[7]}{brewery.phone[8]}{brewery.phone[9]}</li> : brewery.phone} */}
                                                             </ul>
                                                         </div>
-                                                        <div className="all-icons">
-                                                            {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="2x" /></div>}
-                                                            <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
-                                                        </div>
+                                                    </div>
+                                                    <div className="extra-details">
+                                                        {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="3x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="3x" /></div>}
+                                                        <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
                                                     </div>
                                                 </Link>
-                                                <div className="search-result-background-color"></div>
+                                                {/* <div className="search-result-background-color"></div> */}
                                             </div>
                                         )
                                     })}
                                 </ol>
-                                <div className="page-buttons">
+                                <div className="page-buttons" id="bottom-buttons">
                                     {Number(pageNumber)===1 ? <button>Prev Page</button> : <button onClick={handlePrevPageClick}>Prev Page</button>}
                                     {Number(results.length) < Number(perPage) ? <button>Next Page</button> : <button onClick={handleNextPageClick}>Next Page</button>}
                                 </div>

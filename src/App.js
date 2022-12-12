@@ -5,7 +5,7 @@ import './App.css'
 import Nav from './components/Nav'
 
 // React tools
-import { Route, Routes } from "react-router-dom"
+import { Link, Route, Routes } from "react-router-dom"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMapLocationDot, faBeerMugEmpty, faGear, faPhone, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,7 +22,7 @@ function App() {
             <div className="App-container">
                 <div className="beer-glass">
                     <div className="header-div">
-                        <h1 className='logo'>Brewery Buddy 🍻</h1>
+                        <h1 className='logo'><Link to="/">Brewery Buddy 🍻</Link></h1>
                     </div>
                     <Routes>
                         <Route path='*' element={ <Home /> } />
