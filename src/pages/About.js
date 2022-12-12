@@ -20,12 +20,12 @@ const About = (props) => {
                     <li>React.js</li>
                     <li>Node.js</li>
                 </ul>
-            <h4>Made possible thanks to the following APIs:</h4>
+            <h4>Made possible thanks to the following APIs and resources:</h4>
             <ul>
                 <li><a href="https://www.openbrewerydb.org" target="_blank" rel="noreferrer">Open Brewery DB</a></li>
-                <li><a href="https://leafletjs.com" target="_blank" rel="noreferrer">LeafletJS</a></li>
+                <li><a href="https://leafletjs.com" target="_blank" rel="noreferrer">Leaflet.js</a></li>
                 <li><a href="https://react-leaflet.js.org" target="_blank" rel="noreferrer">React Leaflet</a></li>
-                <li><a href="https://www.openstreetmap.org/" target="_blank" rel="noreferrer">Open Street Map</a></li>
+                <li><a href="https://www.openstreetmap.org/" target="_blank" rel="noreferrer">OpenStreetMap</a></li>
                 <li><a href="https://fontawesome.com/" target="_blank" rel="noreferrer">Font Awesome</a></li>
             </ul>
             <h3>Please search responsibly.</h3>

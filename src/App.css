@@ -87,8 +87,8 @@ h2, p, form {
     text-decoration: none;
 }
 .inner-bubbles {
-    z-index: 0;
     position: absolute;
+    z-index: 0;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -131,7 +131,11 @@ h2, p, form {
         opacity: 0.0;
     }
 }
-
+@media only screen and (max-width: 650px){
+    .nav p {
+        margin: 5px;
+    }
+}
     /* results page styling */        
         /* if !map, make the icon filter: grayscale 100% */
         
