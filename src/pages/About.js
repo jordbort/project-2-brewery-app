@@ -1,6 +1,6 @@
 import '../About.css'
 
-const About = (props) => {
+const About = () => {
     return (
         <nav className="about-container">
             <h3>Developed by:</h3>

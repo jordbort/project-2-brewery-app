@@ -1,3 +1,4 @@
+/* Element styles */
 a {
     color: black;
     text-decoration: none;
@@ -30,6 +31,7 @@ input[type=text], button, select {
     border-radius: 4px;
 }
 
+/* Class styles */
 .home {
     display: flex;
     flex-direction: column;
@@ -66,32 +68,28 @@ input[type=text], button, select {
     margin-top: 16px;
     margin-bottom: 0;
 }
+
+/* Container for all the sort methods and search results */
 .all-search-components-container {
     display: flex;
     flex-direction: column;
 }
+/* Container for all the search results */
 .all-search-results-box {
     align-self: center;
-    width: 100%;
-}
-.all-search-results-box {
-    display: visible;
     width: 80%;
 }
-
-/* Contains the WHOLE THING */
+/* Container for each search result */
 .search-result-container {
     position: relative;
     width: 100%;
     border-radius: 10px;
     margin-bottom: 16px;
     background-color: rgba(249, 224, 142, 0.4);
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 16px 0;
     box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
 }
-
-/* All the text, map icon, and brewery type */
+/* Container for the text of each search result */
 .search-result-info {
     position: relative;
     z-index: 10;
@@ -111,11 +109,17 @@ input[type=text], button, select {
 }
 .search-result-info ul li {
     list-style: none;
-    /* padding-left: 0; */
     margin-left: 48px;
 }
+/* For making closed breweries appear in red */
+.closed {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.closed:hover {
+    background-color: rgba(255, 0, 0, 0.6);
+}
 
-/* just the address */
+/* Detail text - address */
 .brewery-details {
     position: absolute;
     z-index: 2;
@@ -128,9 +132,9 @@ input[type=text], button, select {
     font-weight: 600;
 }
 
+/* Detail text - map availability and brewery type */
 .extra-details {
     display: none;
-    /* display: flex; */
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
@@ -140,6 +144,7 @@ input[type=text], button, select {
     left: 50%;
     bottom: 0;
 }
+/* Makes map icon and brewery type text visible */
 .search-result-container:hover .extra-details {
     display: flex;
 }
@@ -152,6 +157,18 @@ input[type=text], button, select {
     font-size: x-large;
     transform: rotate(-10deg);
 }
+.map-icon-black .map-icon-gray {
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+}
+.map-icon-gray {
+    color: #BBBBBB;
+}
+
+/* Special case text styling */
 .loading {
     color: #888888;
 }
@@ -166,23 +183,8 @@ input[type=text], button, select {
 .no-results h3 {
     margin: 20px 0 8px 0;
 }
-.closed {
-    background-color: rgba(255, 0, 0, 0.4);
-}
-.closed:hover {
-    background-color: rgba(255, 0, 0, 0.6);
-}
-.map-icon-black .map-icon-gray {
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    width: 20%;
-    height: 100%;
-}
-.map-icon-gray {
-    color: #BBBBBB;
-}
 
+/* ID styles */
 #desc {
     margin-left: 16px;
 }

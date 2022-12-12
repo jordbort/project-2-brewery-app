@@ -1,37 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
 
-/* Font for all general text on the site */
-    /* font-family: 'IBM Plex Serif', serif; */
-/* Font for the brewery name & brewery-type */
-    /* font-family: 'Special Elite', cursive; */
+/* Element styling */
 body {
     background-color: #000000;
     font-family: 'IBM Plex Serif', serif;
-    /* position: relative; */
-    /* margin: 0; */
-    /* padding: 0; */
 }
 h2, p, form {
     margin-left: 20px;
 }
-/* .brewery-buddy {
-    position: relative;
-} */
+
+/* Class styling */
 .logo {
     font-family: 'Special Elite', cursive;
     font-size: 60px;
-    /* padding: 0; */
     margin-left: 20px;
 }
-.App-container {
-    /* background-color: black; */
-    /* position: absolute;
-    left: 0;
-    right: 0; */
+.site-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 100%; */
     z-index: 0;
 }
 .beer-glass {
@@ -40,25 +27,17 @@ h2, p, form {
     display: flex;
     flex-flow: column;
     width: 80%;
-    /* margin: 0; */
-    /* padding: 0; */
     min-height: 84vh;
     border: 8px solid white;
-    /* border-radius: 8px; */
     border-top: none;
     overflow: hidden;
 }
 .header-div {
-    /* font-family: 'Special Elite', cursive; */
     position: relative;
-    /* margin-top: 120px; */
-    /* padding-top: 120px; */
-    /* padding-left: 10px; */
     padding: 0;
     margin-left: 20px;
 }
 .nav {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     background-image: radial-gradient(at bottom, white 57%, black 58%);
@@ -67,17 +46,7 @@ h2, p, form {
     padding: 20px;
     position: relative;
 }
-/* .nav-bar {
-    position: absolute;
-    top: 0;
-    bottom: 32px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 1;
-} */
 .nav p {
-    /* border: 1px solid red; */
     font-size: 16px;
     font-weight: 700;
     margin: 0px 32px;
@@ -96,6 +65,8 @@ h2, p, form {
     bottom:0;
     opacity:0;
 }
+
+/* Animation classes and keyframes */
 .inner-bubble-1 {
     left: 50%;
     animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
@@ -131,25 +102,10 @@ h2, p, form {
         opacity: 0.0;
     }
 }
+
+/* Media queries */
 @media only screen and (max-width: 650px){
     .nav p {
         margin: 5px;
     }
 }
-    /* results page styling */        
-        /* if !map, make the icon filter: grayscale 100% */
-        
-        /* - results divs animation */
-        /* - red debug border  */
-        /* - filter for map icon */
-        /* - no map empty beer mug -- different solution? */
-
-
-
-
-    /* MAYBE still to do? */
-        /* map.js */
-            /* map does not recenter when clicking random brewery multiple times */
-        /* styling for Brewery results page */
-            /* map component re-center pointer or re-render map component */
-        /* map styling -> re-size for smaller size window */

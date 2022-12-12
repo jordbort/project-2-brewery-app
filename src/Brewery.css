@@ -1,3 +1,4 @@
+/* Class styling */
 .details {
     display: flex;
     justify-content: center;
@@ -46,14 +47,18 @@
     margin: 0 0 16px 0;
 }
 
-@media only screen and (max-width:650px){
+/* Media queries */
+@media only screen and (max-width:725px){
     .brewery-container{
         display:block;
     }
     .brewery-info{
-        width:100%;
+        width:80%;
+        margin: 0 auto;
     }
     .map-container{
-        width:100%;
+        width:80%;
+        justify-content: center;
+        margin:0 auto;
     }
 }

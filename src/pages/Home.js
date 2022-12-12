@@ -5,39 +5,34 @@ import Welcome from "../components/Welcome"
 import SearchResults from "../components/SearchResults"
 import "../Home.css"
 
-const Home = (props) => {
+const Home = () => {
+
+    // Initialization variables
     const initialState = {
         searchBar: null,
         searchMethod: "by_name",
         searchMethodName: "name"
     }
+
+    // State variables
     const navigate = useNavigate()
     const [formState, setFormState] = useState(initialState)
-    // console.log('formState:', formState)
 
+    // State update functions
     const handleTextInput = (event) => {
-        // console.log(event.target.name, event.target.value)
         setFormState({...formState, [event.target.name]: event.target.value})
     }
-
     const handleRadioClick = (event) => {
-        // console.log(event.target.name, event.target.id)
-        // console.log(event.target)
         setFormState({...formState, [event.target.name]: event.target.value, searchMethodName: event.target.id})
     }
-
     const handleSubmitClick = (event) => {
         event.preventDefault()
-        // console.log(event.target.value)
-        // console.log("submitted:", formState.searchBar, formState.searchMethod)
         navigate(`/breweries/${formState.searchMethod}=${formState.searchBar}&sort=name:asc&per_page=20&page=1`)
     }
     
     return (
         <>
-            {/* <h3>*⬇ START OF HOME PAGE ⬇*</h3> */}
             <div className="home">
-                {/* <h2>This is the Home page!</h2> */}
                 <Routes>
                     <Route path="/" element={
                         <>
@@ -54,7 +49,6 @@ const Home = (props) => {
                 </Routes>
                 <div className="inner-bubbles inner-bubble-1"></div>
             </div>
-            {/* <h3>*⬆ END OF HOME PAGE ⬆*</h3> */}
         </>
     )
 }
