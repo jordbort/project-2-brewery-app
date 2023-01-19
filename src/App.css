@@ -5,7 +5,10 @@ body {
     background-color: #000000;
     font-family: 'IBM Plex Serif', serif;
 }
-h2, p, form {
+
+h2,
+p,
+form {
     margin-left: 20px;
 }
 
@@ -15,15 +18,17 @@ h2, p, form {
     font-size: 60px;
     margin-left: 20px;
 }
+
 .site-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 0;
 }
+
 .beer-glass {
     position: relative;
-    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%,white);
+    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%, white);
     display: flex;
     flex-flow: column;
     width: 80%;
@@ -32,11 +37,13 @@ h2, p, form {
     border-top: none;
     overflow: hidden;
 }
+
 .header-div {
     position: relative;
     padding: 0;
     margin-left: 20px;
 }
+
 .nav {
     display: flex;
     justify-content: center;
@@ -46,15 +53,18 @@ h2, p, form {
     padding: 20px;
     position: relative;
 }
+
 .nav p {
     font-size: 16px;
     font-weight: 700;
     margin: 0px 32px;
 }
+
 .nav a {
     color: black;
     text-decoration: none;
 }
+
 .inner-bubbles {
     position: absolute;
     z-index: 0;
@@ -62,8 +72,8 @@ h2, p, form {
     height: 6px;
     border-radius: 50%;
     background: #cf8d2e;
-    bottom:0;
-    opacity:0;
+    bottom: 0;
+    opacity: 0;
 }
 
 /* Animation classes and keyframes */
@@ -71,32 +81,39 @@ h2, p, form {
     left: 50%;
     animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
 }
+
 .inner-bubble-2 {
     left: 45%;
     animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
 }
+
 .inner-bubble-3 {
     left: 47%;
     animation: inner-bubble-up 4.5s linear 2.5s forwards infinite;
 }
+
 .inner-bubble-4 {
     left: 53%;
     animation: inner-bubble-up 4s linear 2.7s forwards infinite;
 }
+
 .inner-bubble-5 {
     left: 23%;
     -webkit-animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
     animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
 }
+
 .inner-bubble-6 {
     left: 80%;
     animation: inner-bubble-up 4.5s linear 3.9s forwards infinite;
 }
+
 @keyframes inner-bubble-up {
     0% {
         bottom: 0;
         opacity: 0.9;
     }
+
     100% {
         bottom: 110%;
         opacity: 0.0;
@@ -104,7 +121,7 @@ h2, p, form {
 }
 
 /* Media queries */
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 650px) {
     .nav p {
         margin: 5px;
     }
