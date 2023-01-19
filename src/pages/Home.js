@@ -23,7 +23,9 @@ const Home = () => {
     }
     const handleSubmitClick = (event) => {
         event.preventDefault()
-        navigate(`/breweries/${formState.searchMethod}=${formState.searchBar}&sort=name:asc&per_page=20&page=1`)
+        if (formState.searchBar !== "") {
+            navigate(`/breweries/${formState.searchMethod}=${formState.searchBar}&sort=name:asc&per_page=20&page=1`)
+        }
     }
 
     return (
