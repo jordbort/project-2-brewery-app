@@ -20,32 +20,32 @@ const Home = () => {
 
     // State update functions
     const handleTextInput = (event) => {
-        setFormState({...formState, [event.target.name]: event.target.value})
+        setFormState({ ...formState, [event.target.name]: event.target.value })
     }
     const handleRadioClick = (event) => {
-        setFormState({...formState, [event.target.name]: event.target.value, searchMethodName: event.target.id})
+        setFormState({ ...formState, [event.target.name]: event.target.value, searchMethodName: event.target.id })
     }
     const handleSubmitClick = (event) => {
         event.preventDefault()
         navigate(`/breweries/${formState.searchMethod}=${formState.searchBar}&sort=name:asc&per_page=20&page=1`)
     }
-    
+
     return (
         <>
             <div className="home">
                 <Routes>
                     <Route path="/" element={
                         <>
-                            <Welcome/>
+                            <Welcome />
                             <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} searchMethod={formState.searchMethodName} />
                         </>
-                    }/>
+                    } />
                     <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={
                         <>
                             <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} searchMethod={formState.searchMethodName} />
-                            <SearchResults/>
+                            <SearchResults />
                         </>
-                    }/>
+                    } />
                 </Routes>
                 <div className="inner-bubbles inner-bubble-1"></div>
             </div>

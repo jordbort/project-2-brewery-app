@@ -1,5 +1,11 @@
+/* Element styling */
+p {
+    font-size: 1rem;
+}
+
 /* Class styling */
 .details {
+    /* border: 1px dashed red; */
     display: flex;
     justify-content: center;
 }
@@ -12,12 +18,13 @@
 .brewery-container {
     display: flex;
     justify-content: space-evenly;
-    margin: 20px;
+    margin: 20px 20px 20px 50px;
     width: 70%;
 }
 
 .brewery-info {
-    width: 50%;
+    /* border: 1px dashed blue; */
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -29,12 +36,13 @@
 }
 
 .map-container {
+    /* border: 1px dashed purple; */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     height: 350px;
-    width: 50%;
+    width: 100%;
 }
 
 .no-map {
@@ -48,7 +56,7 @@
 
 .brewery-name {
     font-family: 'Special Elite', cursive;
-    font-size: 30px;
+    font-size: 1.75rem;
     margin: 0;
 }
 
@@ -57,19 +65,61 @@
 }
 
 /* Media queries */
-@media only screen and (max-width:725px) {
+@media (orientation: portrait) {
+    p {
+        font-size: 0.8rem;
+    }
+
     .brewery-container {
         display: block;
     }
 
+    .brewery-container {
+        /* display: flex; */
+        /* justify-content: space-evenly; */
+        margin: 0px;
+        width: 90%;
+    }
+
+    /* .brewery-info {
+        border: 1px dashed blue;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .brewery-info p {
+        margin: 0 0 0 16px;
+    }
+    
+    .map-container {
+        border: 1px dashed purple;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        height: 350px;
+        width: 50%;
+    } */
+
     .brewery-info {
-        width: 80%;
-        margin: 0 auto;
+        width: 100%;
+        padding: 24px 0 0 0;
+        /* margin: 0 auto; */
+    }
+
+    .brewery-name {
+        /* font-family: 'Special Elite', cursive; */
+        font-size: 2rem;
+        /* margin: 0; */
     }
 
     .map-container {
-        width: 80%;
-        justify-content: center;
-        margin: 0 auto;
+        /* width: 100%; */
+        /* justify-content: center; */
+        /* margin: 0 auto; */
+        padding: 0;
     }
 }

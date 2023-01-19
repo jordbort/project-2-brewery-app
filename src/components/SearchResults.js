@@ -127,7 +127,7 @@ const SearchResults = () => {
                                                     </div>
                                                 </div>
                                                 <div className="extra-details">
-                                                    {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="3x" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" size="3x" /></div>}
+                                                    {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div>}
                                                     <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
                                                 </div>
                                             </Link>
