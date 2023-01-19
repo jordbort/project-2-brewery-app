@@ -1,13 +1,15 @@
 /* Class styling */
 .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 10px;
+    align-self: center;
+    padding: 12px;
     border: 2px solid black;
     border-radius: 10px;
-    width: 65%;
+    width: 70%;
     position: relative;
-    left: 17%;
-    z-index: 2;
     margin-bottom: 40px;
 }
 
@@ -42,4 +44,17 @@
 
 @media (orientation: portrait),
 (max-width: 650px) {
+    .about-container {
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* text-align: center; */
+        /* align-self: center; */
+        padding: 10px;
+        /* border: 2px solid black; */
+        /* border-radius: 10px; */
+        width: 85%;
+        /* position: relative; */
+        /* margin-bottom: 40px; */
+    }
 }
