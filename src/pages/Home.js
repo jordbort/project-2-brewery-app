@@ -6,17 +6,13 @@ import SearchResults from "../components/SearchResults"
 import "../Home.css"
 
 const Home = () => {
-
-    // Initialization variables
-    const initialState = {
-        searchBar: null,
-        searchMethod: "by_name",
-        searchMethodName: "name"
-    }
-
     // State variables
     const navigate = useNavigate()
-    const [formState, setFormState] = useState(initialState)
+    const [formState, setFormState] = useState({
+        searchBar: "",
+        searchMethod: "by_name",
+        searchMethodName: "name"
+    })
 
     // State update functions
     const handleTextInput = (event) => {
@@ -37,12 +33,12 @@ const Home = () => {
                     <Route path="/" element={
                         <>
                             <Welcome />
-                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} searchMethod={formState.searchMethodName} />
+                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
                         </>
                     } />
                     <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={
                         <>
-                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} searchMethod={formState.searchMethodName} />
+                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
                             <SearchResults />
                         </>
                     } />
