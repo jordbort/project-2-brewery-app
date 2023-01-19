@@ -62,7 +62,7 @@ const Brewery = () => {
     if (brewery) {
         return (
             <>
-                <h2>Brewery details:</h2>
+                <h2 className='brewery-details-header'>Brewery details:</h2>
                 <button className='random-brewery-button' onClick={handleClick}>Random Brewery</button>
                 <div className='details'>
                     <div className="brewery-container">

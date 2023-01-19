@@ -9,8 +9,12 @@ p {
     justify-content: center;
 }
 
+.brewery-details-header {
+    margin-left: 8%;
+}
+
 .random-brewery-button {
-    margin-left: 20px;
+    margin-left: 8%;
     width: 120px;
 }
 
