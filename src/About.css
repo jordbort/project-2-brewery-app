@@ -45,16 +45,7 @@
 @media (orientation: portrait),
 (max-width: 650px) {
     .about-container {
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* align-items: center; */
-        /* text-align: center; */
-        /* align-self: center; */
         padding: 10px;
-        /* border: 2px solid black; */
-        /* border-radius: 10px; */
         width: 85%;
-        /* position: relative; */
-        /* margin-bottom: 40px; */
     }
 }
