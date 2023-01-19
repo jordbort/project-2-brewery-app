@@ -3,16 +3,19 @@
     display: flex;
     justify-content: center;
 }
+
 .random-brewery-button {
     margin-left: 20px;
     width: 120px;
 }
+
 .brewery-container {
     display: flex;
     justify-content: space-evenly;
     margin: 20px;
     width: 70%;
 }
+
 .brewery-info {
     width: 50%;
     display: flex;
@@ -20,9 +23,11 @@
     gap: 8px;
     padding: 10px;
 }
+
 .brewery-info p {
     margin: 0 0 0 16px;
 }
+
 .map-container {
     display: flex;
     justify-content: center;
@@ -31,34 +36,40 @@
     height: 350px;
     width: 50%;
 }
+
 .no-map {
     flex-direction: column;
 }
+
 .empty-mug {
     transform: rotate(-135deg);
     color: #AAAAAA;
 }
+
 .brewery-name {
     font-family: 'Special Elite', cursive;
     font-size: 30px;
     margin: 0;
 }
+
 .brewery-type {
     margin: 0 0 16px 0;
 }
 
 /* Media queries */
-@media only screen and (max-width:725px){
-    .brewery-container{
-        display:block;
+@media only screen and (max-width:725px) {
+    .brewery-container {
+        display: block;
     }
-    .brewery-info{
-        width:80%;
+
+    .brewery-info {
+        width: 80%;
         margin: 0 auto;
     }
-    .map-container{
-        width:80%;
+
+    .map-container {
+        width: 80%;
         justify-content: center;
-        margin:0 auto;
+        margin: 0 auto;
     }
 }
