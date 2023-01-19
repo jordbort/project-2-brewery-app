@@ -20,7 +20,7 @@ p {
 .logo {
     font-family: 'Special Elite', cursive;
     font-size: 3.75rem;
-    margin-left: 20px;
+    margin-left: 6%;
 }
 
 .site-content {
@@ -35,7 +35,7 @@ p {
     background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 30%, #fbcc31 70%, #ffd54f 90%, white);
     display: flex;
     flex-flow: column;
-    width: 80%;
+    width: 60%;
     min-height: 84vh;
     border: 8px solid white;
     border-top: none;
@@ -49,14 +49,13 @@ p {
 }
 
 .nav {
-    width: 96vw;
+    margin: 0 12.5%;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(at bottom, white 56%, black 58%);
+    background-image: radial-gradient(at bottom, white 55%, black 58%);
     align-items: flex-end;
-    height: 7vh;
-    padding: 20px;
-    position: relative;
+    height: 6vh;
+    padding: 0 0 12px;
 }
 
 .nav p {
@@ -71,7 +70,7 @@ p {
 
 .inner-bubbles {
     position: absolute;
-    z-index: -1;
+    /* z-index: -1; */
     width: 4px;
     height: 4px;
     border-radius: 50%;
@@ -82,7 +81,7 @@ p {
 
 /* Animation classes and keyframes */
 .inner-bubble-1 {
-    left: 26%;
+    left: 16%;
     animation: inner-bubble-up 4.5s linear 3.1s forwards infinite;
 }
 
@@ -118,7 +117,7 @@ p {
         opacity: 0.9;
     }
 
-    100% {
+    85% {
         bottom: 110%;
         opacity: 0.0;
     }
@@ -137,9 +136,9 @@ p {
     }
 
     .nav {
+        margin: 0 1%;
         background-image: radial-gradient(at bottom, white 63%, black 68%);
-        width: 100vw;
-        height: 6vh;
+        height: 5.5vh;
         padding: 0 0 8px;
     }
 
