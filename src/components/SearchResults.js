@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SearchResults = () => {
     const navigate = useNavigate()
-    let {userQueryBy, userQuery, pageNumber, perPage, sortMethod, sortDirection} = useParams()
+    let { userQueryBy, userQuery, pageNumber, perPage, sortMethod, sortDirection } = useParams()
     const [results, setResults] = useState(null)
     const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
     const [sortMethodState, setSortMethodState] = useState(sortMethod)
@@ -14,40 +14,40 @@ const SearchResults = () => {
     useEffect(() => {
         const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         fetch(url)
-        .then((response) => response.json())
-        .then((json) => {
-            setResults(json)
-            setResultsPerPageState(perPage)
-            setSortMethodState(sortMethod)
-            setSortDirectionState(sortDirection)
-        })
+            .then((response) => response.json())
+            .then((json) => {
+                setResults(json)
+                setResultsPerPageState(perPage)
+                setSortMethodState(sortMethod)
+                setSortDirectionState(sortDirection)
+            })
     }, [userQueryBy, userQuery, pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
 
     // Results per page dropdown selection menu function
     const handlePerPageSelect = (event) => {
         perPage = event.target.value
-        setResultsPerPageState({...resultsPerPageState, [event.target.name]: event.target.value})
+        setResultsPerPageState({ ...resultsPerPageState, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Sort method dropdown selection menu function
     const handleSortMethodSelect = (event) => {
         sortMethod = event.target.value
-        setSortMethodState({...sortMethod, [event.target.name]: event.target.value})
+        setSortMethodState({ ...sortMethod, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Sort direction radio button click function
     const handleSortDirectionClick = (event) => {
         sortDirection = event.target.value
-        setSortDirectionState({...sortDirection, [event.target.name]: event.target.value})
+        setSortDirectionState({ ...sortDirection, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Prev page click (available except for page 1)
     const handlePrevPageClick = (event) => {
         let newPageNumber = Number(pageNumber)
-        if(pageNumber > 1) {
+        if (pageNumber > 1) {
             newPageNumber--
             navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
         }
@@ -60,7 +60,7 @@ const SearchResults = () => {
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
 
-    if(!results) {
+    if (!results) {
         return (
             <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
         )
@@ -68,7 +68,7 @@ const SearchResults = () => {
     else {
         return (
             <div className="all-search-components-container">
-                
+
                 {/* Search controls */}
                 <h2>Search results:</h2>
                 <div className="sort-methods">
@@ -82,10 +82,10 @@ const SearchResults = () => {
                             <option value="country">Country</option>
                         </select>
                     </form>
-                        <form>
-                            <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />123→ABC</label>
-                            <label><input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />ZYX→321</label>
-                        </form>
+                    <form>
+                        <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />123→ABC</label>
+                        <label><input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />ZYX→321</label>
+                    </form>
                     <form>
                         <label htmlFor="results-per-page">Results per page: </label>
                         <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
@@ -104,7 +104,7 @@ const SearchResults = () => {
                             {/* Page navigation information */}
                             <p className="page-number">Page: {pageNumber} (items: {results.length})</p>
                             <div className="page-buttons">
-                                {Number(pageNumber)===1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                                {Number(pageNumber) === 1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
                                 {Number(results.length) < Number(perPage) ? null : <button onClick={handleNextPageClick}>Next Page</button>}
                             </div>
 
@@ -127,7 +127,7 @@ const SearchResults = () => {
                                                     </div>
                                                 </div>
                                                 <div className="extra-details">
-                                                    {brewery.longitude && brewery.latitude ?  <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div>}
+                                                    {brewery.longitude && brewery.latitude ? <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div>}
                                                     <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
                                                 </div>
                                             </Link>
@@ -138,7 +138,7 @@ const SearchResults = () => {
 
                             {/* Page navigation buttons (bottom) */}
                             <div className="page-buttons" id="bottom-buttons">
-                                {Number(pageNumber)===1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
+                                {Number(pageNumber) === 1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
                                 {Number(results.length) < Number(perPage) ? null : <button onClick={handleNextPageClick}>Next Page</button>}
                             </div>
                         </>

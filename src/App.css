@@ -129,6 +129,7 @@ p {
     p {
         font-size: 0.8rem;
     }
+
     .beer-glass {
         position: relative;
         background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
@@ -146,6 +147,7 @@ p {
         margin: 0 10px;
         font-size: 0.9rem;
     }
+
     .logo {
         font-size: 2rem;
         margin-left: 0;
