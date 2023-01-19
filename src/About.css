@@ -39,3 +39,7 @@
     color: brown;
     text-decoration: underline;
 }
+
+@media (orientation: portrait),
+(max-width: 650px) {
+}

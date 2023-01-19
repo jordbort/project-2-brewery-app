@@ -12,10 +12,14 @@ form {
     margin-left: 20px;
 }
 
+p {
+    font-size: 1rem;
+}
+
 /* Class styling */
 .logo {
     font-family: 'Special Elite', cursive;
-    font-size: 60px;
+    font-size: 3.75rem;
     margin-left: 20px;
 }
 
@@ -28,7 +32,8 @@ form {
 
 .beer-glass {
     position: relative;
-    background-image: linear-gradient(to right, white, #ffd54f 30%, #fbcc31 50%, #fbcc31 60%, #ffd54f 70%, white);
+    z-index: -2;
+    background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 30%, #fbcc31 70%, #ffd54f 90%, white);
     display: flex;
     flex-flow: column;
     width: 80%;
@@ -45,18 +50,20 @@ form {
 }
 
 .nav {
+    /* border: 1px dashed red; */
+    width: 96vw;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(at bottom, white 57%, black 58%);
+    background-image: radial-gradient(at bottom, white 56%, black 58%);
     align-items: flex-end;
-    height: 10vh;
+    /* height: 10vh; */
+    height: 7vh;
     padding: 20px;
     position: relative;
 }
 
 .nav p {
-    font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0px 32px;
 }
 
@@ -67,9 +74,9 @@ form {
 
 .inner-bubbles {
     position: absolute;
-    z-index: 0;
-    width: 6px;
-    height: 6px;
+    z-index: -1;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background: #cf8d2e;
     bottom: 0;
@@ -78,34 +85,34 @@ form {
 
 /* Animation classes and keyframes */
 .inner-bubble-1 {
-    left: 50%;
-    animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
+    left: 26%;
+    animation: inner-bubble-up 4.5s linear 3.1s forwards infinite;
 }
 
 .inner-bubble-2 {
-    left: 45%;
-    animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
+    left: 31%;
+    animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
 }
 
 .inner-bubble-3 {
     left: 47%;
-    animation: inner-bubble-up 4.5s linear 2.5s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
 }
 
 .inner-bubble-4 {
-    left: 53%;
-    animation: inner-bubble-up 4s linear 2.7s forwards infinite;
+    left: 54%;
+    animation: inner-bubble-up 4s linear 2.9s forwards infinite;
 }
 
 .inner-bubble-5 {
-    left: 23%;
-    -webkit-animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
-    animation: inner-bubble-up 4.5s linear 2.8s forwards infinite;
+    left: 66%;
+    -webkit-animation: inner-bubble-up 4.5s linear 3s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 3s forwards infinite;
 }
 
 .inner-bubble-6 {
     left: 80%;
-    animation: inner-bubble-up 4.5s linear 3.9s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 4.1s forwards infinite;
 }
 
 @keyframes inner-bubble-up {
@@ -121,8 +128,44 @@ form {
 }
 
 /* Media queries */
-@media only screen and (max-width: 650px) {
+@media (orientation: portrait),
+(max-width: 650px) {
+    p {
+        font-size: 0.8rem;
+    }
+    .beer-glass {
+        /* position: relative; */
+        background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
+        /* display: flex; */
+        /* flex-flow: column; */
+        width: 91%;
+        /* min-height: 84vh; */
+        /* border: 8px solid white; */
+        /* border-top: none; */
+        /* overflow: hidden; */
+    }
+
+    .nav {
+        /* display: flex; */
+        /* justify-content: center; */
+        background-image: radial-gradient(at bottom, white 63%, black 68%);
+        /* align-items: flex-end; */
+        /* margin: 0; */
+        /* border: 1px dashed red; */
+        width: 100vw;
+        height: 6vh;
+        padding: 0 0 12px;
+        padding: 0;
+        /* position: relative; */
+    }
+
     .nav p {
-        margin: 5px;
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+    .logo {
+        /* font-family: 'Special Elite', cursive; */
+        font-size: 2rem;
+        /* margin-left: 20px; */
     }
 }
