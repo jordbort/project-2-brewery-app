@@ -2,56 +2,49 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const SearchResults = () => {
+export default function SearchResults() {
+    const [results, setResults] = useState([])
+
     const navigate = useNavigate()
     let { userQueryBy, userQuery, pageNumber, perPage, sortMethod, sortDirection } = useParams()
-    const [results, setResults] = useState(null)
-    const [resultsPerPageState, setResultsPerPageState] = useState(perPage)
-    const [sortMethodState, setSortMethodState] = useState(sortMethod)
-    const [sortDirectionState, setSortDirectionState] = useState(sortDirection)
+
+    async function getResults(userQueryBy, userQuery, sortMethod, sortDirection, perPage, pageNumber) {
+        let searchResults
+        try {
+            const response = await fetch(`https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`)
+            searchResults = await response.json()
+        } catch (err) {
+            console.error(err)
+        } finally {
+            setResults(searchResults)
+        }
+    }
 
     // API call and response
     useEffect(() => {
-        console.log(`* useEffect() invoked...`)
-        const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
-        fetch(url)
-            .then((response) => response.json())
-            .then((json) => {
-                setResults(json)
-                setResultsPerPageState(perPage)
-                setSortMethodState(sortMethod)
-                setSortDirectionState(sortDirection)
-            })
-            .finally(console.log(results, resultsPerPageState, sortMethod, sortDirectionState))
-    }, [userQueryBy, userQuery, pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
+        getResults(userQueryBy, userQuery, sortMethod, sortDirection, perPage, pageNumber)
+    }, [userQueryBy, userQuery, sortMethod, sortDirection, perPage, pageNumber])
 
     // Results per page dropdown selection menu function
-    const handlePerPageSelect = (event) => {
-        console.log(`- handlePerPageSelect() invoked...`)
+    function handlePerPageSelect(event) {
         perPage = event.target.value
-        setResultsPerPageState({ ...resultsPerPageState, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Sort method dropdown selection menu function
-    const handleSortMethodSelect = (event) => {
-        console.log(`- handleSortMethodSelect() invoked...`)
+    function handleSortMethodSelect(event) {
         sortMethod = event.target.value
-        setSortMethodState({ ...sortMethod, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Sort direction radio button click function
-    const handleSortDirectionClick = (event) => {
-        console.log(`- handleSortDirectionClick() invoked...`)
+    function handleSortDirectionClick(event) {
         sortDirection = event.target.value
-        setSortDirectionState({ ...sortDirection, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
     }
 
     // Prev page click (available except for page 1)
-    const handlePrevPageClick = (event) => {
-        console.log(`- handlePrevPageClick() invoked...`)
+    function handlePrevPageClick(event) {
         let newPageNumber = Number(pageNumber)
         if (pageNumber > 1) {
             newPageNumber--
@@ -60,19 +53,13 @@ const SearchResults = () => {
     }
 
     // Next page click ()
-    const handleNextPageClick = (event) => {
-        console.log(`- handleNextPageClick() invoked...`)
+    function handleNextPageClick(event) {
         let newPageNumber = Number(pageNumber)
         newPageNumber++
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
-
-    if (!results) {
-        return (
-            <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
-        )
-    }
-    else {
+    
+    function loaded() {
         return (
             <div className="all-search-components-container">
 
@@ -90,12 +77,16 @@ const SearchResults = () => {
                         </select>
                     </form>
                     <form>
-                        <label><input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />123→ABC</label>
-                        <label><input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />ZYX→321</label>
+                        <label>
+                            <input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />123→ABC
+                        </label>
+                        <label>
+                            <input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />ZYX→321
+                        </label>
                     </form>
                     <form>
                         <label htmlFor="results-per-page">Results per page: </label>
-                        <select name="results-per-page" id="results-per-page" value={resultsPerPageState} onChange={handlePerPageSelect}>
+                        <select name="results-per-page" id="results-per-page" value={perPage} onChange={handlePerPageSelect}>
                             <option value={5}>5</option>
                             <option value={10}>10</option>
                             <option value={20}>20</option>
@@ -154,6 +145,6 @@ const SearchResults = () => {
             </div>
         )
     }
-}
 
-export default SearchResults
+    return results ? loaded() : <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
+}
