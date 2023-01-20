@@ -1,68 +1,85 @@
 import '../Brewery.css'
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from "../components/Map"
 
-const Brewery = () => {
-    const [brewery, setBrewery] = useState([])
-    const [randomBrewery, setRandomBreweryState] = useState()
+export default function Brewery() {
+    const [brewery, setBrewery] = useState({})
+
     const selectedBrewery = useParams()
 
-    // generate a random number based on the total number of breweries in the API, 8163 as of 12/11/22
-    // then push it to the API to return a random page number w/ 1 result per page
-    // this returns a single brewery object
-    // this was a workaround solution due to the API's "get random" feature not working as expected
-    const randNum = () => {
-        return Math.floor(Math.random() * 8163)
+    /*
+    const [totalBreweries, setTotalBreweries] = useState(8170) // <= putting our most up-to-date count of total breweries here is better than putting 0, otherwise the first random brewery will always be the same
+
+    - This function would ensure that we're always working with the up-to-date total of breweries in the database, at least after the first page render
+    - We need to restructure the components before we can use it though, because it can't run here without causing another render
+    - Causing the page to render again risks making the map out of sync again
+    - We could make the brewery info/details its own component on this page, so we can use this getTotalBreweries function here, and pass its state data down as props
+    - (Unfortunately you can't use useState or other React hooks at the top / App.js level... I tried)
+
+    async function getTotalBreweries() {
+        let data
+        try {
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/meta`)
+            data = await response.json()
+        } catch (err) {
+            console.error(err.message)
+        } finally {
+            setTotalBreweries(data.total)
+        }
     }
+    */
 
     // API call for when "Random Brewery" button is clicked
-    const handleRandomFetch = useCallback(async () => {
-        const newNum = randNum()
-        const randURL = `https://api.openbrewerydb.org/breweries/?page=${newNum}&per_page=1`
-        fetch(randURL)
-            .then((res) => res.json())
-            .then((data) => setRandomBreweryState(data))
-            .catch((err) => console.log(err))
-    }, [])
+    async function handleRandomFetch(randomNumber) {
+        let randomBrewery
+        try {
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${randomNumber}&per_page=1`)
+            randomBrewery = await response.json()
+        } catch (err) {
+            console.error(err.message)
+        } finally {
+            setBrewery(randomBrewery[0])
+        }
+    }
 
     // API call for brewery selected from the Search Results page
-    const handleNormalFetch = useCallback(async () => {
-        const urlForFetch = 'https://api.openbrewerydb.org/breweries/' + selectedBrewery.brewery
-        fetch(urlForFetch)
-            .then((res) => res.json())
-            .then((json) => {
-                setBrewery(json)
-            })
-    }, [selectedBrewery.brewery])
+    async function handleNormalFetch(breweryName) {
+        let chosenBrewery
+        try {
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${breweryName}&per_page=1`)
+            chosenBrewery = await response.json()
+        } catch (err) {
+            console.error(err.message)
+        } finally {
+            setBrewery(chosenBrewery[0])
+        }
+    }
 
     // handles button click for "Random Brewery" button
-    const handleClick = () => {
-        handleRandomFetch()
-        setBrewery(randomBrewery[0])
+    function handleClick() {
+        const randNum = Math.floor(Math.random() * 8170) // initial count, current total as of January 19, 2023
+        setBrewery({})
+        handleRandomFetch(randNum)
     }
+
     useEffect(() => {
-        if (selectedBrewery.brewery !== 'random') {
-            handleNormalFetch()
-        }
-        else {
-            handleRandomFetch()
-        }
-    }, [handleNormalFetch, handleRandomFetch, selectedBrewery.brewery])
+        selectedBrewery.brewery === 'random' ? handleRandomFetch(Math.floor(Math.random() * 8170)) : handleNormalFetch(selectedBrewery.brewery)
+        
+        return (() => {
+            setBrewery({})
+        })
+    }, [selectedBrewery.brewery])
 
-    const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
-    // Placeholder while the data from the API loads
-    if (!brewery) {
-        <p>Loading brewery info...</p>
-    }
+    function loaded() {
+        const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
-    if (brewery) {
         return (
             <>
-                <h2>Brewery details:</h2>
+                <h2 className='brewery-details-header'>Brewery details:</h2>
                 <button className='random-brewery-button' onClick={handleClick}>Random Brewery</button>
                 <div className='details'>
                     <div className="brewery-container">
@@ -81,15 +98,21 @@ const Brewery = () => {
                             {updated_at ? <p><em>Last updated: {updated_at[5] + updated_at[6] + `/` + updated_at[8] + updated_at[9] + `/` + updated_at[0] + updated_at[1] + updated_at[2] + updated_at[3]}</em></p> : null}
                         </div>
 
-                        {latitude ?
-                            <div className="map-container"><Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code} /></div> :
-                            <div className="map-container no-map"><p><FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" size="10x" className="empty-mug" /></p><p>(No map available)</p></div>}
-
+                        {brewery.id && latitude && longitude ?
+                            <div className="map-container">
+                                <Map name={name} latitude={latitude} longitude={longitude} city={city} state={state} postal_code={postal_code} />
+                            </div> :
+                            <div className="map-container no-map">
+                                <p><FontAwesomeIcon icon="fa-solid fa-beer-mug-empty" size="10x" className="empty-mug" /></p>
+                                <p>(No map available)</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </>
         )
+        // }
     }
-}
 
-export default Brewery
+    return brewery?.id ? loaded() : <h2 className='brewery-details-header'>Loading brewery info...</h2>
+}

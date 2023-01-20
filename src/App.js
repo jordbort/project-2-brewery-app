@@ -25,9 +25,9 @@ function App() {
                         <h1 className='logo'><Link to="/">Brewery Buddy 🍻</Link></h1>
                     </div>
                     <Routes>
-                        <Route path='*' element={ <Home /> } />
-                        <Route path='/about' element={ <About /> } />
-                        <Route path='/brewery/:brewery' element={ <Brewery /> } />
+                        <Route path='*' element={<Home />} />
+                        <Route path='/about' element={<About />} />
+                        <Route path='/brewery/:brewery' element={<Brewery />} />
                     </Routes>
                     <div className="inner-bubbles inner-bubble-1"></div>
                     <div className="inner-bubbles inner-bubble-2"></div>
