@@ -6,20 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from "../components/Map"
 
 export default function Brewery() {
+    // console.log(`*** Brewery() invoked`)
     const [brewery, setBrewery] = useState({})
+    const [totalBreweries, setTotalBreweries] = useState(0)
 
     const selectedBrewery = useParams()
 
-    /*
-    const [totalBreweries, setTotalBreweries] = useState(8170) // <= putting our most up-to-date count of total breweries here is better than putting 0, otherwise the first random brewery will always be the same
-
-    - This function would ensure that we're always working with the up-to-date total of breweries in the database, at least after the first page render
-    - We need to restructure the components before we can use it though, because it can't run here without causing another render
-    - Causing the page to render again risks making the map out of sync again
-    - We could make the brewery info/details its own component on this page, so we can use this getTotalBreweries function here, and pass its state data down as props
-    - (Unfortunately you can't use useState or other React hooks at the top / App.js level... I tried)
-
     async function getTotalBreweries() {
+        // console.log(`> getTotalBreweries()...`)
         let data
         try {
             const response = await fetch(`https://api.openbrewerydb.org/breweries/meta`)
@@ -27,60 +21,73 @@ export default function Brewery() {
         } catch (err) {
             console.error(err.message)
         } finally {
+            // console.log(`> getTotalBreweries() found`, data.total, `breweries!`)
             setTotalBreweries(data.total)
         }
     }
-    */
 
-    // API call for when "Random Brewery" button is clicked
-    async function handleRandomFetch(randomNumber) {
+    // API call for brewery selected from the Search Results
+    async function findRandomBrewery(randNum) {
+        // console.log(`> findRandomBrewery()...`, randNum)
         let randomBrewery
         try {
-            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${randomNumber}&per_page=1`)
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${randNum}&per_page=1`)
             randomBrewery = await response.json()
         } catch (err) {
             console.error(err.message)
         } finally {
+            // console.log(`> findRandomBrewery() found:`, randomBrewery[0].id)
             setBrewery(randomBrewery[0])
         }
     }
 
-    // API call for brewery selected from the Search Results page
-    async function handleNormalFetch(breweryName) {
+    // API call for brewery selected by random number
+    async function findBrewery(breweryName) {
+        // console.log(`> findBrewery()...`, breweryName)
         let chosenBrewery
         try {
-            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${breweryName}&per_page=1`)
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/${breweryName}`)
             chosenBrewery = await response.json()
         } catch (err) {
             console.error(err.message)
         } finally {
-            setBrewery(chosenBrewery[0])
+            // console.log(`> findBrewery() found:`, chosenBrewery.id)
+            setBrewery(chosenBrewery)
         }
     }
 
     // handles button click for "Random Brewery" button
     function handleClick() {
-        const randNum = Math.floor(Math.random() * 8170) // initial count, current total as of January 19, 2023
+        const randNum = Math.floor(Math.random() * totalBreweries)
         setBrewery({})
-        handleRandomFetch(randNum)
+        findRandomBrewery(randNum)
     }
 
     useEffect(() => {
-        selectedBrewery.brewery === 'random' ? handleRandomFetch(Math.floor(Math.random() * 8170)) : handleNormalFetch(selectedBrewery.brewery)
-        
-        return (() => {
-            setBrewery({})
-        })
-    }, [selectedBrewery.brewery])
+        // console.log(`* useEffect:`)
+        if (totalBreweries > 0 && selectedBrewery.brewery === 'random') {
+            findRandomBrewery(Math.floor(Math.random() * totalBreweries))
+        }
+        if (totalBreweries > 0 && selectedBrewery.brewery !== 'random') {
+            findBrewery(selectedBrewery.brewery)
+        }
+        if (!totalBreweries) {
+            getTotalBreweries()
+        }
 
+        // Just for demonstration, since resetting the state variables would cause an infinite loop
+        return
+    }, [totalBreweries, selectedBrewery.brewery])
+
+    const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
     function loaded() {
-        const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
+        // console.log(`Page loaded! Map?`, Boolean(longitude && latitude))
 
         return (
             <>
-                <h2 className='brewery-details-header'>Brewery details:</h2>
                 <button className='random-brewery-button' onClick={handleClick}>Random Brewery</button>
+                <h2 className='brewery-details-header'>Brewery details:</h2>
                 <div className='details'>
                     <div className="brewery-container">
                         <div className='brewery-info'>
@@ -111,8 +118,10 @@ export default function Brewery() {
                 </div>
             </>
         )
-        // }
     }
 
-    return brewery?.id ? loaded() : <h2 className='brewery-details-header'>Loading brewery info...</h2>
+    return totalBreweries && brewery.id ? loaded() : (
+        // console.log(`Loading... Breweries:`, totalBreweries, brewery),
+        <h2 className='brewery-details-header'>Loading brewery info...</h2>
+    )
 }
