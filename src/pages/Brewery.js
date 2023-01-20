@@ -65,16 +65,16 @@ export default function Brewery() {
 
     useEffect(() => {
         console.log(`* useEffect:`)
-        if (totalBreweries > 0 && selectedBrewery.brewery === 'random') {
+        if (totalBreweries && selectedBrewery.brewery === 'random') {
             findRandomBrewery(Math.floor(Math.random() * totalBreweries))
         }
-        if (totalBreweries > 0 && selectedBrewery.brewery !== 'random') {
+        if (selectedBrewery.brewery !== 'random') {
             findBrewery(selectedBrewery.brewery)
         }
         if (!totalBreweries) {
             getTotalBreweries()
         }
-
+        
         // Just for demonstration, since resetting the state variables would cause an infinite loop
         return
     }, [totalBreweries, selectedBrewery.brewery])
