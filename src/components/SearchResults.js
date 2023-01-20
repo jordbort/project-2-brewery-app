@@ -12,6 +12,7 @@ const SearchResults = () => {
 
     // API call and response
     useEffect(() => {
+        console.log(`* useEffect() invoked...`)
         const url = `https://api.openbrewerydb.org/breweries?${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${pageNumber}`
         fetch(url)
             .then((response) => response.json())
@@ -21,10 +22,12 @@ const SearchResults = () => {
                 setSortMethodState(sortMethod)
                 setSortDirectionState(sortDirection)
             })
+            .finally(console.log(results, resultsPerPageState, sortMethod, sortDirectionState))
     }, [userQueryBy, userQuery, pageNumber, perPage, navigate, resultsPerPageState, sortDirection, sortDirectionState, sortMethod, sortMethodState])
 
     // Results per page dropdown selection menu function
     const handlePerPageSelect = (event) => {
+        console.log(`- handlePerPageSelect() invoked...`)
         perPage = event.target.value
         setResultsPerPageState({ ...resultsPerPageState, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
@@ -32,6 +35,7 @@ const SearchResults = () => {
 
     // Sort method dropdown selection menu function
     const handleSortMethodSelect = (event) => {
+        console.log(`- handleSortMethodSelect() invoked...`)
         sortMethod = event.target.value
         setSortMethodState({ ...sortMethod, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
@@ -39,6 +43,7 @@ const SearchResults = () => {
 
     // Sort direction radio button click function
     const handleSortDirectionClick = (event) => {
+        console.log(`- handleSortDirectionClick() invoked...`)
         sortDirection = event.target.value
         setSortDirectionState({ ...sortDirection, [event.target.name]: event.target.value })
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=1`)
@@ -46,6 +51,7 @@ const SearchResults = () => {
 
     // Prev page click (available except for page 1)
     const handlePrevPageClick = (event) => {
+        console.log(`- handlePrevPageClick() invoked...`)
         let newPageNumber = Number(pageNumber)
         if (pageNumber > 1) {
             newPageNumber--
@@ -55,6 +61,7 @@ const SearchResults = () => {
 
     // Next page click ()
     const handleNextPageClick = (event) => {
+        console.log(`- handleNextPageClick() invoked...`)
         let newPageNumber = Number(pageNumber)
         newPageNumber++
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)

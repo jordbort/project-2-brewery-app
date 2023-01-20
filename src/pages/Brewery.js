@@ -47,13 +47,15 @@ export default function Brewery() {
 
     // API call for brewery selected from the Search Results page
     async function handleNormalFetch(breweryName) {
-        console.log(`> handleNormalFetch()...`)
-        fetch(`https://api.openbrewerydb.org/breweries/${breweryName}`)
-            .then((res) => res.json())
-            .catch((err) => console.error(err.message))
-            .finally((json) => {
-                setBrewery(json)
-            })
+        let chosenBrewery
+        try {
+            const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${breweryName}&per_page=1`)
+            chosenBrewery = await response.json()
+        } catch (err) {
+            console.error(err.message)
+        } finally {
+            setBrewery(chosenBrewery[0])
+        }
     }
 
     // handles button click for "Random Brewery" button
@@ -112,5 +114,5 @@ export default function Brewery() {
         // }
     }
 
-    return brewery.id ? loaded() : <h2 className='brewery-details-header'>Loading brewery info...</h2>
+    return brewery?.id ? loaded() : <h2 className='brewery-details-header'>Loading brewery info...</h2>
 }
