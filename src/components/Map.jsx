@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useEffect } from "react"
 import "leaflet/dist/leaflet.css"
 
-const Map = (props) => {
+export default function Map(props) {
     const { name, latitude, longitude, city, state, postal_code } = props
     let mapPosition = [Number(latitude), Number(longitude)]
 
@@ -33,5 +33,3 @@ const Map = (props) => {
         </div>
     )
 }
-
-export default Map

@@ -5,7 +5,7 @@ import Welcome from "../components/Welcome"
 import SearchResults from "../components/SearchResults"
 import "../Home.css"
 
-const Home = () => {
+export default function Home() {
     // State variables
     const navigate = useNavigate()
     const [formState, setFormState] = useState({
@@ -15,13 +15,13 @@ const Home = () => {
     })
 
     // State update functions
-    const handleTextInput = (event) => {
+    function handleTextInput(event) {
         setFormState({ ...formState, [event.target.name]: event.target.value })
     }
-    const handleRadioClick = (event) => {
+    function handleRadioClick(event) {
         setFormState({ ...formState, [event.target.name]: event.target.value, searchMethodName: event.target.id })
     }
-    const handleSubmitClick = (event) => {
+    function handleSubmitClick(event) {
         event.preventDefault()
         if (formState.searchBar !== "") {
             navigate(`/breweries/${formState.searchMethod}=${formState.searchBar}&sort=name:asc&per_page=20&page=1`)
@@ -50,5 +50,3 @@ const Home = () => {
         </>
     )
 }
-
-export default Home
