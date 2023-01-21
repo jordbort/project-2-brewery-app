@@ -1,6 +1,6 @@
 import '../About.css'
 
-const About = () => {
+export default function About() {
     return (
         <nav className="about-container">
             <h3>Developed by:</h3>
@@ -13,13 +13,13 @@ const About = () => {
             <h3>with General Assembly</h3>
             <h3><a href="https://github.com/jordbort/project-2-brewery-app" target="_blank" rel="noreferrer">Check out the Github Repo here!</a></h3>
             <h4>Made using the following technologies:</h4>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>React.js</li>
-                    <li>Node.js</li>
-                </ul>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React.js</li>
+                <li>Node.js</li>
+            </ul>
             <h4>Made possible thanks to the following APIs and resources:</h4>
             <ul>
                 <li><a href="https://www.openbrewerydb.org" target="_blank" rel="noreferrer">Open Brewery DB</a></li>
@@ -33,5 +33,3 @@ const About = () => {
         </nav>
     )
 }
-
-export default About
