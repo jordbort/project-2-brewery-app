@@ -1,4 +1,4 @@
-const Search = (props) => {
+export default function Search(props) {
     const { radioClick, submitClick, textInput } = props
     const { searchBar, searchMethod, searchMethodName } = props.form
 
@@ -73,5 +73,3 @@ const Search = (props) => {
         </>
     )
 }
-
-export default Search

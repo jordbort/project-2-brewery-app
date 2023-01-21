@@ -1,6 +1,6 @@
 import '../About.css'
 
-const About = () => {
+export default function About() {
     return (
         <nav className="about-container">
             <h3>Developed by:</h3>
@@ -33,5 +33,3 @@ const About = () => {
         </nav>
     )
 }
-
-export default About

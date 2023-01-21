@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function SearchResults() {
-    const [results, setResults] = useState([])
+    const [results, setResults] = useState(undefined)
 
     const navigate = useNavigate()
     let { userQueryBy, userQuery, pageNumber, perPage, sortMethod, sortDirection } = useParams()
