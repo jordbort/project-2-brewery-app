@@ -6,14 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from "../components/Map"
 
 export default function Brewery() {
-    console.log(`*** Brewery() invoked`)
     const [brewery, setBrewery] = useState({})
     const [totalBreweries, setTotalBreweries] = useState(0)
 
     const selectedBrewery = useParams()
 
     async function getTotalBreweries() {
-        console.log(`> getTotalBreweries()...`)
         let data
         try {
             const response = await fetch(`https://api.openbrewerydb.org/breweries/meta`)
@@ -21,14 +19,12 @@ export default function Brewery() {
         } catch (err) {
             console.error(err.message)
         } finally {
-            console.log(`> getTotalBreweries() found`, data.total, `breweries!`)
             setTotalBreweries(data.total)
         }
     }
 
     // API call for brewery selected from the Search Results
     async function findRandomBrewery(randNum) {
-        console.log(`> findRandomBrewery()...`, randNum)
         let randomBrewery
         try {
             const response = await fetch(`https://api.openbrewerydb.org/breweries/?page=${randNum}&per_page=1`)
@@ -36,14 +32,12 @@ export default function Brewery() {
         } catch (err) {
             console.error(err.message)
         } finally {
-            console.log(`> findRandomBrewery() found:`, randomBrewery[0].id)
             setBrewery(randomBrewery[0])
         }
     }
 
     // API call for brewery selected by random number
     async function findBrewery(breweryName) {
-        console.log(`> findBrewery()...`, breweryName)
         let chosenBrewery
         try {
             const response = await fetch(`https://api.openbrewerydb.org/breweries/${breweryName}`)
@@ -51,7 +45,6 @@ export default function Brewery() {
         } catch (err) {
             console.error(err.message)
         } finally {
-            console.log(`> findBrewery() found:`, chosenBrewery.id)
             setBrewery(chosenBrewery)
         }
     }
@@ -64,7 +57,6 @@ export default function Brewery() {
     }
 
     useEffect(() => {
-        console.log(`* useEffect:`)
         if (totalBreweries && selectedBrewery.brewery === 'random') {
             findRandomBrewery(Math.floor(Math.random() * totalBreweries))
         }
@@ -76,13 +68,11 @@ export default function Brewery() {
         }
 
         // Just for demonstration, since resetting the state variables would cause an infinite loop
-        return console.log(`* (Nothing to clean up from side effect)`)
     }, [totalBreweries, selectedBrewery.brewery])
 
     const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
 
     function loaded() {
-        console.log(`Page loaded! Map?`, Boolean(longitude && latitude))
 
         return (
             <>
@@ -121,7 +111,7 @@ export default function Brewery() {
     }
 
     return totalBreweries && brewery.id ? loaded() : (
-        console.log(`Loading... Breweries:`, totalBreweries, brewery),
+        
         <h2 className='brewery-details-header'>Loading brewery info...</h2>
     )
 }
