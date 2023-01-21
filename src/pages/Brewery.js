@@ -68,15 +68,15 @@ export default function Brewery() {
         if (totalBreweries && selectedBrewery.brewery === 'random') {
             findRandomBrewery(Math.floor(Math.random() * totalBreweries))
         }
-        if (selectedBrewery.brewery !== 'random') {
+        if (!brewery.id && selectedBrewery.brewery !== 'random') {
             findBrewery(selectedBrewery.brewery)
         }
         if (!totalBreweries) {
             getTotalBreweries()
         }
-        
+
         // Just for demonstration, since resetting the state variables would cause an infinite loop
-        return
+        return console.log(`* (Nothing to clean up from side effect)`)
     }, [totalBreweries, selectedBrewery.brewery])
 
     const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
