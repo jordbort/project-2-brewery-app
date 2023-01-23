@@ -3,7 +3,8 @@ import { useState } from "react"
 import Search from "../components/Search"
 import Welcome from "../components/Welcome"
 import SearchResults from "../components/SearchResults"
-import "../Home.css"
+// import "../Home.css"
+import "../sassStyles/main.scss"
 
 export default function Home() {
     // State variables

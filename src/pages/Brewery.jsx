@@ -1,5 +1,5 @@
-import '../Brewery.css'
-
+// import '../Brewery.css'
+import "../sassStyles/main.scss"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

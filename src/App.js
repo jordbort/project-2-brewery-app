@@ -1,6 +1,6 @@
 // Styling
-import './App.css'
-
+// import './App.css'
+import "./App.scss"
 // Components
 import Nav from './components/Nav'
 

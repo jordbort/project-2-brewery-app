@@ -1,5 +1,5 @@
-import '../About.css'
-
+// import '../About.css'
+import "../sassStyles/main.scss"
 export default function About() {
     return (
         <nav className="about-container">
