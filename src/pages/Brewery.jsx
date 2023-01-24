@@ -75,9 +75,12 @@ export default function Brewery() {
     function loaded() {
 
         return (
-            <>
-                <button className='random-brewery-button' onClick={handleClick}>Random Brewery</button>
+            <div className="brewery">
+                <div className='brewery-header'>
                 <h2 className='brewery-details-header'>Brewery details:</h2>
+                <button className='random-brewery-button' onClick={handleClick}><p>Random Brewery</p></button>
+                
+                </div>
                 <div className='details'>
                     <div className="brewery-container">
                         <div className='brewery-info'>
@@ -106,7 +109,7 @@ export default function Brewery() {
                         }
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 

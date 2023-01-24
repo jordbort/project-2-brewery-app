@@ -124,6 +124,10 @@ select {
     height: 100px;
     margin: 0;
     padding: 0;
+    ul li {
+        list-style: none;
+        margin-left: 48px;
+    }
 }
 
 .search-result-container:hover {
@@ -131,10 +135,6 @@ select {
     box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.5);
 }
 
-.search-result-info ul li {
-    list-style: none;
-    margin-left: 48px;
-}
 
 /* For making closed breweries appear in red */
 .closed {

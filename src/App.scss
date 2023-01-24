@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
-
+.app{
+background-image:url('./assets/beer-bg.png');
+background-position:40% 13%;
+}
 /* Element styling */
 body {
-    background-color: #000000;
+    // background-color: #000000;
     font-family: 'IBM Plex Serif', serif;
+    h2, p, form {
+        // margin-left: 20px;
+    }
+    p {
+        // font-size: 1rem;
+    }
 }
 
-h2,
-p,
-form {
-    margin-left: 20px;
-}
 
-p {
-    font-size: 1rem;
-}
 
 /* Class styling */
 .logo {
@@ -31,50 +32,49 @@ p {
 }
 
 .beer-glass {
+    // background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 30%, #fbcc31 70%, #ffd54f 90%, white);
+    // border: 8px solid white;
     position: relative;
-    background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 30%, #fbcc31 70%, #ffd54f 90%, white);
     display: flex;
     flex-flow: column;
-    width: 60%;
-    min-height: 84vh;
-    border: 8px solid white;
+    // width: 80%;
+    min-height: 100vh;
     border-top: none;
     overflow: hidden;
 }
 
 .header-div {
-    position: relative;
+    // position: relative;
     padding: 0;
     margin-left: 20px;
 }
 
 .nav {
-    margin: 0 12.5%;
+    // margin: 0 12.5%;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(at bottom, white 55%, black 58%);
+    // background-image: radial-gradient(at bottom, white 55%, black 58%);
+    background-image:transparent;
     align-items: flex-end;
     height: 6vh;
     padding: 0 0 12px;
-}
-
-.nav p {
-    font-weight: 600;
-    margin: 0px 32px;
-}
-
-.nav a {
-    color: black;
-    text-decoration: none;
+        p{
+            font-weight: 600;
+            margin: 0px 32px;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
 }
 
 .inner-bubbles {
     position: absolute;
-    /* z-index: -1; */
-    width: 4px;
-    height: 4px;
+    width: .5rem;
+    height: .5rem;
     border-radius: 50%;
-    background: #cf8d2e;
+    // background: #cf8d2e;
+    border:1px solid #cf8d2e;
     bottom: 0;
     opacity: 0;
 }
@@ -124,6 +124,22 @@ p {
 }
 
 /* Media queries */
+@media (min-width: 1536px){
+    // 2xl media calls
+}
+@media (min-width:1280px){
+    // xl media calls
+}
+@media (min-width:1024px){
+    // lg media calls
+}
+@media (min-width:768){
+    // md media calls
+}
+@media (min-width:640px){
+    // sm media calls
+}
+
 @media (orientation: portrait),
 (max-width: 650px) {
     p {
@@ -132,13 +148,13 @@ p {
 
     .beer-glass {
         position: relative;
-        background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
+        // background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
         width: 91%;
     }
 
     .nav {
         margin: 0 1%;
-        background-image: radial-gradient(at bottom, white 63%, black 68%);
+        // background-image: radial-gradient(at bottom, white 63%, black 68%);
         height: 5.5vh;
         padding: 0 0 8px;
     }

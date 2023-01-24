@@ -17,7 +17,7 @@ import Brewery from './pages/Brewery'
 function App() {
     library.add(faMapLocationDot, faBeerMugEmpty, faGear, faPhone, faGlobe)
     return (
-        <>
+        <div className="app">
             <Nav />
             <div className="site-content">
                 <div className="beer-glass">
@@ -37,7 +37,7 @@ function App() {
                     <div className="inner-bubbles inner-bubble-6"></div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
