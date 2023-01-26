@@ -1,80 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
 .app{
 background-image:url('./assets/beer-bg.png');
-background-position:40% 13%;
-}
-/* Element styling */
-body {
-    // background-color: #000000;
-    font-family: 'IBM Plex Serif', serif;
-    h2, p, form {
-        // margin-left: 20px;
-    }
-    p {
-        // font-size: 1rem;
-    }
-}
-
-
-
-/* Class styling */
+background-size: cover;
+background-repeat: no-repeat;
+background-color: #ffe306;
+font-family: 'IBM Plex Serif', serif;
+min-height: 100vh;
+text-align: center;
 .logo {
     font-family: 'Special Elite', cursive;
     font-size: 3.75rem;
     margin-left: 6%;
 }
+}
+
+/* Class styling */
 
 .site-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 0;
+    // text-align: center;
 }
 
 .beer-glass {
-    // background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 30%, #fbcc31 70%, #ffd54f 90%, white);
-    // border: 8px solid white;
-    position: relative;
-    display: flex;
-    flex-flow: column;
-    // width: 80%;
-    min-height: 100vh;
-    border-top: none;
-    overflow: hidden;
+    // min-height: 100vh;
 }
 
 .header-div {
-    // position: relative;
-    padding: 0;
-    margin-left: 20px;
-}
-
-.nav {
-    // margin: 0 12.5%;
-    display: flex;
-    justify-content: center;
-    // background-image: radial-gradient(at bottom, white 55%, black 58%);
-    background-image:transparent;
-    align-items: flex-end;
-    height: 6vh;
-    padding: 0 0 12px;
-        p{
-            font-weight: 600;
-            margin: 0px 32px;
-        }
-        a{
-            color: black;
-            text-decoration: none;
-        }
+    // padding: 0;
+    // margin-left: 20px;
 }
 
 .inner-bubbles {
     position: absolute;
-    width: .5rem;
-    height: .5rem;
+    width: .75rem;
+    height: .75rem;
     border-radius: 50%;
-    // background: #cf8d2e;
-    border:1px solid #cf8d2e;
+    border:1.5px solid #cf8d2e;
     bottom: 0;
     opacity: 0;
 }
@@ -87,12 +47,12 @@ body {
 
 .inner-bubble-2 {
     left: 31%;
-    animation: inner-bubble-up 4.5s linear 2.9s forwards infinite;
+    animation: inner-bubble-up 3.5s linear 2.9s forwards infinite;
 }
 
 .inner-bubble-3 {
     left: 47%;
-    animation: inner-bubble-up 4.5s linear 2.7s forwards infinite;
+    animation: inner-bubble-up 3.5s linear 2.7s forwards infinite;
 }
 
 .inner-bubble-4 {
@@ -155,8 +115,8 @@ body {
     .nav {
         margin: 0 1%;
         // background-image: radial-gradient(at bottom, white 63%, black 68%);
-        height: 5.5vh;
-        padding: 0 0 8px;
+        // height: 5.5vh;
+        // padding: 0 0 8px;
     }
 
     .nav p {

@@ -20,7 +20,7 @@ function App() {
         <div className="app">
             <Nav />
             <div className="site-content">
-                <div className="beer-glass">
+                <div>
                     <div className="header-div">
                         <h1 className='logo'><Link to="/">Brewery Buddy 🍻</Link></h1>
                     </div>
