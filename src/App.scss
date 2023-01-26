@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
-.app{
-background-image:url('./assets/beer-bg.png');
-background-size: cover;
+
+.app {
+background-image:url('./assets/beer-bg-1680px.png');
+margin: 0 auto;
+background-size: auto;
 background-repeat: no-repeat;
 background-color: #ffe306;
 font-family: 'IBM Plex Serif', serif;
@@ -15,19 +17,6 @@ text-align: center;
 }
 
 /* Class styling */
-
-.site-content {
-    // text-align: center;
-}
-
-.beer-glass {
-    // min-height: 100vh;
-}
-
-.header-div {
-    // padding: 0;
-    // margin-left: 20px;
-}
 
 .inner-bubbles {
     position: absolute;

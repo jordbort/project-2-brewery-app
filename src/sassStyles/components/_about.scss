@@ -1,5 +1,10 @@
 .about-container {
     text-align: center;
+    background-color: rgba(255,255,255,.50);
+    border:2px solid rgba(255,255,255,.50);
+    margin: 0 auto;
+    border-radius: .25rem;
+    width:80%;
     ul {
         padding: 0;
         li {

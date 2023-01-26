@@ -20,14 +20,11 @@ button:hover {
 .page-buttons {
     display: flex;
     justify-content: space-between;
-    // width: 100%;
-    // margin-top: 16px;
-    margin-bottom: 0;
-    // width: 4rem;
 }
 .all-search-components-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Container for all the search results */
@@ -78,8 +75,6 @@ button:hover {
         margin-left: 48px;
     }
 }
-
-
 
 /* For making closed breweries appear in red */
 .closed {
