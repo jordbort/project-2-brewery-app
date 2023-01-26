@@ -1,0 +1,48 @@
+.search {
+    margin:0 auto;
+    text-align: center;
+    .search-bar {
+        font-size: 1rem;
+    }
+    .search-field-and-button {
+        display:flex;
+    }
+    
+    .search-radio-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+    
+    .page-number {
+        padding: 0;
+        margin: 20px 0 0 0;
+    }
+    
+    .sort-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    button {
+        background-color: white;
+        border:2px solid white;
+        border-radius:.25rem;
+        font-size:1rem;
+        margin-left:2rem;
+        padding:.6rem;
+        display:flex;
+        justify-content: center;
+        span {
+            font-size: 1rem;
+        }
+    }
+    button:hover {
+        background-color: brown;
+        border:2px solid brown;
+        box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
+        color:white;
+        }
+}

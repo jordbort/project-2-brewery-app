@@ -1,0 +1,134 @@
+/* Element styling */
+.brewery {
+    p {
+        font-size: 1rem;
+    }
+    
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    a:link {
+        color: black;
+        text-decoration: none;
+    }
+    
+    a:visited {
+        color: brown;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: brown;
+        text-decoration: none;
+    }
+    
+    a:active {
+        color: brown;
+        text-decoration: none;
+    }
+    .brewery-header{
+        display:flex;
+        justify-content: space-around;
+    }
+    .brewery-details-header {
+        margin: 0;
+    }
+    button {
+        background-color: white;
+        border:2px solid white;
+        border-radius:.25rem;
+        align-items: center;
+        span {
+            font-size: 1rem;
+        }
+    }
+    button:hover {
+        background-color: brown;
+        border:2px solid brown;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
+        color:white;
+    }
+    .details {
+        display: flex;
+        justify-content: center;
+    }
+
+    .brewery-container {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 2rem;
+        width: 80%;
+    }
+
+    .brewery-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 10px;
+    }
+
+    .brewery-info p {
+        margin: 0 0 0 16px;
+    }
+
+    .map-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        height: 350px;
+        width: 100%;
+    }
+
+    .no-map {
+        flex-direction: column;
+    }
+
+    .empty-mug {
+        transform: rotate(-135deg);
+        color: #AAAAAA;
+    }
+
+    .brewery-name {
+        font-family: 'Special Elite', cursive;
+        font-size: 1.75rem;
+        margin: 0;
+    }
+
+    .brewery-type {
+        margin: 0 0 16px 0;
+    }
+}
+
+/* Media queries */
+@media (orientation: portrait) {
+    p {
+        font-size: 0.8rem;
+    }
+
+    .brewery-container {
+        display: block;
+    }
+
+    .brewery-container {
+        margin: 0px;
+        width: 90%;
+    }
+
+    .brewery-info {
+        width: 100%;
+        padding: 24px 0 0 0;
+    }
+
+    .brewery-name {
+        font-size: 2rem;
+    }
+
+    .map-container {
+        padding: 0;
+    }
+}

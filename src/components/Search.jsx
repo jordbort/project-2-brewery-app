@@ -1,11 +1,13 @@
+import "../sassStyles/components/_search.scss"
+
 export default function Search(props) {
     const { radioClick, submitClick, textInput } = props
     const { searchBar, searchMethod, searchMethodName } = props.form
 
     return (
         <>
+        <div className="search">
             <h2>Search for breweries by {searchMethodName}</h2>
-            <div className="search">
                 <form className="search-form" onSubmit={submitClick}>
                     <div className="search-radio-buttons">
                         <label name="searchMethod">
@@ -58,16 +60,17 @@ export default function Search(props) {
                             Country
                         </label>
                     </div>
-
-                    <input
-                        type="text"
-                        name="searchBar"
-                        placeholder="Enter text"
-                        className="search-bar"
-                        onChange={textInput}
-                        value={searchBar}
-                    />
-                    <button type="submit">Submit</button>
+                    <div className="search-field-and-button">
+                        <input
+                            type="text"
+                            name="searchBar"
+                            placeholder="Enter text"
+                            className="search-bar"
+                            onChange={textInput}
+                            value={searchBar}
+                        />
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
         </>

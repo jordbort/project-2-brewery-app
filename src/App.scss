@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
+
+.app {
+background-image:url('./assets/beer-bg-1680px.png');
+margin: 0 auto;
+background-size: auto;
+background-repeat: no-repeat;
+background-color: #ffe306;
+font-family: 'IBM Plex Serif', serif;
+min-height: 100vh;
+text-align: center;
+.logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 3.75rem;
+    margin-left: 6%;
+}
+}
+
+/* Class styling */
+
+.inner-bubbles {
+    position: absolute;
+    width: .75rem;
+    height: .75rem;
+    border-radius: 50%;
+    border:1.5px solid #cf8d2e;
+    bottom: 0;
+    opacity: 0;
+}
+
+/* Animation classes and keyframes */
+.inner-bubble-1 {
+    left: 16%;
+    animation: inner-bubble-up 4.5s linear 3.1s forwards infinite;
+}
+
+.inner-bubble-2 {
+    left: 31%;
+    animation: inner-bubble-up 3.5s linear 2.9s forwards infinite;
+}
+
+.inner-bubble-3 {
+    left: 47%;
+    animation: inner-bubble-up 3.5s linear 2.7s forwards infinite;
+}
+
+.inner-bubble-4 {
+    left: 54%;
+    animation: inner-bubble-up 4s linear 2.9s forwards infinite;
+}
+
+.inner-bubble-5 {
+    left: 66%;
+    -webkit-animation: inner-bubble-up 4.5s linear 3s forwards infinite;
+    animation: inner-bubble-up 4.5s linear 3s forwards infinite;
+}
+
+.inner-bubble-6 {
+    left: 80%;
+    animation: inner-bubble-up 4.5s linear 4.1s forwards infinite;
+}
+
+@keyframes inner-bubble-up {
+    0% {
+        bottom: 0;
+        opacity: 0.9;
+    }
+
+    85% {
+        bottom: 110%;
+        opacity: 0.0;
+    }
+}
+
+/* Media queries */
+@media (min-width: 1536px){
+    // 2xl media calls
+}
+@media (min-width:1280px){
+    // xl media calls
+}
+@media (min-width:1024px){
+    // lg media calls
+}
+@media (min-width:768){
+    // md media calls
+}
+@media (min-width:640px){
+    // sm media calls
+}
+
+@media (orientation: portrait),
+(max-width: 650px) {
+    p {
+        font-size: 0.8rem;
+    }
+
+    .beer-glass {
+        position: relative;
+        // background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
+        width: 91%;
+    }
+
+    .nav {
+        margin: 0 1%;
+        // background-image: radial-gradient(at bottom, white 63%, black 68%);
+        // height: 5.5vh;
+        // padding: 0 0 8px;
+    }
+
+    .nav p {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+        margin-left: 0;
+    }
+}

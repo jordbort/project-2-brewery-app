@@ -1,0 +1,44 @@
+/* Element styles */
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+    text-decoration: none;
+}
+
+input[type=text],
+button,
+select {
+    border-style: solid;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* Class styles */
+.home {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 8% 0;
+}

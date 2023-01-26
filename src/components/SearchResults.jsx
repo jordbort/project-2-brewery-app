@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import "../sassStyles/components/_searchresults.scss"
 
 export default function SearchResults() {
     const [results, setResults] = useState(undefined)
@@ -58,11 +59,10 @@ export default function SearchResults() {
         newPageNumber++
         navigate(`/breweries/${userQueryBy}=${userQuery}&sort=${sortMethod}:${sortDirection}&per_page=${perPage}&page=${newPageNumber}`)
     }
-    
+
     function loaded() {
         return (
             <div className="all-search-components-container">
-
                 {/* Search controls */}
                 <h2>Search results:</h2>
                 <div className="sort-methods">
@@ -78,10 +78,12 @@ export default function SearchResults() {
                     </form>
                     <form>
                         <label>
-                            <input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />123→ABC
+                            <input type="radio" name="sort-asc-desc" value="asc" checked={sortDirection === "asc"} onChange={handleSortDirectionClick} />
+                            123→ABC
                         </label>
                         <label>
-                            <input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />ZYX→321
+                            <input type="radio" id="desc" name="sort-asc-desc" value="desc" checked={sortDirection === "desc"} onChange={handleSortDirectionClick} />
+                            ZYX→321
                         </label>
                     </form>
                     <form>
@@ -97,13 +99,28 @@ export default function SearchResults() {
 
                 {/* Search results */}
                 <div className="all-search-results-box">
-                    {results.length === 0 ? <div className="no-results"><h3>No results found.</h3><p>Please search again!</p></div> : (
+                    {results.length === 0 ? (
+                        <div className="no-results">
+                            <h3>No results found.</h3>
+                            <p>Please search again!</p>
+                        </div>
+                    ) : (
                         <>
                             {/* Page navigation information */}
-                            <p className="page-number">Page: {pageNumber} (items: {results.length})</p>
+                            <p className="page-number">
+                                Page: {pageNumber} (items: {results.length})
+                            </p>
                             <div className="page-buttons">
-                                {Number(pageNumber) === 1 ? null : <button onClick={handlePrevPageClick}>Prev Page</button>}
-                                {Number(results.length) < Number(perPage) ? null : <button onClick={handleNextPageClick}>Next Page</button>}
+                                {Number(pageNumber) === 1 ? null : (
+                                    <button onClick={handlePrevPageClick}>
+                                        <span>Prev Page</span>
+                                    </button>
+                                )}
+                                {Number(results.length) < Number(perPage) ? null : (
+                                    <button onClick={handleNextPageClick}>
+                                        <span>Next Page</span>
+                                    </button>
+                                )}
                             </div>
 
                             {/* Search results item */}
@@ -111,7 +128,7 @@ export default function SearchResults() {
                                 {results.map((brewery, idx) => {
                                     return (
                                         <div className={"search-result-container " + brewery.brewery_type} key={idx}>
-                                            <Link to={'/brewery/' + brewery.id}>
+                                            <Link to={"/brewery/" + brewery.id}>
                                                 <div className="search-result-info">
                                                     <div className="brewery-details">
                                                         {brewery.name ? <li>{brewery.name} </li> : null}
@@ -119,13 +136,31 @@ export default function SearchResults() {
                                                             {brewery.street && brewery.street !== "Unnamed Street" ? <li>{brewery.street}</li> : null}
                                                             {brewery.address_2 ? <li>{brewery.address_2}</li> : null}
                                                             {brewery.address_3 ? <li>{brewery.address_3}</li> : null}
-                                                            {brewery.city && brewery.postal_code ? <li>{brewery.city ? brewery.city : null}{brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}</li> : null}
-                                                            {brewery.county_province && brewery.country !== "United States" ? <li>{brewery.county_province ? `${brewery.county_province}, ` : null}{brewery.country !== "United States" ? brewery.country : null}</li> : null}
+                                                            {brewery.city && brewery.postal_code ? (
+                                                                <li>
+                                                                    {brewery.city ? brewery.city : null}
+                                                                    {brewery.state ? `, ${brewery.state}` : null} {brewery.postal_code ? brewery.postal_code : null}
+                                                                </li>
+                                                            ) : null}
+                                                            {brewery.county_province && brewery.country !== "United States" ? (
+                                                                <li>
+                                                                    {brewery.county_province ? `${brewery.county_province}, ` : null}
+                                                                    {brewery.country !== "United States" ? brewery.country : null}
+                                                                </li>
+                                                            ) : null}
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div className="extra-details">
-                                                    {brewery.longitude && brewery.latitude ? <div className="map-icon-black"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div> : <div className="map-icon-gray"><FontAwesomeIcon icon="fa-solid fa-map-location-dot" /></div>}
+                                                    {brewery.longitude && brewery.latitude ? (
+                                                        <div className="map-icon-black">
+                                                            <FontAwesomeIcon icon="fa-solid fa-map-location-dot" />
+                                                        </div>
+                                                    ) : (
+                                                        <div className="map-icon-gray">
+                                                            <FontAwesomeIcon icon="fa-solid fa-map-location-dot" />
+                                                        </div>
+                                                    )}
                                                     <div className="brewery-type-text">{brewery.brewery_type ? brewery.brewery_type : null}</div>
                                                 </div>
                                             </Link>
@@ -146,5 +181,11 @@ export default function SearchResults() {
         )
     }
 
-    return results ? loaded() : <h2 className="loading"><FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...</h2>
+    return results ? (
+        loaded()
+    ) : (
+        <h2 className="loading">
+            <FontAwesomeIcon icon="fa-solid fa-gear" size="1x" className="fa-spin" /> Loading search results...
+        </h2>
+    )
 }

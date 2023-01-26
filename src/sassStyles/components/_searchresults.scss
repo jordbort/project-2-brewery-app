@@ -1,88 +1,30 @@
-/* Element styles */
-p {
-    font-size: 1rem;
+button {
+    background-color: white;
+    border:2px solid white;
+    border-radius:.25rem;
+    font-size:1rem;
+    margin-left:2rem;
+    padding:.6rem;
+    display:flex;
+    justify-content: center;
+    span {
+        font-size: 1rem;
+    }
 }
-
-a {
-    color: black;
-    text-decoration: none;
-}
-
-a:link {
-    color: black;
-    text-decoration: none;
-}
-
-a:visited {
-    color: black;
-    text-decoration: none;
-}
-
-a:hover {
-    color: black;
-    text-decoration: none;
-}
-
-a:active {
-    color: black;
-    text-decoration: none;
-}
-
-input[type=text],
-button,
-select {
-    border-style: solid;
-    padding: 4px;
-    border-radius: 4px;
-}
-
-/* Class styles */
-.home {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 8% 0;
-}
-
-.search {
-    position: relative;
-    flex-direction: column;
-}
-
-.search-bar {
-    margin-right: 8px;
-    width: 150px;
-}
-
-.search-radio-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 8px;
-}
-
-.page-number {
-    padding: 0;
-    margin: 20px 0 0 0;
-}
-
-.sort-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
+button:hover {
+    background-color: brown;
+    border:2px solid brown;
+    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
+    color:white;
+    }
 .page-buttons {
     display: flex;
-    gap: 8px;
-    width: 100%;
-    margin-top: 16px;
-    margin-bottom: 0;
+    justify-content: space-between;
 }
-
-/* Container for all the sort methods and search results */
 .all-search-components-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Container for all the search results */
@@ -109,7 +51,11 @@ select {
     margin-bottom: 16px;
     background-color: rgba(249, 224, 142, 0.4);
     padding: 32px 0;
-    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.25);
+}
+.search-result-container:hover {
+    background-color: rgba(249, 224, 142, 0.8);
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.65);
 }
 
 /* Container for the text of each search result */
@@ -124,16 +70,10 @@ select {
     height: 100px;
     margin: 0;
     padding: 0;
-}
-
-.search-result-container:hover {
-    background-color: rgba(249, 224, 142, 0.8);
-    box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.5);
-}
-
-.search-result-info ul li {
-    list-style: none;
-    margin-left: 48px;
+    ul li {
+        list-style: none;
+        margin-left: 48px;
+    }
 }
 
 /* For making closed breweries appear in red */
