@@ -66,8 +66,6 @@ export default function Brewery() {
         if (!totalBreweries) {
             getTotalBreweries()
         }
-
-        // Just for demonstration, since resetting the state variables would cause an infinite loop
     }, [totalBreweries, selectedBrewery.brewery])
 
     const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
