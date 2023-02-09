@@ -22,7 +22,7 @@ function App() {
             <div className="site-content">
                 <div>
                     <div className="header-div">
-                        <h1 className='logo'><Link to="/">Brewery Buddy 🍻</Link></h1>
+                        <h1 className="logo"><Link to="/">Brewery Buddy 🍻</Link></h1>
                     </div>
                     <Routes>
                         <Route path='*' element={<Home />} />
