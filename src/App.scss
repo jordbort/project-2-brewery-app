@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Special+Elite&display=swap');
 
 body {
-    // border: 1px dashed blue;
     background-image: url('./assets/beer-bg-1680px bright.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,17 +9,14 @@ body {
 
 /* Class styling */
 .app {
-    border: 1px dashed red;
-    margin: 0 20vw;
+    margin: 0 25vw;
     font-family: 'IBM Plex Serif', serif;
     min-height: 100vh;
-    // text-align: left;
 
     .logo {
         font-family: 'Special Elite', Georgia, serif;
         text-align: center;
         font-size: 3.75rem;
-        // margin-left: 6%;
     }
 }
 
@@ -78,27 +74,6 @@ body {
     }
 }
 
-/* Media queries */
-@media (min-width: 1536px) {
-    // 2xl media calls
-}
-
-@media (min-width:1280px) {
-    // xl media calls
-}
-
-@media (min-width:1024px) {
-    // lg media calls
-}
-
-@media (min-width:768) {
-    // md media calls
-}
-
-@media (min-width:640px) {
-    // sm media calls
-}
-
 @media (orientation: portrait),
 (max-width: 650px) {
     p {
@@ -111,20 +86,19 @@ body {
 
     .beer-glass {
         position: relative;
-        // background-image: linear-gradient(to right, white, #ffd54f 10%, #fbcc31 40%, #fbcc31 60%, #ffd54f 90%, white);
         width: 91%;
     }
 
     .nav {
         margin: 0 1%;
-        // background-image: radial-gradient(at bottom, white 63%, black 68%);
-        // height: 5.5vh;
-        // padding: 0 0 8px;
     }
 
     .nav p {
         margin: 0 10px;
-        font-size: 0.9rem;
+    }
+
+    .nav a {
+        font-size: 0.1rem;
     }
 
     .logo {
