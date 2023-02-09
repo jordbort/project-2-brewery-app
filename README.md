@@ -16,7 +16,7 @@ See full details on each brewery's page, including the phone number, website, an
 
 ## Mobile screenshots
 
-<img src="https://user-images.githubusercontent.com/115664302/217727037-a9b3a16f-c3cb-4167-90dd-d70684975cfb.PNG" alt="Brewery Buddy About page" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217727046-066984e9-5ee6-4173-a308-b163344b27de.PNG" alt="Brewery Buddy search results" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217727063-fb93366c-6195-43f1-9672-cd73b54c9584.PNG" alt="Brewery Buddy random brewery" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217727079-1b875a6b-f817-41cd-9b5a-acef6a704041.PNG" alt="Brewery Buddy random brewery" width=24% />
+<img src="https://user-images.githubusercontent.com/115664302/217727037-a9b3a16f-c3cb-4167-90dd-d70684975cfb.PNG" alt="Brewery Buddy About page" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217727046-066984e9-5ee6-4173-a308-b163344b27de.PNG" alt="Brewery Buddy search results" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217728877-1af94d59-91c5-4c1e-8d4d-30b39d005dc8.PNG" alt="Brewery Buddy brewery page" width=24% />&nbsp;<img src="https://user-images.githubusercontent.com/115664302/217727063-fb93366c-6195-43f1-9672-cd73b54c9584.PNG" alt="Brewery Buddy random brewery" width=24% />
 
 ## Description
 What does it do?
