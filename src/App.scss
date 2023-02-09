@@ -10,16 +10,17 @@ body {
 
 /* Class styling */
 .app {
-    // border: 1px dashed red;
+    border: 1px dashed red;
     margin: 0 20vw;
     font-family: 'IBM Plex Serif', serif;
     min-height: 100vh;
-    text-align: center;
+    // text-align: left;
 
     .logo {
-        font-family: 'Special Elite', cursive;
+        font-family: 'Special Elite', Georgia, serif;
+        text-align: center;
         font-size: 3.75rem;
-        margin-left: 6%;
+        // margin-left: 6%;
     }
 }
 
