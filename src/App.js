@@ -19,11 +19,11 @@ function App() {
     return (
         <div className="app">
             <Nav />
-            <div className="site-content">
-                <div>
-                    <div className="header-div">
-                        <h1 className="logo"><Link to="/">Brewery Buddy 🍻</Link></h1>
-                    </div>
+            <div>
+                <div className="header-div">
+                    <h1 className="logo"><Link to="/">Brewery Buddy 🍻</Link></h1>
+                </div>
+                <div className="site-content">
                     <Routes>
                         <Route path='*' element={<Home />} />
                         <Route path='/about' element={<About />} />

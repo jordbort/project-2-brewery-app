@@ -4,9 +4,11 @@
 }
 
 .all-search-components-container {
+    // border: 3px dashed blue;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 /* Container for all the search results */

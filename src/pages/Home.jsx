@@ -30,24 +30,22 @@ export default function Home() {
     }
 
     return (
-        <>
-            <div className="home">
-                <Routes>
-                    <Route path="/" element={
-                        <>
-                            <Welcome />
-                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
-                        </>
-                    } />
-                    <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={
-                        <>
-                            <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
-                            <SearchResults />
-                        </>
-                    } />
-                </Routes>
-                <div className="inner-bubbles inner-bubble-1"></div>
-            </div>
-        </>
+        <div className="home">
+            <Routes>
+                <Route path="/" element={
+                    <>
+                        <Welcome />
+                        <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
+                    </>
+                } />
+                <Route path='/breweries/:userQueryBy=:userQuery&sort=:sortMethod::sortDirection&per_page=:perPage&page=:pageNumber' element={
+                    <>
+                        <Search textInput={handleTextInput} radioClick={handleRadioClick} submitClick={handleSubmitClick} form={formState} />
+                        <SearchResults />
+                    </>
+                } />
+            </Routes>
+            <div className="inner-bubbles inner-bubble-1"></div>
+        </div>
     )
 }
