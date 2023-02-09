@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: flex-end;
     height: 6vh;
+    margin: 8px 10vw 0;
 
     p {
         font-weight: 600;
@@ -27,6 +28,8 @@
 
     @media (orientation: portrait),
     (max-width:1280px) {
+        margin: 0;
+
         a {
             font-size: 1rem;
         }

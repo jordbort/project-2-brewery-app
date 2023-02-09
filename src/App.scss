@@ -9,16 +9,17 @@ body {
 
 /* Class styling */
 .app {
-    margin: 0 25vw;
+    margin: 0 20vw;
     font-family: 'IBM Plex Serif', serif;
     min-height: 100vh;
-
-    .logo {
-        font-family: 'Special Elite', Georgia, serif;
-        text-align: center;
-        font-size: 3.75rem;
-    }
 }
+
+.logo {
+    font-family: 'Special Elite', Georgia, serif;
+    text-align: center;
+    font-size: 3.75rem;
+}
+
 
 .inner-bubbles {
     position: absolute;
@@ -102,7 +103,6 @@ body {
     }
 
     .logo {
-        font-size: 2rem;
-        margin-left: 0;
+        font-size: 2.35rem;
     }
 }
