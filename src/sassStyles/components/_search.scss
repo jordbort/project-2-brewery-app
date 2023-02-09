@@ -1,37 +1,40 @@
 .search {
-    margin:0 auto;
+    margin: 0 auto;
     text-align: center;
+
     .search-bar {
         font-size: 1rem;
     }
+
     .search-field-and-button {
-        display:flex;
+        display: flex;
     }
-    
+
     .search-radio-buttons {
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
         margin-bottom: 8px;
     }
-    
+
     .page-number {
         padding: 0;
         margin: 20px 0 0 0;
     }
-    
+
     .sort-methods {
         display: flex;
         flex-direction: column;
         gap: 4px;
     }
-    
+
     button {
-        margin-left:1rem;
-        padding:.6rem;
+        margin-left: 1rem;
+        padding: .6rem;
     }
+
     button:hover {
         background-color: brown;
         box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
-        }
+    }
 }

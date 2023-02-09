@@ -1,34 +1,39 @@
 .about-container {
     text-align: center;
-    background-color: rgba(255,255,255,.50);
-    border:2px solid rgba(255,255,255,.50);
+    background-color: rgba(255, 255, 255, .50);
+    border: 2px solid rgba(255, 255, 255, .50);
     margin: 0 auto;
     border-radius: .25rem;
-    width:80%;
+    width: 80%;
+
     ul {
         padding: 0;
+
         li {
-        list-style-type: none;
+            list-style-type: none;
         }
     }
+
     a:link {
         color: brown;
         text-decoration: underline;
     }
+
     a:visited {
         color: brown;
         text-decoration: underline;
     }
+
     a:hover {
         color: brown;
         text-decoration: underline;
     }
 }
 
-@media (orientation: portrait),
-(max-width: 650px) {
-    .about-container {
+// @media (orientation: portrait),
+// (max-width: 650px) {
+    // .about-container {
         // padding: 10px;
         // width: 85%;
-    }
-}
+    // }
+// }

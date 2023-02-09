@@ -3,43 +3,52 @@
     justify-content: center;
     align-items: flex-end;
     height: 6vh;
-    p{
+
+    p {
         font-weight: 600;
-        color:white;
+        color: white;
         margin: 0 2rem;
     }
-    a{
+
+    a {
         font-size: 1.2rem;
-        padding:.2rem;
+        padding: .2rem;
         color: black;
         text-decoration: none;
-        background-color: rgba(255,255,255,.50);
-        border:2px solid rgba(255,255,255,.50);
+        background-color: rgba(255, 255, 255, .50);
+        border: 2px solid rgba(255, 255, 255, .50);
         // padding:3px;
         border-radius: .25rem;
     }
-    a:hover{
+
+    a:hover {
         background-color: brown;
-        padding:.2rem;
-        border:2px solid brown;
+        padding: .2rem;
+        border: 2px solid brown;
         box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
     }
-    @media (max-width: 1536px){
+
+    @media (max-width: 1536px) {
         // 2xl media calls
     }
-    @media (max-width:1280px){
+
+    @media (max-width:1280px) {
+
         // xl media calls
-        a{
-            font-size:1.2rem;
+        a {
+            font-size: 1.2rem;
         }
     }
-    @media (max-width:1024px){
+
+    @media (max-width:1024px) {
         // lg media calls
     }
-    @media (max-width:768){
+
+    @media (max-width:768) {
         // md media calls
-    }    
-    @media (max-width:640px){
+    }
+
+    @media (max-width:640px) {
         // sm media calls
     }
 }

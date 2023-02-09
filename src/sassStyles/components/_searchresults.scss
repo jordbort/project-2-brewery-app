@@ -1,26 +1,8 @@
-button {
-    background-color: white;
-    border:2px solid white;
-    border-radius:.25rem;
-    font-size:1rem;
-    margin-left:2rem;
-    padding:.6rem;
-    display:flex;
-    justify-content: center;
-    span {
-        font-size: 1rem;
-    }
-}
-button:hover {
-    background-color: brown;
-    border:2px solid brown;
-    box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.5);
-    color:white;
-    }
 .page-buttons {
     display: flex;
     justify-content: space-between;
 }
+
 .all-search-components-container {
     display: flex;
     flex-direction: column;
@@ -53,6 +35,7 @@ button:hover {
     padding: 32px 0;
     box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.25);
 }
+
 .search-result-container:hover {
     background-color: rgba(249, 224, 142, 0.8);
     box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.65);
@@ -70,6 +53,7 @@ button:hover {
     height: 100px;
     margin: 0;
     padding: 0;
+
     ul li {
         list-style: none;
         margin-left: 48px;
