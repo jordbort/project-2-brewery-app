@@ -2,16 +2,20 @@
 by Jordan Bortner and Corey Loftus
 
 ## Screenshots
-![Screenshot from 2022-12-12 18-18-54](https://user-images.githubusercontent.com/115664302/207182380-f1f72002-f4ab-4516-86c0-0b60e470908c.png)
+![Screenshot from 2023-02-09 00-18-41](https://user-images.githubusercontent.com/115664302/217724953-c8a51d76-f2bf-41c0-b3b4-61acee451eb4.png)
+
 Home/landing page for our application.
 
-![Screenshot from 2022-12-12 18-19-43](https://user-images.githubusercontent.com/115664302/207182492-793aa4bd-d8b3-418b-a02c-4cba28f181fc.png)
+![Screenshot from 2023-02-09 00-19-10](https://user-images.githubusercontent.com/115664302/217725032-913fc285-869e-4f66-bd8b-77abc1a639d9.png)
+
 Choose your search method and query, and refine your search with sorting methods provided by the Open Brewery API.
 
-![Screenshot from 2022-12-12 18-21-41](https://user-images.githubusercontent.com/115664302/207182645-92e220f8-c0b8-4dd4-9a89-88b8416d58c6.png)
+![Screenshot from 2023-02-09 00-19-54](https://user-images.githubusercontent.com/115664302/217725092-fb0ff869-c5a5-42af-8177-f4bb7d6dc19b.png)
+
 Browse search results with the brewery name and address at a glance, and hover over an item to see if a map is available (created with [React Leaflet](https://react-leaflet.js.org/ 'React Leaflet')), and what type of brewery it is. (See the [Open Brewery DB API documentation](https://www.openbrewerydb.org/documentation 'Open Brewery DB API documentation') for more information regarding brewery types)
 
-![Screenshot from 2022-12-12 18-22-00](https://user-images.githubusercontent.com/115664302/207183617-1c2049a6-dbd5-4304-81c8-a6a17c386d17.png)
+![Screenshot from 2023-02-09 00-20-13](https://user-images.githubusercontent.com/115664302/217725147-4ec5712f-cfd4-4121-8d50-ce5b2136a23e.png)
+
 See full details on each brewery's page, including the phone number, website, and location on a map (if available). 10-digit U.S. phone numbers have been formatted for readability, and some international address formats have been taken into consideration as well.
 
 ## Description
@@ -45,7 +49,7 @@ What does it do?
 HTML/CSS, JavaScript, React.js, JSX, Node.js, Leaflet.js, React Leaflet, OpenStreetMap API
 
 ### Getting Started / Installation Instructions
-[Check out the live deployment at.](https://dreamy-bienenstitch-fd35ba.netlify.app/)
+[Check out the live deployment here.](https://brewerybuddy.netlify.app/)
 
 [View the GitHub page for the project here.](https://github.com/jordbort/project-2-brewery-app)
 
