@@ -6,8 +6,8 @@ export default function Search(props) {
 
     return (
         <>
-        <div className="search">
-            <h2>Search for breweries by {searchMethodName}</h2>
+            <div className="search">
+                <h2>Search for breweries by {searchMethodName}</h2>
                 <form className="search-form" onSubmit={submitClick}>
                     <div className="search-radio-buttons">
                         <label name="searchMethod">
