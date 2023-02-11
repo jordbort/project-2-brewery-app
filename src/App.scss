@@ -66,11 +66,11 @@ body {
 @keyframes inner-bubble-up {
     0% {
         bottom: 0;
-        opacity: 0.9;
+        opacity: 0.6;
     }
 
     85% {
-        bottom: 110%;
+        bottom: 85%;
         opacity: 0.0;
     }
 }
