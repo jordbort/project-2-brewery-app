@@ -68,7 +68,7 @@ export default function Brewery() {
         }
     }, [totalBreweries, selectedBrewery.brewery])
 
-    const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url, updated_at } = brewery
+    const { name, brewery_type, street, address_2, address_3, county_province, city, state, postal_code, latitude, longitude, country, phone, website_url } = brewery
 
     function loaded() {
         return (
@@ -115,11 +115,6 @@ export default function Brewery() {
                                 </p>
                             ) : null}
                             <br />
-                            {updated_at ? (
-                                <p>
-                                    <em>Last updated: {updated_at[5] + updated_at[6] + `/` + updated_at[8] + updated_at[9] + `/` + updated_at[0] + updated_at[1] + updated_at[2] + updated_at[3]}</em>
-                                </p>
-                            ) : null}
                         </div>
 
                         {brewery.id && latitude && longitude ? (
