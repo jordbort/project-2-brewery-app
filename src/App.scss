@@ -23,10 +23,10 @@ body {
 
 .inner-bubbles {
     position: absolute;
-    width: .75rem;
-    height: .75rem;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    border: 1.5px solid #cf8d2e;
+    border: 1px solid #cf8d2e;
     bottom: 0;
     opacity: 0;
 }
@@ -66,12 +66,12 @@ body {
 @keyframes inner-bubble-up {
     0% {
         bottom: 0;
-        opacity: 0.9;
+        opacity: 0.6;
     }
 
     85% {
-        bottom: 110%;
-        opacity: 0.0;
+        bottom: 85%;
+        opacity: 0;
     }
 }
 

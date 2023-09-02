@@ -7,7 +7,7 @@ export default function Search(props) {
     return (
         <>
             <div className="search">
-                <h2>Search for breweries by {searchMethodName}</h2>
+                <h3>Search for breweries by {searchMethodName}:</h3>
                 <form className="search-form" onSubmit={submitClick}>
                     <div className="search-radio-buttons">
                         <label name="searchMethod">
@@ -42,10 +42,10 @@ export default function Search(props) {
 
                         <label name="searchMethod">
                             <input type="radio"
-                                id="postcode"
+                                id="post code"
                                 name="searchMethod"
                                 value="by_postal"
-                                checked={searchMethod === "by_postcode"}
+                                checked={searchMethod === "by_postal"}
                                 onChange={radioClick} />
                             ZIP/Postal code
                         </label>
