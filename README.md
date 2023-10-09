@@ -1,5 +1,7 @@
-# Project 2 - React application: Brewery Buddy 🍻️
+# React application: Brewery Buddy 🍻️
 by Jordan Bortner and Corey Loftus
+
+[Check out the live deployment here.](https://brewerybuddy.netlify.app/)
 
 ## Screenshots
 ![Screenshot from 2023-02-09 00-18-41](https://user-images.githubusercontent.com/115664302/217724953-c8a51d76-f2bf-41c0-b3b4-61acee451eb4.png)
@@ -47,11 +49,6 @@ What does it do?
 
 ## Technologies Used
 HTML/CSS, JavaScript, React.js, JSX, Node.js, Leaflet.js, React Leaflet, OpenStreetMap API
-
-### Getting Started / Installation Instructions
-[Check out the live deployment here.](https://brewerybuddy.netlify.app/)
-
-[View the GitHub page for the project here.](https://github.com/jordbort/project-2-brewery-app)
 
 
 ## Contribution Guidelines
